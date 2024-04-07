@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TreeCraftingVoyager.Server.Models;
 
 namespace TreeCraftingVoyager.Server.Controllers
 {

@@ -1,4 +1,4 @@
-namespace TreeCraftingVoyager.Server
+namespace TreeCraftingVoyager.Server.Models
 {
     public class WeatherForecast
     {

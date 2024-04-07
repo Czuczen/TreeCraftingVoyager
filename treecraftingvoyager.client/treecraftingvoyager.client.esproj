@@ -12,4 +12,8 @@
     <None Remove=".vscode\**" />
     <TypeScriptConfiguration Remove=".vscode\**" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\components\appManagement\" />
+    <Folder Include="src\router\" />
+  </ItemGroup>
 </Project>

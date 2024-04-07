@@ -43,10 +43,19 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/WeatherForecast/GetWeatherForecast': {
                 target,
                 secure: false
-            }
+            },
+            '^/api/AppManagement/GetLogs': {
+                target,
+                /*changeOrigin: true,*/
+                secure: false
+            },
+            //'^/': {
+            //    target,
+            //    secure: false
+            //}
         },
         port: 5173,
         https: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Strona g≥Ûwna</h1>
+        <h1>Strona g≈Ç√≥wna</h1>
         Welcome!
     </div>
 </template>

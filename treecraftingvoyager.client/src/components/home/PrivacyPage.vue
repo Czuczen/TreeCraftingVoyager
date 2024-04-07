@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Prywatnoœæ</h1>
+        <h1>PrywatnoÅ›Ä‡</h1>
         Privacy site
     </div>
 </template>

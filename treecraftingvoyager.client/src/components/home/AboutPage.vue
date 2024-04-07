@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>O nas</h1>
-        About site
+        About site rść
     </div>
 </template>
 

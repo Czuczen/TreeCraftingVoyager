@@ -1,0 +1,48 @@
+# Ignore Visual Studio files
+.vscode/
+.vs/
+bin/
+obj/
+
+# Ignore build and NuGet packages
+*.user
+*.suo
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore database files
+*.mdf
+*.ldf
+
+# Ignore .NET Core artifacts
+project.assets.json
+project.deps.json
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore log files
+logs/
+
+# Ignore user-specific files and settings
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore generated code and files
+/obj/
+
+# Ignore Rider files
+.idea/
+
+# Ignore Rider cache
+.idea/cache/
+
+# Ignore Visual Studio Code files
+.vscode/

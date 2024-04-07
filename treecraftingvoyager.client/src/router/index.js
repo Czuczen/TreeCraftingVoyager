@@ -3,23 +3,33 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: 'HomePage',
         component: () => import('@/components/home/HomePage.vue'),
     },
     {
         path: '/about',
-        name: 'About',
+        name: 'AboutPage',
         component: () => import('@/components/home/AboutPage.vue'),
     },
     {
         path: '/privacy',
-        name: 'Privacy',
+        name: 'PrivacyPage',
         component: () => import('@/components/home/PrivacyPage.vue'),
     },
     {
         path: '/logs',
-        name: 'Logs',
+        name: 'LogsViewer',
         component: () => import('@/components/appManagement/LogsViewer.vue'),
+    },
+    {
+        path: '/categories',
+        name: 'IndexCategories',
+        component: () => import('@/components/categories/IndexCategories.vue'),
+    },
+    {
+        path: '/products',
+        name: 'IndexProducts',
+        component: () => import('@/components/products/Index.vue'),
     },
 ];
 

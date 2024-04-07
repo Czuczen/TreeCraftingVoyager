@@ -13,9 +13,18 @@
                             <li class="nav-item">
                                 <router-link class="nav-link text-dark" to="/">Strona główna</router-link>
                             </li>
-
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Zadanie
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><router-link class="dropdown-item" to="/categories">Kategorie</router-link></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><router-link class="dropdown-item" to="/products">Produkty</router-link></li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
-                                <router-link class="nav-link text-dark" to="/about">O nas</router-link>
+                                <router-link class="nav-link text-dark" to="/about">O mnie</router-link>
                             </li>
                         </ul>
                         <div>

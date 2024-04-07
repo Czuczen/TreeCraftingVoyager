@@ -1,6 +1,6 @@
 @TreeCraftingVoyager.Server_HostAddress = http://localhost:5157
 
-GET {{TreeCraftingVoyager.Server_HostAddress}}/weatherforecast/
+GET {{TreeCraftingVoyager.Server_HostAddress}}/api/AppManagement/GetLogs/
 Accept: application/json
 
 ###

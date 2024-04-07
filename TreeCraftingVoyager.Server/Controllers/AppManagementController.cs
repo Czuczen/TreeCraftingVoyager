@@ -20,10 +20,6 @@ namespace TreeCraftingVoyager.Server.Controllers
         }
 
 
-        /// <summary>
-        /// Launched from the link - http://localhost:5173/AppManagement/GetLogs
-        /// </summary>
-        /// <returns></returns>
         [HttpGet("GetLogs")]
         public IActionResult Logs()
         {

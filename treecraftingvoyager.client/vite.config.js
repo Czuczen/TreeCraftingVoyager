@@ -51,11 +51,7 @@ export default defineConfig({
                 target,
                 /*changeOrigin: true,*/
                 secure: false
-            },
-            //'^/': {
-            //    target,
-            //    secure: false
-            //}
+            }
         },
         port: 5173,
         https: {

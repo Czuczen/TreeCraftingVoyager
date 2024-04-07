@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>O nas</h1>
-        About site rść
+        <h6 class="text-center">O mnie</h6>
+        <div class="text-center">
+            Cześć!
+        </div>
     </div>
 </template>
 

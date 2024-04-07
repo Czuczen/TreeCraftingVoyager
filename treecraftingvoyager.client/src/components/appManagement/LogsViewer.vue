@@ -1,12 +1,12 @@
 <template>
-    <div class="logs-viewer">
-        <div v-for="(logs, level) in logsData" :key="level" class="accordion-item">
-            <h2 class="accordion-header" @click="toggleSection(level)">
-                <button class="accordion-button">
+    <div class="accordion" id="logsAccordion">
+        <div class="accordion-item" v-for="(logs, level) in logsData" :key="level">
+            <h2 class="accordion-header" :id="'heading' + level">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse' + level" aria-expanded="true" :aria-controls="'collapse' + level">
                     {{ level }}
                 </button>
             </h2>
-            <div v-bind:class="{ 'collapse': !expandedSections[level], 'show': expandedSections[level] }" class="accordion-collapse">
+            <div :id="'collapse' + level" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#logsAccordion">
                 <div class="accordion-body">
                     <div v-for="(log, index) in logs" :key="`log-${level}-${index}`" class="log-entry">
                         <div v-for="(line, lineIndex) in log" :key="`line-${level}-${index}-${lineIndex}`">{{ line }}</div>
@@ -21,65 +21,42 @@
     export default {
         data() {
             return {
-                logsData: {},
-                expandedSections: {},
+                logsData: {}
             };
         },
         methods: {
-            toggleSection(level) {
-                this.expandedSections[level] = !this.expandedSections[level];
-            },
             async fetchLogs() {
                 try {
                     fetch('/api/AppManagement/GetLogs')
                         .then(r => r.json())
                         .then(json => {
                             this.logsData = json;
-                            return;
                         });
                 } catch (error) {
                     console.error('Error fetching logs:', error);
                 }
-            },
+            }
         },
         mounted() {
             this.fetchLogs();
-        },
+        }
     };
 </script>
 
 <style scoped>
-    .accordion-item {
-        margin-bottom: 1rem;
-    }
-
-    .accordion-header {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        background-color: #f0f0f0;
-        border: 1px solid #ddd;
-    }
-
-    .accordion-button {
-        background: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        text-align: left;
-    }
-
-    .collapse {
-        display: none;
-    }
-
-    .show {
-        display: block;
+    .log-entry {
+        border: 1px solid #dee2e6;
+        margin-bottom: .5rem;
+        padding: .5rem;
+        border-radius: .25rem;
     }
 
     .accordion-body {
-        padding: 1rem;
-        border: 1px solid #ddd;
-        border-top: none;
+        padding: 1rem 0.5rem;
+    }
+
+    .accordion-button {
+        background-color: #f8f9fa;
+        color: #495057;
     }
 </style>

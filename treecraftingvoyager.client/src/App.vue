@@ -13,24 +13,24 @@
                             <li class="nav-item">
                                 <router-link class="nav-link text-dark" to="/">Strona główna</router-link>
                             </li>
-                            <li class="nav-item">
-                                <router-link class="nav-link text-dark" to="/logs">Logi</router-link>
-                            </li>
+
                             <li class="nav-item">
                                 <router-link class="nav-link text-dark" to="/about">O nas</router-link>
                             </li>
                         </ul>
+                        <div>
+                            <router-link class="nav-link text-dark" to="/logs">Logi</router-link>
+                        </div>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <!-- Main content -->
         <div class="container">
             <router-view></router-view>
         </div>
 
-        <footer class="border-top footer text-muted">
+        <footer class="border-top footer text-muted mt-4">
             <div class="container">
                 &copy; 2024 - Tree Crafting Voyager - <router-link to="/privacy">Prywatność</router-link>
             </div>

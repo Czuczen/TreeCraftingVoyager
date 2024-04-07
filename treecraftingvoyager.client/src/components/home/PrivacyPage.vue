@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>Prywatność</h1>
-        Privacy site
+        <h6 class="text-center">Prywatność</h6>
+        <div class="text-center">
+            Privacy site
+        </div>
     </div>
 </template>
 

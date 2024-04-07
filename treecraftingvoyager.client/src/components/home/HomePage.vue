@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h1>Strona główna</h1>
-        Welcome!
+        <h6 class="text-center">Strona główna</h6>
+        <div class="text-center">
+            Welcome!
+        </div>
     </div>
 </template>
 

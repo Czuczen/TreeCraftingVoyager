@@ -45,14 +45,18 @@ namespace TreeCraftingVoyager.Server.Controllers
         [HttpPost("CreateCategory")]
         public async Task<ActionResult<CategoryDto>> CreateCategory([FromBody] CreateCategoryDto category)
         {
-            var ret = await _crudRepository.CreateAsync(category);
+            if (ModelState.IsValid)
+                await _crudRepository.CreateAsync(category);
+            else
+                ValidationProblem(ModelState);
 
-            return Ok(ret);
+            return Ok();
         }
 
         [HttpPut("UpdateCategory")]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto category)
         {
+            
             var ret = await _crudRepository.UpdateAsync(category);
 
             return Ok(ret);

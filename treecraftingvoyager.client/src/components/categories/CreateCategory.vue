@@ -1,5 +1,5 @@
 <script setup>
-    import BackBtn from '@/components/shared/BackBtn.vue';
+    import FormBtns from '@/components/shared/FormBtns.vue';
 </script>
 
 <template>
@@ -31,12 +31,8 @@
                 <label for="categoryDisplayOrder" class="form-label">Kolejność</label>
                 <input type="number" class="form-control" id="categoryDisplayOrder" v-model="category.displayOrder">
             </div>
-            <div class="d-flex bd-highlight">
-                <div class="bd-highlight me-auto">
-                    <BackBtn></BackBtn>
-                </div>
-                <button type="submit" class="btn btn-primary bd-highlight">Dodaj</button>
-            </div>
+
+            <FormBtns></FormBtns>
         </form>
     </div>
 </template>
@@ -85,10 +81,3 @@
         }
     };
 </script>
-
-<style scoped>
-    .add-button {
-        position: fixed;
-        right: ;
-    }
-</style>

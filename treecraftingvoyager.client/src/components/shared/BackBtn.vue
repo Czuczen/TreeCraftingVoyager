@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <button class="btn btn-secondary m-1" @click="goBack">Wróć</button>
-    </div>
+    <button class="btn btn-secondary m-1" @click="goBack">Wróć</button>
 </template>
 
 <script>

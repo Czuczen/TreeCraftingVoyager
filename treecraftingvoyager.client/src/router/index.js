@@ -37,9 +37,19 @@ const routes = [
         component: () => import('@/components/categories/CreateCategory.vue'),
     },
     {
-        path: '/category-details',
+        path: '/category-details/:id',
         name: 'CategoryDetails',
         component: () => import('@/components/categories/CategoryDetails.vue'),
+    },
+    {
+        path: '/edit-category/:id',
+        name: 'EditCategory',
+        component: () => import('@/components/categories/EditCategory.vue'),
+    },
+    {
+        path: '/delete-category/:id',
+        name: 'DeleteCategory',
+        component: () => import('@/components/categories/DeleteCategory.vue'),
     },
 ];
 

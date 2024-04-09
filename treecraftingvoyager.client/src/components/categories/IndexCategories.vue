@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-3">
-        <h4 class="text-center">Kategorie</h4>
+        <h4 class="text-center">Kategorie Ã³</h4>
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createCategory">Dodaj</button>
         </div>
@@ -22,9 +22,9 @@
                         <td>{{ category.description }}</td>
                         <td>{{ category.isActive ? 'Aktywna' : 'Nieaktywna' }}</td>
                         <td>
-                            <button class="btn btn-success btn-sm m-1" @click="showDetails(category.id)">Szczegó³y</button>
+                            <button class="btn btn-success btn-sm m-1" @click="showDetails(category.id)">SzczegÃ³Å‚y</button>
                             <button class="btn btn-purple btn-sm m-1" @click="editCategory(category.id)">Edytuj</button>
-                            <button class="btn btn-danger btn-sm m-1" @click="deleteCategory(category.id)">Usuñ</button>
+                            <button class="btn btn-danger btn-sm m-1" @click="deleteCategory(category.id)">UsuÅ„</button>
                         </td>
                     </tr>
                 </tbody>
@@ -50,25 +50,20 @@
                             this.categories = json;
                         });
                 } catch (error) {
-                    console.error('Error fetching logs:', error);
+                    console.error('Fetching error:', error);
                 }
             },
             createCategory() {
-                // Tutaj logika do otwierania modalu lub przekierowania na stronê z formularzem
-                /*alert('Otwieranie formularza dodawania kategorii.');*/
                 this.$router.push('/create-category');
             },
             showDetails(id) {
-                // Metoda zaœlepka
-                alert(`Szczegó³y kategorii ${id}`);
+                this.$router.push({ name: 'CategoryDetails', params: { id: id } });
             },
             editCategory(id) {
-                // Metoda zaœlepka
-                alert(`Edycja kategorii ${id}`);
+                this.$router.push({ name: 'EditCategory', params: { id: id } });
             },
             deleteCategory(id) {
-                // Metoda zaœlepka
-                alert(`Usuwanie kategorii ${id}`);
+                this.$router.push({ name: 'DeleteCategory', params: { id: id } });
             }
         },
         mounted() {

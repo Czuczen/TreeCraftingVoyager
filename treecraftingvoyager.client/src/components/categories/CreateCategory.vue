@@ -1,7 +1,10 @@
-<!-- AddCategory.vue -->
+<script setup>
+    import BackBtn from '@/components/shared/BackBtn.vue';
+</script>
+
 <template>
     <div class="container">
-        <h2>Dodaj now¹ kategoriê</h2>
+        <h2>Dodaj nowÄ… kategoriÄ™</h2>
         <form @submit.prevent="submitCategory">
             <div class="mb-3">
                 <label for="categoryName" class="form-label">Nazwa kategorii</label>
@@ -25,10 +28,15 @@
                 <input type="checkbox" class="form-control form-check-input" id="categoryIsActive" v-model="category.isActive">
             </div>
             <div class="mb-3">
-                <label for="categoryDisplayOrder" class="form-label">Kolejnoœæ</label>
+                <label for="categoryDisplayOrder" class="form-label">KolejnoÅ›Ä‡</label>
                 <input type="number" class="form-control" id="categoryDisplayOrder" v-model="category.displayOrder">
             </div>
-            <button type="submit" class="btn btn-primary">Dodaj</button>
+            <div class="d-flex bd-highlight">
+                <div class="bd-highlight me-auto">
+                    <BackBtn></BackBtn>
+                </div>
+                <button type="submit" class="btn btn-primary bd-highlight">Dodaj</button>
+            </div>
         </form>
     </div>
 </template>
@@ -61,19 +69,26 @@
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
-                        return response.json(); // Parsowanie odpowiedzi JSON
+                        return response.json();
                     })
                     .then(data => {
-                        console.log(data); // Przyk³adowa akcja po pomyœlnym dodaniu kategorii
-                        this.$router.push('/categories'); // Przekierowanie do listy kategorii
+                        console.log(data);
+                        this.$router.push('/categories');
                     })
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
                     });
                 } catch (error) {
-                    console.error('Error fetching logs:', error);
+                    console.error('Fetching error:', error);
                 }
             }
         }
     };
 </script>
+
+<style scoped>
+    .add-button {
+        position: fixed;
+        right: ;
+    }
+</style>

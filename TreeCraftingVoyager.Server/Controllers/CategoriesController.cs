@@ -35,7 +35,7 @@ namespace TreeCraftingVoyager.Server.Controllers
         }
 
         [HttpGet("GetCategory/{id}")]
-        public async Task<ActionResult<Category>> GetCategory(long id)
+        public async Task<ActionResult<CategoryDto>> GetCategory(long id)
         {
             var ret = await _crudRepository.GetByIdAsync(id);
 
@@ -43,17 +43,16 @@ namespace TreeCraftingVoyager.Server.Controllers
         }
 
         [HttpPost("CreateCategory")]
-        public async Task<ActionResult<Category>> CreateCategory([FromBody] CreateCategoryDto category)
+        public async Task<ActionResult<CategoryDto>> CreateCategory([FromBody] CreateCategoryDto category)
         {
             var ret = await _crudRepository.CreateAsync(category);
 
             return Ok(ret);
         }
 
-        [HttpPut("PutCategory/{id}")]
-        public async Task<IActionResult> PutCategory(UpdateCategoryDto category)
+        [HttpPut("UpdateCategory")]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto category)
         {
-            // id ?? 
             var ret = await _crudRepository.UpdateAsync(category);
 
             return Ok(ret);

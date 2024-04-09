@@ -22,19 +22,17 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                     SEOKeywords = table.Column<string>(type: "text", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    ParentId = table.Column<int>(type: "integer", nullable: true),
-                    ParentId1 = table.Column<long>(type: "bigint", nullable: false),
+                    ParentId = table.Column<long>(type: "bigint", nullable: true),
                     DisplayOrder = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Categories_Categories_ParentId1",
-                        column: x => x.ParentId1,
+                        name: "FK_Categories_Categories_ParentId",
+                        column: x => x.ParentId,
                         principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -47,32 +45,31 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                     SKU = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
-                    CategoryId = table.Column<int>(type: "integer", nullable: false),
+                    CategoryId = table.Column<long>(type: "bigint", nullable: false),
                     Dimensions = table.Column<string>(type: "text", nullable: false),
                     Weight = table.Column<decimal>(type: "numeric", nullable: false),
-                    Manufacturer = table.Column<string>(type: "text", nullable: false),
-                    CategoryId1 = table.Column<long>(type: "bigint", nullable: false)
+                    Manufacturer = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId1",
-                        column: x => x.CategoryId1,
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_ParentId1",
+                name: "IX_Categories_ParentId",
                 table: "Categories",
-                column: "ParentId1");
+                column: "ParentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId1",
+                name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "CategoryId1");
+                column: "CategoryId");
         }
 
         /// <inheritdoc />

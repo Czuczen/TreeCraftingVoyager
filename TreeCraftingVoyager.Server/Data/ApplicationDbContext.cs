@@ -17,9 +17,12 @@ namespace TreeCraftingVoyager.Server.Data
         }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+
+        //    modelBuilder.Entity<Category>()
+        //        .Property(e => e.ParentId).IsRequired(false);
+        //}
     }
 }

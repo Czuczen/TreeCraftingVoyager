@@ -1,5 +1,6 @@
 <template>
     <div class="container mt-3">
+        <h4 class="text-center">Kategorie</h4>
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createCategory">Dodaj</button>
         </div>

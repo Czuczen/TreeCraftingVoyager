@@ -1,17 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
+using System.Diagnostics.CodeAnalysis;
+using System.Data.SqlTypes;
 
 namespace TreeCraftingVoyager.Server.Models.Entities.Shared;
 
 public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
+    where TPrimaryKey : struct
     where T : TreeNode<TPrimaryKey, T>
 {
     public string Name { get; set; }
 
-    public TPrimaryKey? ParentId { get; set; }
-
-    //[ForeignKey("ParentId")]
+    public Nullable<TPrimaryKey> ParentId { get; set; } // Nullable<> for entity framework migrations. TPrimaryKey? not working
     public virtual T Parent { get; set; }
 
     public virtual ICollection<T> Childrens { get; set; } = new List<T>();

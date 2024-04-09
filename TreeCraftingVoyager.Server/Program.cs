@@ -1,9 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using TreeCraftingVoyager.Server.Configuration.Dependencies;
+using TreeCraftingVoyager.Server.Data;
 using TreeCraftingVoyager.Server.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add logging to the file
 builder.AddFileLogger();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+       options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Registration of dependencies according to convention
+builder.Services.RegisterDependenciesByConvention();
 
 // Add services to the container.
 builder.Services.AddControllers();

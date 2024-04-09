@@ -40,8 +40,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Data\" />
+    <Folder Include="Consts\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>

@@ -9,7 +9,7 @@ public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
 {
     public string Name { get; set; }
 
-    public int? ParentId { get; set; }
+    public TPrimaryKey? ParentId { get; set; }
 
     //[ForeignKey("ParentId")]
     public virtual T Parent { get; set; }

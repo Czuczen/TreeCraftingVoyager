@@ -29,7 +29,17 @@ const routes = [
     {
         path: '/products',
         name: 'IndexProducts',
-        component: () => import('@/components/products/Index.vue'),
+        component: () => import('@/components/products/IndexProducts.vue'),
+    },
+    {
+        path: '/create-category',
+        name: 'CreateCategory',
+        component: () => import('@/components/categories/CreateCategory.vue'),
+    },
+    {
+        path: '/category-details',
+        name: 'CategoryDetails',
+        component: () => import('@/components/categories/CategoryDetails.vue'),
     },
 ];
 

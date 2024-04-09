@@ -7,7 +7,6 @@ namespace TreeCraftingVoyager.Server.Models.Entities
     {
         public string Description { get; set; }
 
-        [Url]
         public string ImageURL { get; set; }
 
         public string SEOKeywords { get; set; }

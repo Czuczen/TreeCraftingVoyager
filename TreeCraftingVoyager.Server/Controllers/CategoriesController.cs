@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Entities;
 
 namespace TreeCraftingVoyager.Server.Controllers
@@ -13,6 +14,44 @@ namespace TreeCraftingVoyager.Server.Controllers
         // Symulacja bazy danych za pomocą statycznej listy
         private static List<Category> _categories = new List<Category>();
         private static long _nextId = 1;
+
+
+        public CategoriesController()
+        {
+            var category1 = new Category
+            {
+                Id = _nextId++,
+                Name = "Aaaa",
+                Description = "Aaaa",
+                ImageURL = "Aaaa",
+                SEOKeywords = "Aaaa",
+                IsActive = true
+            };
+
+            var category2 = new Category
+            {
+                Id = _nextId++,
+                Name = "Bbbb",
+                Description = "Bbbb",
+                ImageURL = "Bbbb",
+                SEOKeywords = "Bbbb",
+                IsActive = false
+            };
+
+            var category3 = new Category
+            {
+                Id = _nextId++,
+                Name = "Cccc",
+                Description = "Cccc",
+                ImageURL = "Cccc",
+                SEOKeywords = "Cccc",
+                IsActive = true
+            };
+
+            _categories.Add(category1);
+            _categories.Add(category2);
+            _categories.Add(category3);
+        }
 
 
         [HttpGet("GetCategories")]
@@ -34,13 +73,14 @@ namespace TreeCraftingVoyager.Server.Controllers
             return await Task.FromResult<ActionResult<Category>>(category);
         }
 
-        [HttpPost("PostCategory")]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        [HttpPost("CreateCategory")]
+        public async Task<ActionResult<Category>> CreateCategory([FromBody] CreateCategoryDto category)
         {
-            category.Id = _nextId++;
-            _categories.Add(category);
+            var categoryqqq = new Category();
+            categoryqqq.Id = _nextId++;
+            _categories.Add(categoryqqq);
 
-            return await Task.FromResult<ActionResult<Category>>(CreatedAtAction("GetCategory", new { id = category.Id }, category));
+            return await Task.FromResult<ActionResult<Category>>(CreatedAtAction("GetCategory", new { id = categoryqqq.Id }, categoryqqq));
         }
 
         [HttpPut("PutCategory/{id}")]

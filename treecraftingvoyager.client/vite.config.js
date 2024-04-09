@@ -43,16 +43,11 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/api/Categories/GetCategories': {
+            '^/api/': {
                 target,
                 changeOrigin: true,
                 secure: false,
-            },
-            '^/api/AppManagement/GetLogs': {
-                target,
-                changeOrigin: true,
-                secure: false,
-            },
+            }
         }, 
         port: 5173,
         https: {

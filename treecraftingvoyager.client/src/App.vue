@@ -9,26 +9,19 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <div>
+                            <router-link class="nav-link text-dark ms-2" to="/">Strona główna</router-link>
+                        </div>
                         <ul class="navbar-nav flex-grow-1 justify-content-center">
-                            <li class="nav-item">
-                                <router-link class="nav-link text-dark" to="/">Strona główna</router-link>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Zadanie
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><router-link class="dropdown-item" to="/categories">Kategorie</router-link></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><router-link class="dropdown-item" to="/products">Produkty</router-link></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <router-link class="nav-link text-dark" to="/about">O mnie</router-link>
-                            </li>
+                            <li><router-link class=" nav-link text-dark me-4" to="/categories">Kategorie</router-link></li>
+                            <li><router-link class="nav-link text-dark me-4 border" to="/">Struktura</router-link></li>
+                            <li><router-link class="nav-link text-dark" to="/products">Produkty</router-link></li>
                         </ul>
                         <div>
-                            <router-link class="nav-link text-dark" to="/logs">Logi</router-link>
+                            <router-link class="nav-link text-dark me-2" to="/about">O mnie</router-link>
+                        </div>
+                        <div>
+                            <router-link class="nav-link text-dark ms-2" to="/logs">Logi</router-link>
                         </div>
                     </div>
                 </div>

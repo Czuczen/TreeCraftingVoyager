@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace TreeCraftingVoyager.Server.Controllers
         }
 
 
-        [HttpGet("GetCategories")]
+        [HttpGet("Get")]
         public async Task<IActionResult> GetCategories()
         {
             var ret = await _categoryService.GetAllCategoriesIncludingProducts();
@@ -34,7 +35,7 @@ namespace TreeCraftingVoyager.Server.Controllers
             return Ok(ret);
         }
 
-        [HttpGet("GetCategory/{id}")]
+        [HttpGet("Get/{id}")]
         public async Task<ActionResult<CategoryDto>> GetCategory(long id)
         {
             var ret = await _crudRepository.GetByIdAsync(id);
@@ -42,27 +43,29 @@ namespace TreeCraftingVoyager.Server.Controllers
             return Ok(ret);
         }
 
-        [HttpPost("CreateCategory")]
+        [HttpPost("Create")]
         public async Task<ActionResult<CategoryDto>> CreateCategory([FromBody] CreateCategoryDto category)
         {
             if (ModelState.IsValid)
                 await _crudRepository.CreateAsync(category);
             else
-                ValidationProblem(ModelState);
+                return ValidationProblem(ModelState);
 
             return Ok();
         }
 
-        [HttpPut("UpdateCategory")]
+        [HttpPut("Update")]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto category)
         {
-            
-            var ret = await _crudRepository.UpdateAsync(category);
+            if (ModelState.IsValid)
+                await _crudRepository.UpdateAsync(category);
+            else
+                return ValidationProblem(ModelState);
 
-            return Ok(ret);
+            return Ok();
         }
 
-        [HttpDelete("DeleteCategory/{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteCategory(long id)
         {
             await _crudRepository.DeleteAsync(id);

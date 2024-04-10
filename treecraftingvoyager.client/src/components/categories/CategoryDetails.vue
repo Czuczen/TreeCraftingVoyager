@@ -42,13 +42,14 @@
             async fetchCategoryDetails() {
                 try {
                     const id = this.$route.params.id;
-                    fetch(`/api/Categories/GetCategory/${id}`)
+                    fetch(`/api/Categories/Get/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.category = json;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);
+                     alert("Coś poszło nie tak. Spróbuj ponownie.");
                 }
             },
         },

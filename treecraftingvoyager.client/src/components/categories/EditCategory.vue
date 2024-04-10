@@ -24,6 +24,10 @@
                 <input type="text" class="form-control" id="categorySeoKeywords" v-model="category.seoKeywords">
             </div>
             <div class="mb-3">
+                <label for="categoryIsActive" class="form-label">IsActive</label>
+                <input type="checkbox" class="form-control form-check-input" id="categoryIsActive" v-model="category.isActive">
+            </div>
+            <div class="mb-3">
                 <label for="categoryDisplayOrder" class="form-label">Kolejność</label>
                 <input type="number" class="form-control" id="categoryDisplayOrder" v-model="category.displayOrder">
             </div>
@@ -53,14 +57,9 @@
             };
         },
         methods: {
-            submitCategory() {
-                fetch('/api/Categories/UpdateCategory', {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(this.category)
-                })
+            fetchCategory() {
+                const categoryId = this.$route.params.id;
+                fetch(`/api/Categories/Get/${categoryId}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
@@ -68,13 +67,38 @@
                         return response.json();
                     })
                     .then(data => {
-                        console.log(data);
-                        this.$router.push('/categories');
+                        this.category = data;
                     })
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
+                        alert("Coś poszło nie tak. Spróbuj ponownie.");
                     });
+            },
+            submitCategory() {
+                fetch('/api/Categories/Update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(this.category)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return;
+                })
+                .then(() => {
+                    this.$router.push('/categories');
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    alert("Coś poszło nie tak. Spróbuj ponownie.");
+                });
             }
+        },
+        mounted() {
+            this.fetchCategory();
         }
     };
 </script>

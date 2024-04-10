@@ -31,6 +31,10 @@
                 <label for="categoryDisplayOrder" class="form-label">Kolejność</label>
                 <input type="number" class="form-control" id="categoryDisplayOrder" v-model="category.displayOrder">
             </div>
+            <div class="mb-3">
+                <label for="categoryParentId" class="form-label">Rodzic</label>
+                <input type="number" class="form-control" id="categoryParentId" v-model="category.parentId">
+            </div>
 
             <FormBtns></FormBtns>
         </form>
@@ -54,7 +58,7 @@
         methods: {
             submitCategory() {
                 try {
-                    fetch('/api/Categories/CreateCategory', {
+                    fetch('/api/Categories/Create', {
                         method: 'post',
                         headers: {
                             'Content-Type': 'application/json', 
@@ -65,14 +69,14 @@
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
-                        return response.json();
+                        return;
                     })
-                    .then(data => {
-                        console.log(data);
+                    .then(() => {
                         this.$router.push('/categories');
                     })
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
+                        alert("Coś poszło nie tak. Spróbuj ponownie.");
                     });
                 } catch (error) {
                     console.error('Fetching error:', error);

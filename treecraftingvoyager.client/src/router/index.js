@@ -45,12 +45,7 @@ const routes = [
         path: '/edit-category/:id',
         name: 'EditCategory',
         component: () => import('@/components/categories/EditCategory.vue'),
-    },
-    {
-        path: '/delete-category/:id',
-        name: 'DeleteCategory',
-        component: () => import('@/components/categories/DeleteCategory.vue'),
-    },
+    }
 ];
 
 const router = createRouter({

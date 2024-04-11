@@ -127,14 +127,14 @@
 </script>
 
 <style>
-    .btn-purple {
-        background-color: #6f42c1;
-        border-color: #6f42c1;
-        color: white;
-    }
+.btn-purple {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    color: white;
+}
 
-        .btn-purple:hover {
-            background-color: #5a35b1;
-            border-color: #512da8;
-        }
+.btn-purple:hover {
+    background-color: #5a35b1;
+    border-color: #512da8;
+}
 </style>

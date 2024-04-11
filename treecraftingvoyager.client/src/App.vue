@@ -14,7 +14,9 @@
                         </div>
                         <ul class="navbar-nav flex-grow-1 justify-content-center">
                             <li><router-link class=" nav-link text-dark me-4" to="/categories">Kategorie</router-link></li>
-                            <li><router-link class="nav-link text-dark me-4 border" to="/">Struktura</router-link></li>
+                            <li class="nav-link text-dark ">
+                                <CategoriesTree></CategoriesTree>
+                            </li>
                             <li><router-link class="nav-link text-dark" to="/products">Produkty</router-link></li>
                         </ul>
                         <div>
@@ -39,3 +41,13 @@
         </footer>
     </div>
 </template>
+
+<script>
+    import CategoriesTree from '@/components/categories/CategoriesTree.vue';
+
+    export default {
+        components: {
+            CategoriesTree
+        },
+    };
+</script>

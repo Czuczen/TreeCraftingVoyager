@@ -26,11 +26,20 @@ namespace TreeCraftingVoyager.Server.Controllers
             _crudRepository = crudRepository;
         }
 
+        [HttpGet("GetHierarchy")]
+        public async Task<IActionResult> GetCategoriesHierarchy()
+        {
+            var ret = await _crudRepository.GetAllRecursively();
+
+            // mapowanie dodać
+
+            return Ok(ret);
+        }
 
         [HttpGet("Get")]
         public async Task<IActionResult> GetCategories()
         {
-            var ret = await _categoryService.GetAllCategoriesIncludingProducts();
+            var ret = await _categoryService.GetAllCategoriesIncludingProducts(); // po co IncludingProducts???
 
             return Ok(ret);
         }

@@ -7,6 +7,8 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Crud;
 [RegisterOpenGenericInterfaceInDi(typeof(ICrudRepository<,,,,>))]
 public interface ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : IPerWebRequestDependency
 {
+    Task<IEnumerable<TEntityDto>> GetAllRecursively();
+
     TEntityDto GetById(TPrimaryKey id);
 
     Task<TEntityDto> GetByIdAsync(TPrimaryKey id);

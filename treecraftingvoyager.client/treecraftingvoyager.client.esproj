@@ -14,7 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\appManagement\" />
-    <Folder Include="src\components\structure\" />
     <Folder Include="src\router\" />
   </ItemGroup>
 </Project>

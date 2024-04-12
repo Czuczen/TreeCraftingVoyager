@@ -4,6 +4,9 @@ using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using TreeCraftingVoyager.Server.Attributes;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
+using TreeCraftingVoyager.Server.Models.Entities.Shared;
 
 namespace TreeCraftingVoyager.Server.Data.Repositories.Crud;
 
@@ -15,8 +18,8 @@ public class CrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TC
     where TUpdateDto : class, IEntityDto<TPrimaryKey>, new()
     where TCreateDto : class, new()
 {
-    private readonly ApplicationDbContext _context;
-    private readonly IMapper _mapper;
+    protected readonly ApplicationDbContext _context;
+    protected readonly IMapper _mapper;
 
 
     public CrudRepository(
@@ -27,25 +30,6 @@ public class CrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TC
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<TEntityDto>> GetAllRecursively()
-    {
-        var tebleName = GetTableNameByEntityDbName(typeof(TEntityBase).Name);
-        var query = $@"
-            WITH RECURSIVE Tree AS (
-                SELECT *
-                FROM ""{tebleName}""
-                WHERE ""ParentId"" IS NULL
-                UNION ALL
-                SELECT c.*
-                FROM ""{tebleName}"" c
-                JOIN Tree t ON c.""ParentId"" = t.""Id""
-            )
-            SELECT * FROM Tree;";
-
-        var categories = await _context.Categories.FromSqlRaw(query).ToListAsync();
-        
-        return _mapper.Map<IEnumerable<TEntityDto>>(categories);
-    }
 
     public TEntityDto GetById(TPrimaryKey id)
     {
@@ -190,23 +174,6 @@ public class CrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TC
         _context.Set<TEntityBase>().Remove(_mapper.Map<TEntityBase>(entity));
         await _context.SaveChangesAsync();
     }
-
-    // ====================================================================================================
-
-    private static string GetTableNameByEntityDbName(string entityDbName)
-    {
-        const string startFulName = "Microsoft.EntityFrameworkCore.DbSet`1[[TreeCraftingVoyager.Server.Models.Entities.";
-        var tablesProperties = typeof(ApplicationDbContext).GetProperties().Where(item =>
-            item.PropertyType.FullName != null && item.PropertyType.FullName.Contains(startFulName)).ToList();
-
-        return tablesProperties.Single(item =>
-        {
-            var currEntityTableName = item.PropertyType.FullName?.Split(new[] { ",", "." }, StringSplitOptions.None)
-                .SingleOrDefault(element => element == entityDbName);
-            return !string.IsNullOrWhiteSpace(currEntityTableName);
-        }).Name;
-    }
-
 }
 
 [RegisterOpenGenericClassInDi(typeof(CrudRepository<,,,>))]

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 using System.Diagnostics.CodeAnalysis;
 using System.Data.SqlTypes;
+using System.Text.Json.Serialization;
 
 namespace TreeCraftingVoyager.Server.Models.Entities.Shared;
 
@@ -13,10 +14,11 @@ public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
     public string Name { get; set; }
 
     public Nullable<TPrimaryKey> ParentId { get; set; } // Nullable<> for entity framework migrations. TPrimaryKey? not working
+  
     public virtual T Parent { get; set; }
-
+   
     public virtual ICollection<T> Childrens { get; set; } = new List<T>();
-
+     
     public int DisplayOrder { get; set; }
 }
 

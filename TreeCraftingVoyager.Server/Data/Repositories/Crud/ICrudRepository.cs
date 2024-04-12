@@ -1,14 +1,19 @@
 ﻿using System.Linq.Expressions;
 using TreeCraftingVoyager.Server.Attributes;
 using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleInterfaces;
+using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
+using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 
 namespace TreeCraftingVoyager.Server.Data.Repositories.Crud;
 
 [RegisterOpenGenericInterfaceInDi(typeof(ICrudRepository<,,,,>))]
-public interface ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : IPerWebRequestDependency
+public interface ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : 
+    IPerWebRequestDependency
+    where TEntityBase : class, IEntityBase<TPrimaryKey>, new()
+    where TEntityDto : class, IEntityDto<TPrimaryKey>, new()
+    where TUpdateDto : class, IEntityDto<TPrimaryKey>, new()
+    where TCreateDto : class, new()
 {
-    Task<IEnumerable<TEntityDto>> GetAllRecursively();
-
     TEntityDto GetById(TPrimaryKey id);
 
     Task<TEntityDto> GetByIdAsync(TPrimaryKey id);
@@ -43,5 +48,9 @@ public interface ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDt
 [RegisterOpenGenericInterfaceInDi(typeof(ICrudRepository<,,,>))]
 public interface ICrudRepository<TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : 
     ICrudRepository<long, TEntityBase, TEntityDto, TUpdateDto, TCreateDto>
+    where TEntityBase : class, IEntityBase<long>, new()
+    where TEntityDto : class, IEntityDto<long>, new()
+    where TUpdateDto : class, IEntityDto<long>, new()
+    where TCreateDto : class, new()
 { 
 }

@@ -622,7 +622,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Description = "",
                 ImageURL = ""
             },
-            // ----- AGD do zabudowy małe end -----
+            // ----- AGD do zabudowy end -----
 
             // ----- AGD start -----
             new Category
@@ -641,7 +641,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Description = "",
                 ImageURL = ""
             },
-            // ----- AGD małe end -----
+            // ----- AGD end -----
 
             // ==============================
             // ===== third childs end ======

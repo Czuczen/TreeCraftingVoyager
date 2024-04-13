@@ -12,7 +12,7 @@ using TreeCraftingVoyager.Server.Data;
 namespace TreeCraftingVoyager.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240413115625_Initial")]
+    [Migration("20240413131108_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -694,8 +694,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 1L,
                             CategoryId = 1L,
-                            Description = "Jakiś tam produkt elektroniczny",
-                            ExpirationDate = new DateTime(2027, 1, 8, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(3456),
+                            Description = "Elektronika",
+                            ExpirationDate = new DateTime(2027, 1, 8, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8069),
                             Name = "Coś elektronicznego",
                             Price = 1.2m
                         },
@@ -703,8 +703,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 2L,
                             CategoryId = 2L,
-                            Description = "Jakiś tam produkt do domu i ogrodu",
-                            ExpirationDate = new DateTime(2024, 7, 22, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4549),
+                            Description = "Dom i ogród",
+                            ExpirationDate = new DateTime(2024, 7, 22, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8853),
                             Name = "Coś do domu i ogrodu",
                             Price = 20.3m
                         },
@@ -712,8 +712,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 3L,
                             CategoryId = 3L,
-                            Description = "Jakiś tam produkt z super marketu",
-                            ExpirationDate = new DateTime(2024, 4, 15, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4554),
+                            Description = "Super market",
+                            ExpirationDate = new DateTime(2024, 4, 15, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8857),
                             Name = "Coś z super marketu",
                             Price = 2.2m
                         },
@@ -721,8 +721,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 4L,
                             CategoryId = 4L,
-                            Description = "Jakiś tam produkt dla urody",
-                            ExpirationDate = new DateTime(2024, 5, 8, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4583),
+                            Description = "Uroda",
+                            ExpirationDate = new DateTime(2024, 5, 8, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8860),
                             Name = "Coś dla urody",
                             Price = 30.2m
                         },
@@ -730,8 +730,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 5L,
                             CategoryId = 5L,
-                            Description = "Jakiś tam produkt dla zdrowia",
-                            ExpirationDate = new DateTime(2024, 5, 13, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4592),
+                            Description = "Zdrowie",
+                            ExpirationDate = new DateTime(2024, 5, 13, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8890),
                             Name = "Coś dla zdrowia",
                             Price = 11.2m
                         },
@@ -739,8 +739,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 6L,
                             CategoryId = 6L,
-                            Description = "Jakiś tam produkt dla motoryzacji",
-                            ExpirationDate = new DateTime(2025, 2, 7, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4608),
+                            Description = "Motoryzacja",
+                            ExpirationDate = new DateTime(2025, 2, 7, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8900),
                             Name = "Coś dla motoryzacji",
                             Price = 1123.2m
                         },
@@ -749,7 +749,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 7L,
                             CategoryId = 7L,
                             Description = "Telefony i akcesoria",
-                            ExpirationDate = new DateTime(2024, 5, 6, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4614),
+                            ExpirationDate = new DateTime(2024, 5, 6, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8904),
                             Name = "Jakiś tam telefon",
                             Price = 1.2m
                         },
@@ -758,7 +758,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 8L,
                             CategoryId = 8L,
                             Description = "Komputery",
-                            ExpirationDate = new DateTime(2024, 5, 17, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4617),
+                            ExpirationDate = new DateTime(2024, 5, 17, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8906),
                             Name = "Jakiś tam komputer",
                             Price = 112.2m
                         },
@@ -767,7 +767,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 9L,
                             CategoryId = 9L,
                             Description = "AGD",
-                            ExpirationDate = new DateTime(2024, 6, 8, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4619),
+                            ExpirationDate = new DateTime(2024, 6, 8, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8909),
                             Name = "Jakaś tam lodówka",
                             Price = 112.26m
                         },
@@ -776,7 +776,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 10L,
                             CategoryId = 10L,
                             Description = "Wyposażenie",
-                            ExpirationDate = new DateTime(2025, 4, 8, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4751),
+                            ExpirationDate = new DateTime(2025, 4, 8, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8914),
                             Name = "Jakiś tam obraz",
                             Price = 112.22m
                         },
@@ -785,7 +785,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 11L,
                             CategoryId = 11L,
                             Description = "Narzędzia",
-                            ExpirationDate = new DateTime(2024, 5, 27, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4756),
+                            ExpirationDate = new DateTime(2024, 5, 27, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8917),
                             Name = "Jakiś tam młotek",
                             Price = 112.24m
                         },
@@ -794,7 +794,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 12L,
                             CategoryId = 12L,
                             Description = "Ogród",
-                            ExpirationDate = new DateTime(2033, 9, 23, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4758),
+                            ExpirationDate = new DateTime(2033, 9, 23, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8919),
                             Name = "Jakaś tam doniczka",
                             Price = 1212.2m
                         },
@@ -803,7 +803,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 13L,
                             CategoryId = 13L,
                             Description = "Produkty spożywcze",
-                            ExpirationDate = new DateTime(2024, 4, 24, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4761),
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8922),
                             Name = "Jakiś tam chleb",
                             Price = 1412.2m
                         },
@@ -812,7 +812,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 14L,
                             CategoryId = 14L,
                             Description = "Artykuły dla zwierząt",
-                            ExpirationDate = new DateTime(2024, 4, 14, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4768),
+                            ExpirationDate = new DateTime(2024, 4, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8924),
                             Name = "Jakaś tam karma ogólna",
                             Price = 112.2m
                         },
@@ -821,7 +821,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 15L,
                             CategoryId = 15L,
                             Description = "Utrzymanie czystości",
-                            ExpirationDate = new DateTime(2024, 5, 6, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4794),
+                            ExpirationDate = new DateTime(2024, 5, 6, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8942),
                             Name = "Jakaś tam miotła",
                             Price = 234m
                         },
@@ -830,7 +830,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 16L,
                             CategoryId = 16L,
                             Description = "Pielęgnacja",
-                            ExpirationDate = new DateTime(2024, 4, 24, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4800),
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8945),
                             Name = "Jakiś tam krem",
                             Price = 1412.2m
                         },
@@ -839,7 +839,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 17L,
                             CategoryId = 17L,
                             Description = "Makijaż",
-                            ExpirationDate = new DateTime(2024, 4, 14, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4803),
+                            ExpirationDate = new DateTime(2024, 4, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8947),
                             Name = "Jakaś tam podkład",
                             Price = 112.2m
                         },
@@ -848,7 +848,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 18L,
                             CategoryId = 18L,
                             Description = "Perfumy",
-                            ExpirationDate = new DateTime(2024, 5, 6, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4811),
+                            ExpirationDate = new DateTime(2024, 5, 6, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8971),
                             Name = "Jakaś tam dezodorant",
                             Price = 234m
                         },
@@ -857,7 +857,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 19L,
                             CategoryId = 19L,
                             Description = "Domowa apteczka",
-                            ExpirationDate = new DateTime(2024, 4, 24, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4816),
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8974),
                             Name = "Jakiś tam bandarz",
                             Price = 1412.2m
                         },
@@ -866,7 +866,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 20L,
                             CategoryId = 20L,
                             Description = "Urządzenia medyczne",
-                            ExpirationDate = new DateTime(2024, 4, 14, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4818),
+                            ExpirationDate = new DateTime(2024, 4, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8976),
                             Name = "Jakiś tam rozrusznik serca",
                             Price = 112.2m
                         },
@@ -875,7 +875,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 21L,
                             CategoryId = 21L,
                             Description = "Medycyna naturalna",
-                            ExpirationDate = new DateTime(2024, 5, 6, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4821),
+                            ExpirationDate = new DateTime(2024, 5, 6, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8979),
                             Name = "Jakaś tam herbatka naturalna",
                             Price = 234m
                         },
@@ -884,7 +884,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 22L,
                             CategoryId = 22L,
                             Description = "Opony i felgi",
-                            ExpirationDate = new DateTime(2024, 8, 22, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4823),
+                            ExpirationDate = new DateTime(2024, 8, 22, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8983),
                             Name = "Jakieś tam felgi",
                             Price = 1412.2m
                         },
@@ -893,7 +893,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 23L,
                             CategoryId = 23L,
                             Description = "Części samochodowe",
-                            ExpirationDate = new DateTime(2024, 8, 14, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4825),
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8986),
                             Name = "Jakaś tam lampa",
                             Price = 112.2m
                         },
@@ -902,7 +902,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 24L,
                             CategoryId = 24L,
                             Description = "Warsztat",
-                            ExpirationDate = new DateTime(2024, 4, 24, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4827),
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8989),
                             Name = "Jakaś tam śrubka",
                             Price = 234m
                         },
@@ -910,18 +910,387 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 25L,
                             CategoryId = 25L,
-                            Description = "",
-                            ExpirationDate = new DateTime(2024, 8, 14, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4830),
-                            Name = "Jakaś tam ",
+                            Description = "Smartfony",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8992),
+                            Name = "Jakiś tam IPhone",
                             Price = 112.2m
                         },
                         new
                         {
                             Id = 26L,
                             CategoryId = 26L,
-                            Description = "",
-                            ExpirationDate = new DateTime(2024, 4, 24, 11, 56, 24, 63, DateTimeKind.Utc).AddTicks(4906),
-                            Name = "Jakaś tam ",
+                            Description = "Tablety",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8995),
+                            Name = "Jakiś tam tablet",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 27L,
+                            CategoryId = 27L,
+                            Description = "Laptopy",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(8997),
+                            Name = "Jakiś tam laptop acer",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 28L,
+                            CategoryId = 28L,
+                            Description = "Komputery stacjonarne",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9000),
+                            Name = "Jakiś tam stacjonarny",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 29L,
+                            CategoryId = 29L,
+                            Description = "AGD małe",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9003),
+                            Name = "Jakieś tam małe agd",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 30L,
+                            CategoryId = 30L,
+                            Description = "AGD do zabudowy",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9023),
+                            Name = "Jakaś tam agd zabudowa",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 31L,
+                            CategoryId = 31L,
+                            Description = "AGD",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9026),
+                            Name = "Jakiś tam odkurzacz agd",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 32L,
+                            CategoryId = 32L,
+                            Description = "Garnki i patelnie",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9029),
+                            Name = "Jakiś tam garnek",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 33L,
+                            CategoryId = 33L,
+                            Description = "Dekoracje i ozdoby",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9032),
+                            Name = "Jakaś tam dekoracja",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 34L,
+                            CategoryId = 34L,
+                            Description = "Piły i pilarki",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9037),
+                            Name = "Jakaś tam piła",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 35L,
+                            CategoryId = 35L,
+                            Description = "Odkurzacze przemysłowe",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9040),
+                            Name = "Jakiś tam przemysłowy odkurzacz",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 36L,
+                            CategoryId = 36L,
+                            Description = "Nawozy i preparaty",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9043),
+                            Name = "Jakiś tam nawóz",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 37L,
+                            CategoryId = 37L,
+                            Description = "Meble ogrodowe",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9046),
+                            Name = "Jakiś tam mebel do ogrodu",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 38L,
+                            CategoryId = 38L,
+                            Description = "Kawy",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9049),
+                            Name = "Jakaś tam kawa",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 39L,
+                            CategoryId = 39L,
+                            Description = "Herbaty",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9051),
+                            Name = "Jakaś tam herbata",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 40L,
+                            CategoryId = 40L,
+                            Description = "Karmy",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9054),
+                            Name = "Jakaś tam karma",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 41L,
+                            CategoryId = 41L,
+                            Description = "Legowiska",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9057),
+                            Name = "Jakieś tam legowisko",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 42L,
+                            CategoryId = 42L,
+                            Description = "Środki czyszczące",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9060),
+                            Name = "Jakaś tam szmatka",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 43L,
+                            CategoryId = 43L,
+                            Description = "Suszarki na pranie",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9080),
+                            Name = "Jakaś tam suszarka",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 44L,
+                            CategoryId = 44L,
+                            Description = "Kremy do twarzy",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9084),
+                            Name = "Jakiś tam krem na twarz",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 45L,
+                            CategoryId = 45L,
+                            Description = "Szampony",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9086),
+                            Name = "Jakiś tam szampon",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 46L,
+                            CategoryId = 46L,
+                            Description = "Makijaż ust",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9089),
+                            Name = "Jakaś tam szminka",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 47L,
+                            CategoryId = 47L,
+                            Description = "Sztuczne rzęsy",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9092),
+                            Name = "Jakaś tam rzęsa",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 48L,
+                            CategoryId = 48L,
+                            Description = "Zestawy",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9095),
+                            Name = "Jakiś tam zestaw perfum",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 49L,
+                            CategoryId = 49L,
+                            Description = "Wody toaletowe",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9097),
+                            Name = "Jakaś tam woda",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 50L,
+                            CategoryId = 50L,
+                            Description = "Suplementy diety",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9100),
+                            Name = "Jakiś tam suplement",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 51L,
+                            CategoryId = 51L,
+                            Description = "Leki bez recepty",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9103),
+                            Name = "Jakaś tam tabletka",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 52L,
+                            CategoryId = 52L,
+                            Description = "Inhalatory",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9106),
+                            Name = "Jakiś tam inhalator",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 53L,
+                            CategoryId = 53L,
+                            Description = "Termometry",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9109),
+                            Name = "Jakiś tam termometr",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 54L,
+                            CategoryId = 54L,
+                            Description = "Produkty konopne",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9112),
+                            Name = "Jakaś tam roślinka CBD",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 55L,
+                            CategoryId = 55L,
+                            Description = "Olejki eteryczne",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9131),
+                            Name = "Jakiś tam olejek",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 56L,
+                            CategoryId = 56L,
+                            Description = "Felgi aluminiowe",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9135),
+                            Name = "Jakaś tam felga alu",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 57L,
+                            CategoryId = 57L,
+                            Description = "Do motocykli",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9138),
+                            Name = "Jakieś tam motory",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 58L,
+                            CategoryId = 58L,
+                            Description = "Układ zawieszenia",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9141),
+                            Name = "Jakaś tam sprężyna ",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 59L,
+                            CategoryId = 59L,
+                            Description = "Części karoserii",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9143),
+                            Name = "Jakaś tam maska",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 60L,
+                            CategoryId = 60L,
+                            Description = "Zestawy narzędzi",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9146),
+                            Name = "Jakaś tam paczka narzędzi",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 61L,
+                            CategoryId = 61L,
+                            Description = "Klucze",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9149),
+                            Name = "Jakiś tam klucz",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 62L,
+                            CategoryId = 62L,
+                            Description = "Odkurzacze pionowe",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9152),
+                            Name = "Jakiś tam odkurzacz pionowy 2000",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 63L,
+                            CategoryId = 63L,
+                            Description = "Do kuchni",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9154),
+                            Name = "Jakiś tam zlew",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 64L,
+                            CategoryId = 64L,
+                            Description = "Płyty grzewcze",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9157),
+                            Name = "Jakaś tam grzałka",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 65L,
+                            CategoryId = 65L,
+                            Description = "Okapy",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9160),
+                            Name = "Jakiś tam okap",
+                            Price = 234.1m
+                        },
+                        new
+                        {
+                            Id = 66L,
+                            CategoryId = 66L,
+                            Description = "Lodówki",
+                            ExpirationDate = new DateTime(2024, 8, 14, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9356),
+                            Name = "Jakaś tam lodówka ",
+                            Price = 112.2m
+                        },
+                        new
+                        {
+                            Id = 67L,
+                            CategoryId = 67L,
+                            Description = "Pralki",
+                            ExpirationDate = new DateTime(2024, 4, 24, 13, 11, 5, 998, DateTimeKind.Utc).AddTicks(9361),
+                            Name = "Jakaś tam pralka",
                             Price = 234.1m
                         });
                 });

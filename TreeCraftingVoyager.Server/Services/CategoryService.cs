@@ -16,7 +16,8 @@ namespace TreeCraftingVoyager.Server.Services
 
         public async Task<IEnumerable<CategoryDto>> GetAllCategoriesIncludingProducts()
         {
-            return await _crudRepository.GetQuery(q => q).ToListAsync(); // q.Include(c => c.Products)
+            //return await _crudRepository.GetQuery(q => q.Include(c => c.Products)).ToListAsync();
+            return null;
         }
     }
 }

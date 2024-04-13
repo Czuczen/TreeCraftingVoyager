@@ -9,13 +9,13 @@
                 <thead class="table-info">
                     <tr>
                         <th>#</th>
-                        <th>Nazwa</th>
-                        <th>Opis</th>
+                        <th @click="sortTable('name')" class="sortable">Nazwa</th>
+                        <th @click="sortTable('description')" class="sortable">Opis</th>
                         <th>Akcje</th>
                     </tr>
                 </thead>
                 <tbody class="text-second">
-                    <tr v-for="(category, index) in categories" :key="category.id">
+                    <tr v-for="(category, index) in sortedCategories" :key="category.id">
                         <td>{{ index + 1 }}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.description }}</td>
@@ -59,8 +59,21 @@
                 categories: [],
                 categoryIdToDelete: null,
                 categoryNameToDelete: '',
-                deleteModal: null
+                deleteModal: null,
+                currentSort: 'name',
+                currentSortDir: 'asc'
             };
+        },
+        computed: {
+            sortedCategories() {
+                return this.categories.sort((a, b) => {
+                    let modifier = 1;
+                    if (this.currentSortDir === 'desc') modifier = -1;
+                    if (a[this.currentSort] < b[this.currentSort]) return -1 * modifier;
+                    if (a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
+                    return 0;
+                });
+            }
         },
         methods: {
             fetchCategories() {
@@ -116,6 +129,14 @@
                         this.categoryIdToDelete = null;
                         this.categoryNameToDelete = '';
                     });
+            },
+            sortTable(sortKey) {
+                if (this.currentSort === sortKey) {
+                    this.currentSortDir = this.currentSortDir === 'asc' ? 'desc' : 'asc';
+                } else {
+                    this.currentSort = sortKey;
+                    this.currentSortDir = 'asc';
+                }
             }
         },
         mounted() {
@@ -125,14 +146,20 @@
 </script>
 
 <style>
-.btn-purple {
-    background-color: #6f42c1;
-    border-color: #6f42c1;
-    color: white;
-}
+    .btn-purple {
+        background-color: #6f42c1;
+        border-color: #6f42c1;
+        color: white;
+    }
 
-.btn-purple:hover {
-    background-color: #5a35b1;
-    border-color: #512da8;
-}
+    .btn-purple:hover {
+        background-color: #5a35b1;
+        border-color: #512da8;
+    }
+
+    .sortable {
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+    }
 </style>

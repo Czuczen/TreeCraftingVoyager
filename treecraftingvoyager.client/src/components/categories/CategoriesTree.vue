@@ -41,15 +41,15 @@
         align-items: center;
     }
 
-        .dropdown-submenu .dropdown-menu {
-            display: none;
-            position: absolute;
-            left: 100%; /* Zmień położenie na 100% szerokości elementu rodziciela, aby menu wyświetlało się po prawej stronie */
-            top: 0; /* Ustawienie na górze elementu rodziciela */
-            margin-top: 0;
-            margin-left: 0;
-            z-index: 1000; /* Upewnij się, że menu jest wyświetlane na wierzchu innych elementów */
-        }
+    .dropdown-submenu .dropdown-menu {
+        display: none;
+        position: absolute;
+        left: 100%; 
+        top: 0;
+        margin-top: 0;
+        margin-left: 0;
+        z-index: 1000;
+    }
 
     .toggle-icon {
         cursor: pointer;
@@ -102,7 +102,7 @@
                     })
                     .catch(error => {
                         console.error('Fetching error:', error);
-                        alert("Coś poszło nie tak. Spróbuj ponownie.");
+                        alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
                     });
             },
             toggleSubmenu(categoryId) {

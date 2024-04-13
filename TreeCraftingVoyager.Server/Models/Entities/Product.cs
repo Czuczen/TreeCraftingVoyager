@@ -10,19 +10,13 @@ namespace TreeCraftingVoyager.Server.Models.Entities
         [StringLength(100, ErrorMessage = "asdasdasdasdasdasdasd.")]
         public string Name { get; set; }
 
-        public string SKU { get; set; }
-
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
+        public DateTime ExpirationDate { get; set; }
+
         public long CategoryId { get; set; }
         public virtual Category Category { get; set; }
-
-        public string Dimensions { get; set; }
-
-        public decimal Weight { get; set; }
-
-        public string Manufacturer { get; set; }
     }
 }

@@ -8,11 +8,5 @@ namespace TreeCraftingVoyager.Server.Models.Entities
         public string Description { get; set; }
 
         public string ImageURL { get; set; }
-
-        public string SEOKeywords { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
     }
 }

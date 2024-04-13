@@ -20,14 +20,6 @@
                 <input type="text" class="form-control" id="categoryImageURL" v-model="category.imageURL">
             </div>
             <div class="mb-3">
-                <label for="categorySeoKeywords" class="form-label">SEO</label>
-                <input type="text" class="form-control" id="categorySeoKeywords" v-model="category.seoKeywords">
-            </div>
-            <div class="mb-3">
-                <label for="categoryIsActive" class="form-label">IsActive</label>
-                <input type="checkbox" class="form-control form-check-input" id="categoryIsActive" v-model="category.isActive">
-            </div>
-            <div class="mb-3">
                 <label for="categoryDisplayOrder" class="form-label">Kolejność</label>
                 <input type="number" class="form-control" id="categoryDisplayOrder" v-model="category.displayOrder">
             </div>
@@ -49,9 +41,7 @@
                     name: '',
                     description: '',
                     imageURL: '',
-                    seoKeywords: '',
-                    isActive: true,
-                    displayOrder: 1
+                    displayOrder: 0
                 }
             };
         },

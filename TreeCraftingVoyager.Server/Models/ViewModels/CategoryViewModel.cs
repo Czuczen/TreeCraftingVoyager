@@ -10,13 +10,8 @@ namespace TreeCraftingVoyager.Server.Models.ViewModels
 
         public string ImageURL { get; set; }
 
-        public string SEOKeywords { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public virtual ICollection<Category> Childrens { get; set; } = new List<Category>();
-
         public int DisplayOrder { get; set; }
 
+        public virtual ICollection<Category> Childrens { get; set; } = new List<Category>();
     }
 }

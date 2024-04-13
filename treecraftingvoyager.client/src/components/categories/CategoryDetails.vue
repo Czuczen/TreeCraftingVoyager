@@ -10,8 +10,6 @@
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text">{{ category.description }}</p>
-                <p class="card-text"><small class="text-muted">SEO: {{ category.seoKeywords }}</small></p>
-                <p class="card-text">Aktywna: <span :class="{'text-success': category.IsActive, 'text-danger': !category.IsActive}">{{ category.isActive ? 'Tak' : 'Nie' }}</span></p>
                 <p class="card-text">Kategoria nadrzędna: {{ category.parent ? category.parent.name : 'Brak' }}</p>
                 <h6>Kategorie podrzędne:</h6>
                 <ul>

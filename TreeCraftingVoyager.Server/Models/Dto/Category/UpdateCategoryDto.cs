@@ -11,8 +11,6 @@ namespace TreeCraftingVoyager.Server.Models.Dto.Category
         //[Url]
         public string ImageURL { get; set; }
 
-        public string SEOKeywords { get; set; }
-
         public int DisplayOrder { get; set; }
 
         public long? ParentId { get; set; }

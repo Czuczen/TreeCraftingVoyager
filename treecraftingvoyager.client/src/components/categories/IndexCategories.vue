@@ -11,7 +11,6 @@
                         <th>#</th>
                         <th>Nazwa</th>
                         <th>Opis</th>
-                        <th>Status</th>
                         <th>Akcje</th>
                     </tr>
                 </thead>
@@ -20,7 +19,6 @@
                         <td>{{ index + 1 }}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.description }}</td>
-                        <td>{{ category.isActive ? 'Aktywna' : 'Nieaktywna' }}</td>
                         <td>
                             <button class="btn btn-success btn-sm m-1" @click="showDetails(category.id)">Szczegóły</button>
                             <button class="btn btn-purple btn-sm m-1" @click="editCategory(category.id)">Edytuj</button>

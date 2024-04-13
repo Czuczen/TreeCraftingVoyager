@@ -13,13 +13,13 @@ public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
 {
     public string Name { get; set; }
 
+    public int DisplayOrder { get; set; }
+
     public Nullable<TPrimaryKey> ParentId { get; set; } // Nullable<> for entity framework migrations. TPrimaryKey? not working
   
     public virtual T Parent { get; set; }
    
     public virtual ICollection<T> Childrens { get; set; } = new List<T>();
-     
-    public int DisplayOrder { get; set; }
 }
 
 public abstract class TreeNode<T> : TreeNode<long, T>

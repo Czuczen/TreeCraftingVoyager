@@ -28,7 +28,7 @@ namespace TreeCraftingVoyager.Server.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
+            //if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
                 foreach (var seeder in _seeders)
                     seeder.Seed(modelBuilder);
         }

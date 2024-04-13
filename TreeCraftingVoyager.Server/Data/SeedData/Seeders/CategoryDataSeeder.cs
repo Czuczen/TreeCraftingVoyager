@@ -14,42 +14,42 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
             {
                 Id = 1,
                 Name = "Elektronika",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             new Category
             {
                 Id = 2,
                 Name = "Dom i ogród",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             new Category
             {
                 Id = 3,
                 Name = "Super market",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             new Category
             {
                 Id = 4,
                 Name = "Uroda",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             new Category
             {
                 Id = 5,
                 Name = "Zdrowie",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             new Category
             {
                 Id = 6,
                 Name = "Motoryzacja",
-                Description = "",
+                Description = "root",
                 ImageURL = ""
             },
             // ===== root end ======
@@ -63,7 +63,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 7,
                 Name = "Telefony i akcesoria",
                 ParentId = 1,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -71,7 +71,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 8,
                 Name = "Komputery",
                 ParentId = 1,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -79,7 +79,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 9,
                 Name = "AGD",
                 ParentId = 1,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- elektronika end -----
@@ -90,7 +90,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 10,
                 Name = "Wyposażenie",
                 ParentId = 2,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -98,7 +98,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 11,
                 Name = "Narzędzia",
                 ParentId = 2,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -106,7 +106,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 12,
                 Name = "Ogród",
                 ParentId = 2,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- Dom i ogród end -----
@@ -117,7 +117,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 13,
                 Name = "Produkty spożywcze",
                 ParentId = 3,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -125,7 +125,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 14,
                 Name = "Artykuły dla zwierząt",
                 ParentId = 3,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -133,7 +133,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 15,
                 Name = "Utrzymanie czystości",
                 ParentId = 3,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- Super market end -----
@@ -144,7 +144,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 16,
                 Name = "Pielęgnacja",
                 ParentId = 4,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -152,7 +152,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 17,
                 Name = "Makijaż",
                 ParentId = 4,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -160,7 +160,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 18,
                 Name = "Perfumy",
                 ParentId = 4,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- Uroda end -----
@@ -171,7 +171,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 19,
                 Name = "Domowa apteczka",
                 ParentId = 5,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -179,7 +179,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 20,
                 Name = "Urządzenia medyczne",
                 ParentId = 5,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -187,7 +187,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 21,
                 Name = "Medycyna naturalna",
                 ParentId = 5,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- Zdrowie end -----
@@ -198,7 +198,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 22,
                 Name = "Opony i felgi",
                 ParentId = 6,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -206,7 +206,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 23,
                 Name = "Części samochodowe",
                 ParentId = 6,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             new Category
@@ -214,7 +214,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 24,
                 Name = "Warsztat",
                 ParentId = 6,
-                Description = "",
+                Description = "first child",
                 ImageURL = ""
             },
             // ----- Motoryzacja end -----
@@ -231,7 +231,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 25,
                 Name = "Smartfony",
                 ParentId = 7,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -239,7 +239,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 26,
                 Name = "Tablety",
                 ParentId = 7,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Telefony i akcesoria end -----
@@ -250,7 +250,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 27,
                 Name = "Laptopy",
                 ParentId = 8,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -258,7 +258,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 28,
                 Name = "Komputery stacjonarne",
                 ParentId = 8,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Komputery end -----
@@ -269,7 +269,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 29,
                 Name = "AGD małe",
                 ParentId = 9,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -277,7 +277,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 30,
                 Name = "AGD do zabudowy",
                 ParentId = 9,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -285,7 +285,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 31,
                 Name = "AGD",
                 ParentId = 9,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- AGD end -----
@@ -296,7 +296,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 32,
                 Name = "Garnki i patelnie",
                 ParentId = 10,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -304,7 +304,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 33,
                 Name = "Dekoracje i ozdoby",
                 ParentId = 10,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Wyposażenie end -----
@@ -315,7 +315,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 34,
                 Name = "Piły i pilarki",
                 ParentId = 11,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -323,7 +323,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 35,
                 Name = "Odkurzacze przemysłowe",
                 ParentId = 11,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Narzędzia end -----
@@ -334,7 +334,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 36,
                 Name = "Nawozy i preparaty",
                 ParentId = 12,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -342,7 +342,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 37,
                 Name = "Meble ogrodowe",
                 ParentId = 12,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Ogród end -----
@@ -353,7 +353,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 38,
                 Name = "Kawy",
                 ParentId = 13,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -361,7 +361,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 39,
                 Name = "Herbaty",
                 ParentId = 13,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Produkty spożywcze end -----
@@ -372,7 +372,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 40,
                 Name = "Karmy",
                 ParentId = 14,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -380,7 +380,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 41,
                 Name = "Legowiska",
                 ParentId = 14,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Artykuły dla zwierząt end -----
@@ -391,7 +391,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 42,
                 Name = "Środki czyszczące",
                 ParentId = 15,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -399,7 +399,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 43,
                 Name = "Suszarki na pranie",
                 ParentId = 15,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Utrzymanie czystości end -----
@@ -411,7 +411,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 44,
                 Name = "Kremy do twarzy",
                 ParentId = 16,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -419,7 +419,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 45,
                 Name = "Szampony",
                 ParentId = 16,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Pielęgnacja end -----
@@ -431,7 +431,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 46,
                 Name = "Makijaż ust",
                 ParentId = 17,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -439,7 +439,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 47,
                 Name = "Sztuczne rzęsy",
                 ParentId = 17,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Makijaż end -----
@@ -451,7 +451,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 48,
                 Name = "Zestawy",
                 ParentId = 18,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -459,7 +459,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 49,
                 Name = "Wody toaletowe",
                 ParentId = 18,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Perfumy end -----
@@ -471,7 +471,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 50,
                 Name = "Suplementy diety",
                 ParentId = 19,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -479,7 +479,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 51,
                 Name = "Leki bez recepty",
                 ParentId = 19,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Domowa apteczka end -----
@@ -491,7 +491,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 52,
                 Name = "Inhalatory",
                 ParentId = 20,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -499,7 +499,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 53,
                 Name = "Termometry",
                 ParentId = 20,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Urządzenia medyczne end -----
@@ -510,7 +510,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 54,
                 Name = "Produkty konopne",
                 ParentId = 21,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -518,7 +518,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 55,
                 Name = "Olejki eteryczne",
                 ParentId = 21,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Medycyna naturalna end -----
@@ -529,7 +529,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 56,
                 Name = "Felgi aluminiowe",
                 ParentId = 22,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -537,7 +537,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 57,
                 Name = "Do motocykli",
                 ParentId = 22,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Opony i felgi end -----
@@ -548,7 +548,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 58,
                 Name = "Układ zawieszenia",
                 ParentId = 23,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -556,7 +556,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 59,
                 Name = "Części karoserii",
                 ParentId = 23,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Części samochodowe end -----
@@ -567,7 +567,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 60,
                 Name = "Zestawy narzędzi",
                 ParentId = 24,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             new Category
@@ -575,7 +575,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 61,
                 Name = "Klucze",
                 ParentId = 24,
-                Description = "",
+                Description = "second child",
                 ImageURL = ""
             },
             // ----- Warsztat end -----
@@ -592,7 +592,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 62,
                 Name = "Odkurzacze pionowe",
                 ParentId = 29,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             new Category
@@ -600,7 +600,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 63,
                 Name = "Do kuchni",
                 ParentId = 29,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             // ----- AGD małe end -----
@@ -611,7 +611,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 64,
                 Name = "Płyty grzewcze",
                 ParentId = 30,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             new Category
@@ -619,7 +619,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 65,
                 Name = "Okapy",
                 ParentId = 30,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             // ----- AGD do zabudowy end -----
@@ -630,7 +630,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 66,
                 Name = "Lodówki",
                 ParentId = 31,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             new Category
@@ -638,7 +638,7 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 67,
                 Name = "Pralki",
                 ParentId = 31,
-                Description = "",
+                Description = "third child",
                 ImageURL = ""
             },
             // ----- AGD end -----

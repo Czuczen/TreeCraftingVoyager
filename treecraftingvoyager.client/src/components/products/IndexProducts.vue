@@ -2,7 +2,7 @@
     <div class="container mt-3">
         <h4 class="text-center">Produkty</h4>
         <div class="d-flex justify-content-end">
-            <button class="btn btn-primary mb-2" @click="createProduct">Dodaj Produkt</button>
+            <button class="btn btn-primary mb-2" @click="createProduct">Dodaj</button>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">

@@ -54,20 +54,6 @@
 </template>
 
 
-<style>
-    .alert-danger {
-        width: max-content;
-        font-size: 0.80rem; /* Mniejszy rozmiar czcionki */
-        padding: 0.15rem 0.3rem; /* Mniejsze wypełnienie */
-        margin-bottom: 0.2rem; /* Mniejszy margines na dole */
-        border-radius: 0.15rem; /* Lekkie zaokrąglenie rogów */
-        color: #721c24; /* Kolor tekstu */
-        background-color: #f8d7da; /* Kolor tła */
-        border-color: #f5c6cb; /* Kolor obramowania */
-    }
-</style>
-
-
 <script>
     export default {
         data() {
@@ -94,19 +80,21 @@
             };
         },
         methods: {
-            fetchCategory() {
-                const categoryId = this.$route.params.id;
-                fetch(`/api/Categories/Get/${categoryId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data) {
-                            this.category = { ...this.category, ...data };
-                        }
-                    })
-                    .catch(error => {
-                        console.error('There has been a problem with your fetch operation:', error);
-                        alert("Coś poszło nie tak. Spróbuj ponownie.");
-                    });
+            async fetchParents() {
+                try {
+                    const categoryId = this.$route.params.id;
+                    const response = await fetch('/api/Categories/Get');
+                    if (!response.ok) throw new Error('Failed to fetch parent categories');
+
+                    let categories = await response.json();
+                    this.parents = categories.filter(category => category.id != categoryId);
+                    if (categoryId)
+                        this.category = categories.find(category => category.id == categoryId) || this.category;
+
+                } catch (error) {
+                    console.error('Fetching error:', error);
+                    alert("Nie udało się wczytać kategorii rodzica. Spróbuj ponownie.");
+                }
             },
             async submitCategory() {
                 this.errors = {}; // Clear errors before submission
@@ -136,7 +124,7 @@
             }
         },
         mounted() {
-            this.fetchCategory();
+            this.fetchParents();
         }
     };
 </script>

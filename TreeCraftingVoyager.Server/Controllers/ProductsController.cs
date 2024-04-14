@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
-using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
 
@@ -16,17 +16,16 @@ namespace TreeCraftingVoyager.Server.Controllers
 
         public ProductsController(
             IMapper mapper,
-            ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository
-            )
+            ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
         {
             _mapper = mapper;
             _crudRepository = crudRepository;
         }
 
         [HttpGet("Get")]
-        public async Task<IActionResult> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
         {
-            var ret = await _crudRepository.GetAllAsync(); 
+            var ret = await _crudRepository.GetAllAsync();
 
             return Ok(ret);
         }
@@ -35,39 +34,48 @@ namespace TreeCraftingVoyager.Server.Controllers
         public async Task<ActionResult<ProductDto>> GetProduct(long id)
         {
             var ret = await _crudRepository.GetByIdAsync(id);
+            if (ret == null)
+                return NotFound();
 
             return Ok(ret);
         }
 
         [HttpPost("Create")]
-        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] CreateProductDto product)
+        public async Task<ActionResult> CreateProduct([FromBody] CreateProductDto createDto)
         {
-            if (ModelState.IsValid)
-                await _crudRepository.CreateAsync(product);
-            else
-                return ValidationProblem(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return Ok();
+            var result = await _crudRepository.CreateAsync(createDto);
+            if (result == null)
+                return StatusCode(500, "Błąd serwera podczas tworzenia produktu");
+
+            return NoContent();
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> UpdateProduct(UpdateProductDto product)
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductDto updateDto)
         {
-            if (ModelState.IsValid)
-                await _crudRepository.UpdateAsync(product);
-            else
-                return ValidationProblem(ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return Ok();
+            var result = await _crudRepository.UpdateAsync(updateDto);
+            if (result == null)
+                return NotFound("Produkt nie został znaleziony");
+
+            return NoContent();
         }
 
         [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteProduct(long id)
         {
+            var result = await _crudRepository.GetByIdAsync(id);
+            if (result == null)
+                return NotFound("Produkt nie został znaleziony");
+
             await _crudRepository.DeleteAsync(id);
 
-            return Ok();
+            return NoContent();
         }
     }
 }
-

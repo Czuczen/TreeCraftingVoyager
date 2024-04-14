@@ -52,19 +52,6 @@
     </div>
 </template>
 
-<style>
-    .alert-danger {
-        width: max-content;
-        font-size: 0.80rem; /* Mniejszy rozmiar czcionki */
-        padding: 0.15rem 0.3rem; /* Mniejsze wypełnienie */
-        margin-bottom: 0.2rem; /* Mniejszy margines na dole */
-        border-radius: 0.15rem; /* Lekkie zaokrąglenie rogów */
-        color: #721c24; /* Kolor tekstu */
-        background-color: #f8d7da; /* Kolor tła */
-        border-color: #f5c6cb; /* Kolor obramowania */
-    }
-</style>
-
 
 <script>
     export default {

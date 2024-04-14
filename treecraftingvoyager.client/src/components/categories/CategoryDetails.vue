@@ -10,11 +10,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text">{{ category.description }}</p>
-                <p class="card-text">Kategoria nadrzędna: {{ category.parent ? category.parent.name : 'Brak' }}</p>
-                <h6>Kategorie podrzędne:</h6>
-                <ul>
-                    <li v-for="child in category.Childrens" :key="child.Id">{{ child.name }}</li>
-                </ul>
+                <!--ładowanie include?-->
+                <p class="card-text">Kategoria nadrzędna: {{ category.parentId }}</p>
             </div>
         </div>
         <div v-else class="text-center">

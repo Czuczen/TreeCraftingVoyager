@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TreeCraftingVoyager.Server.Data.Repositories;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
+using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
 
 namespace TreeCraftingVoyager.Server.Controllers
@@ -27,6 +29,15 @@ namespace TreeCraftingVoyager.Server.Controllers
             _mapper = mapper;
             _treeRepository = treeRepository;
             _crudRepository = crudRepository;
+        }
+
+        [HttpGet("GetByCategory/{id}")]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
+        {
+            var productTableName = RepositoryHelpers.GetTableNameByEntityDbName(nameof(Product));
+            var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product, ProductDto >(id, productTableName);
+
+            return Ok(ret);
         }
 
         [HttpGet("GetCategories")]
@@ -52,7 +63,7 @@ namespace TreeCraftingVoyager.Server.Controllers
         {
             var ret = await _treeRepository.GetAllRecursively();
 
-            return Ok(ret);
+            return Ok(ret.Where(e => e.ParentId == null));
         }
 
         [HttpGet("Get")]
@@ -96,7 +107,7 @@ namespace TreeCraftingVoyager.Server.Controllers
             if (result == null)
                 return NotFound("Kategoria nie została znaleziona");
 
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("Delete/{id}")]

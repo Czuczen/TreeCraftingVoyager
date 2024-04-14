@@ -53,3 +53,14 @@ a {
     white-space: nowrap;
     line-height: 60px;
 }
+
+.alert-danger {
+    width: max-content;
+    font-size: 0.80rem;
+    padding: 0.15rem 0.3rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.15rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

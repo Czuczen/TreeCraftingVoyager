@@ -11,8 +11,9 @@ namespace TreeCraftingVoyager.Server.Models.Dto.Product
 
         public decimal Price { get; set; }
 
-        public DateTime ExpirationDate { get; set; }
+        public DateTime? ExpirationDate { get; set; }
 
+        public long CategoryId { get; set; }
         public virtual CategoryDto Category { get; set; }
     }
 }

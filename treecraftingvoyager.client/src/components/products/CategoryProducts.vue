@@ -1,11 +1,7 @@
-<script setup>
-    import BackBtn from '@/components/shared/BackBtn.vue';
-</script>
-
 <template>
     <div class="container mt-4">
-        <h2 class="text-center mb-3">Szczegóły produktu</h2>
-        <div v-if="product" class="card">
+        <h2 class="text-center mb-3">Produkty</h2>
+        <div v-for="product in products" :key="product.id" class="card mb-2">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.description }}</p>
@@ -13,36 +9,39 @@
                 <p class="card-text">{{ formattedDate(product.expirationDate) }}</p>
                 <!--ładowanie include?-->
                 <p class="card-text">Kategoria: {{ product.categoryId }}</p>
+
             </div>
-        </div>
-        <div v-else class="text-center">
-            <p>Ładowanie szczegółów produktu...</p>
+            <button class="btn btn-primary">Kup</button>
         </div>
     </div>
-
-    <BackBtn></BackBtn>
 </template>
 
 <script>
     import moment from 'moment';
+
     export default {
-        name: 'ProductDetails',
+        name: 'CategoryProducts',
         data() {
             return {
-                product: null,
+                products: [],
             };
         },
-        async created() {
-            await this.fetchProductDetails();
+        watch: {
+            '$route.params.id': {
+                immediate: true,
+                handler(newId, oldId) {
+                    this.fetchProductsByCategory(newId);
+                }
+            }
         },
         methods: {
-            async fetchProductDetails() {
+            async fetchProductsByCategory() {
                 try {
                     const id = this.$route.params.id;
-                    fetch(`/api/Products/Get/${id}`)
+                    fetch(`/api/Categories/GetByCategory/${id}`)
                         .then(r => r.json())
                         .then(json => {
-                            this.product = json;
+                            this.products = json;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);

@@ -1,4 +1,5 @@
-﻿using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
+﻿using System.ComponentModel.DataAnnotations;
+using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 
 namespace TreeCraftingVoyager.Server.Models.Dto.Product
 {
@@ -9,5 +10,8 @@ namespace TreeCraftingVoyager.Server.Models.Dto.Product
         public string Description { get; set; }
 
         public decimal Price { get; set; }
+
+        [Required]
+        public long CategoryId { get; set; }
     }
 }

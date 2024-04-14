@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using System;
 using TreeCraftingVoyager.Server.Attributes;
 using TreeCraftingVoyager.Server.Data;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
+using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 using TreeCraftingVoyager.Server.Models.Entities.Shared;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
@@ -32,6 +35,36 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
             _mapper = mapper;
         }
 
+        public async Task<IEnumerable<TLeaveDto>> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase, TLeaveDto>(long currNodeId, string leaveTableName)
+            where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
+            where TLeaveDto : class, IEntityDto<TPrimaryKey>, new()            
+        {
+            var entityName = typeof(TEntityBase).Name;
+            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(entityName);
+            var relFieldName = entityName + "Id";
+            var paramName = "@" + relFieldName;
+
+            string query = $@"
+                WITH RECURSIVE subnodes AS (
+                    SELECT ""Id""
+                    FROM ""{tableName}""
+                    WHERE ""Id"" = {paramName}
+                    UNION ALL
+                    SELECT c.""Id""
+                    FROM ""{tableName}"" c
+                    INNER JOIN subnodes sc ON c.""ParentId"" = sc.""Id""
+                )
+                SELECT p.*
+                FROM ""{leaveTableName}"" p
+                JOIN subnodes sc ON p.""{relFieldName}"" = sc.""Id""
+                ";
+
+            var entities = await _context.Set<TLeaveBase>()
+                                    .FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId))
+                                    .ToListAsync();
+
+            return _mapper.Map<IEnumerable<TLeaveDto>>(entities);
+        }
 
         public async Task<IEnumerable<TEntityDto>> GetRootObjects()
         {
@@ -42,7 +75,7 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
 
         public async Task<IEnumerable<TEntityDto>> GetAllRecursively()
         {
-            var tableName = GetTableNameByEntityDbName(typeof(TEntityBase).Name);
+            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
             var query = $@"
             WITH RECURSIVE Tree AS (
                 SELECT *
@@ -63,7 +96,7 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
 
         public async Task<IEnumerable<TReturn>> GetAllRecursively<TReturn>()
         {
-            var tableName = GetTableNameByEntityDbName(typeof(TEntityBase).Name);
+            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
             var query = $@"
             WITH RECURSIVE Tree AS (
                 SELECT *
@@ -80,22 +113,6 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
             var entities = await _context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
 
             return _mapper.Map<IEnumerable<TReturn>>(entities);
-        }
-
-        // ====================================================================================================
-
-        protected static string GetTableNameByEntityDbName(string entityDbName)
-        {
-            const string startFulName = "Microsoft.EntityFrameworkCore.DbSet`1[[TreeCraftingVoyager.Server.Models.Entities.";
-            var tablesProperties = typeof(ApplicationDbContext).GetProperties().Where(item =>
-                item.PropertyType.FullName != null && item.PropertyType.FullName.Contains(startFulName)).ToList();
-
-            return tablesProperties.Single(item =>
-            {
-                var currEntityTableName = item.PropertyType.FullName?.Split(new[] { ",", "." }, StringSplitOptions.None)
-                    .SingleOrDefault(element => element == entityDbName);
-                return !string.IsNullOrWhiteSpace(currEntityTableName);
-            }).Name;
         }
     }
 }

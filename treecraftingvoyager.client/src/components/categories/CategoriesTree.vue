@@ -5,7 +5,7 @@
         </a>
         <ul class="dropdown-menu" :style="{display: rootOpen ? 'block' : 'none'}">
             <li v-for="category in categories" :key="category.id" class="dropdown-submenu">
-                <a class="dropdown-item" :href="`/Products/GetByCategory/${category.id}`">
+                <a class="dropdown-item" href="javascript:void(0);" @click.prevent="showCategoryProducts(category.id)">
                     {{ category.name }}
                 </a>
                 <span class="toggle-icon" @click.prevent="toggleSubmenu(category.id)">
@@ -20,7 +20,7 @@
 
     <template v-if="!isRoot">
         <li v-for="category in categories" :key="category.id" class="dropdown-submenu">
-            <a class="dropdown-item" :href="`/Products/GetByCategory/${category.id}`">
+            <a class="dropdown-item" href="javascript:void(0);" @click.prevent="showCategoryProducts(category.id)">
                 {{ category.name }}
             </a>
             <span v-if="category.childrens && category.childrens.length" class="toggle-icon" @click.prevent="toggleSubmenu(category.id)">
@@ -120,6 +120,9 @@
                     const category = this.categories.find(c => c.id === categoryId);
                     category.open = !category.open; // Toggle the clicked category
                 }
+            },
+            showCategoryProducts(id) {
+                this.$router.push({ name: 'CategoryProducts', params: { id: id } });
             }
         },
         mounted() {

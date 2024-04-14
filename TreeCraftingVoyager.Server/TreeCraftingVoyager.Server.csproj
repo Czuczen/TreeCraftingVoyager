@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <Folder Include="Consts\" />
-    <Folder Include="Attributes\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>

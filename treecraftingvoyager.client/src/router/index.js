@@ -31,6 +31,8 @@ const routes = [
         name: 'IndexProducts',
         component: () => import('@/components/products/IndexProducts.vue'),
     },
+
+
     {
         path: '/create-category',
         name: 'CreateCategory',
@@ -45,7 +47,29 @@ const routes = [
         path: '/edit-category/:id',
         name: 'EditCategory',
         component: () => import('@/components/categories/EditCategory.vue'),
-    }
+    },
+
+    
+    {
+        path: '/create-product',
+        name: 'CreateProduct',
+        component: () => import('@/components/products/CreateProduct.vue'),
+    },
+    {
+        path: '/category-product/:id',
+        name: 'ProductDetails',
+        component: () => import('@/components/products/ProductDetails.vue'),
+    },
+    {
+        path: '/edit-product/:id',
+        name: 'EditProduct',
+        component: () => import('@/components/products/EditProduct.vue'),
+    },
+    {
+        path: '/category-products/:id',
+        name: 'CategoryProducts',
+        component: () => import('@/components/products/CategoryProducts.vue'),
+    },
 ];
 
 const router = createRouter({

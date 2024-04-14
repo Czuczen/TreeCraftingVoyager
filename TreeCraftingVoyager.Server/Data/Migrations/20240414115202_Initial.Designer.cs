@@ -12,7 +12,7 @@ using TreeCraftingVoyager.Server.Data;
 namespace TreeCraftingVoyager.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240414051201_Initial")]
+    [Migration("20240414115202_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -62,56 +62,56 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 1L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Elektronika"
                         },
                         new
                         {
                             Id = 2L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 4,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Dom i ogród"
                         },
                         new
                         {
                             Id = 3L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Super market"
                         },
                         new
                         {
                             Id = 4L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 5,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Uroda"
                         },
                         new
                         {
                             Id = 5L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 6,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Zdrowie"
                         },
                         new
                         {
                             Id = 6L,
                             Description = "root",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Motoryzacja"
                         },
                         new
                         {
                             Id = 7L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Telefony i akcesoria",
                             ParentId = 1L
                         },
@@ -119,8 +119,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 8L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Komputery",
                             ParentId = 1L
                         },
@@ -128,8 +128,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 9L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "AGD",
                             ParentId = 1L
                         },
@@ -137,8 +137,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 10L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Wyposażenie",
                             ParentId = 2L
                         },
@@ -146,8 +146,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 11L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Narzędzia",
                             ParentId = 2L
                         },
@@ -155,8 +155,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 12L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Ogród",
                             ParentId = 2L
                         },
@@ -164,8 +164,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 13L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Produkty spożywcze",
                             ParentId = 3L
                         },
@@ -173,8 +173,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 14L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Artykuły dla zwierząt",
                             ParentId = 3L
                         },
@@ -182,8 +182,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 15L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Utrzymanie czystości",
                             ParentId = 3L
                         },
@@ -191,8 +191,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 16L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Pielęgnacja",
                             ParentId = 4L
                         },
@@ -200,8 +200,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 17L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Makijaż",
                             ParentId = 4L
                         },
@@ -209,8 +209,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 18L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Perfumy",
                             ParentId = 4L
                         },
@@ -218,8 +218,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 19L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Domowa apteczka",
                             ParentId = 5L
                         },
@@ -227,8 +227,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 20L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Urządzenia medyczne",
                             ParentId = 5L
                         },
@@ -236,8 +236,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 21L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Medycyna naturalna",
                             ParentId = 5L
                         },
@@ -245,8 +245,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 22L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Opony i felgi",
                             ParentId = 6L
                         },
@@ -254,8 +254,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 23L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Części samochodowe",
                             ParentId = 6L
                         },
@@ -263,8 +263,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 24L,
                             Description = "first child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Warsztat",
                             ParentId = 6L
                         },
@@ -272,8 +272,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 25L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Smartfony",
                             ParentId = 7L
                         },
@@ -281,8 +281,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 26L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Tablety",
                             ParentId = 7L
                         },
@@ -290,8 +290,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 27L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Laptopy",
                             ParentId = 8L
                         },
@@ -299,8 +299,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 28L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Komputery stacjonarne",
                             ParentId = 8L
                         },
@@ -308,8 +308,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 29L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 3,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "AGD małe",
                             ParentId = 9L
                         },
@@ -317,8 +317,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 30L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "AGD do zabudowy",
                             ParentId = 9L
                         },
@@ -326,8 +326,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 31L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "AGD",
                             ParentId = 9L
                         },
@@ -335,8 +335,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 32L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Garnki i patelnie",
                             ParentId = 10L
                         },
@@ -344,8 +344,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 33L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Dekoracje i ozdoby",
                             ParentId = 10L
                         },
@@ -353,8 +353,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 34L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Piły i pilarki",
                             ParentId = 11L
                         },
@@ -362,8 +362,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 35L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Odkurzacze przemysłowe",
                             ParentId = 11L
                         },
@@ -371,8 +371,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 36L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Nawozy i preparaty",
                             ParentId = 12L
                         },
@@ -380,8 +380,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 37L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Meble ogrodowe",
                             ParentId = 12L
                         },
@@ -389,8 +389,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 38L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Kawy",
                             ParentId = 13L
                         },
@@ -398,8 +398,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 39L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Herbaty",
                             ParentId = 13L
                         },
@@ -407,8 +407,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 40L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Karmy",
                             ParentId = 14L
                         },
@@ -416,8 +416,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 41L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Legowiska",
                             ParentId = 14L
                         },
@@ -425,8 +425,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 42L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Środki czyszczące",
                             ParentId = 15L
                         },
@@ -434,8 +434,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 43L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Suszarki na pranie",
                             ParentId = 15L
                         },
@@ -443,8 +443,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 44L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Kremy do twarzy",
                             ParentId = 16L
                         },
@@ -452,8 +452,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 45L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Szampony",
                             ParentId = 16L
                         },
@@ -461,8 +461,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 46L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Makijaż ust",
                             ParentId = 17L
                         },
@@ -470,8 +470,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 47L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Sztuczne rzęsy",
                             ParentId = 17L
                         },
@@ -479,8 +479,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 48L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Zestawy",
                             ParentId = 18L
                         },
@@ -488,8 +488,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 49L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Wody toaletowe",
                             ParentId = 18L
                         },
@@ -497,8 +497,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 50L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Suplementy diety",
                             ParentId = 19L
                         },
@@ -506,8 +506,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 51L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Leki bez recepty",
                             ParentId = 19L
                         },
@@ -515,8 +515,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 52L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Inhalatory",
                             ParentId = 20L
                         },
@@ -524,8 +524,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 53L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Termometry",
                             ParentId = 20L
                         },
@@ -533,8 +533,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 54L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Produkty konopne",
                             ParentId = 21L
                         },
@@ -542,8 +542,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 55L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Olejki eteryczne",
                             ParentId = 21L
                         },
@@ -551,8 +551,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 56L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Felgi aluminiowe",
                             ParentId = 22L
                         },
@@ -560,8 +560,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 57L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Do motocykli",
                             ParentId = 22L
                         },
@@ -569,8 +569,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 58L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Układ zawieszenia",
                             ParentId = 23L
                         },
@@ -578,8 +578,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 59L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Części karoserii",
                             ParentId = 23L
                         },
@@ -587,8 +587,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 60L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Zestawy narzędzi",
                             ParentId = 24L
                         },
@@ -596,8 +596,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 61L,
                             Description = "second child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Klucze",
                             ParentId = 24L
                         },
@@ -605,8 +605,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 62L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Odkurzacze pionowe",
                             ParentId = 29L
                         },
@@ -614,8 +614,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 63L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Do kuchni",
                             ParentId = 29L
                         },
@@ -623,8 +623,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 64L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Płyty grzewcze",
                             ParentId = 30L
                         },
@@ -632,8 +632,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 65L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Okapy",
                             ParentId = 30L
                         },
@@ -641,8 +641,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 66L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 1,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Lodówki",
                             ParentId = 31L
                         },
@@ -650,8 +650,8 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                         {
                             Id = 67L,
                             Description = "third child",
-                            DisplayOrder = 0,
-                            ImageURL = "",
+                            DisplayOrder = 2,
+                            ImageURL = "https://www.examplesite.pl",
                             Name = "Pralki",
                             ParentId = 31L
                         });
@@ -694,7 +694,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 1L,
                             CategoryId = 1L,
                             Description = "Elektronika",
-                            ExpirationDate = new DateTime(2027, 1, 9, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(3376),
+                            ExpirationDate = new DateTime(2027, 1, 9, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(821),
                             Name = "Coś elektronicznego",
                             Price = 1.2m
                         },
@@ -703,7 +703,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 2L,
                             CategoryId = 2L,
                             Description = "Dom i ogród",
-                            ExpirationDate = new DateTime(2024, 7, 23, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4328),
+                            ExpirationDate = new DateTime(2024, 7, 23, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1723),
                             Name = "Coś do domu i ogrodu",
                             Price = 20.3m
                         },
@@ -712,7 +712,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 3L,
                             CategoryId = 3L,
                             Description = "Super market",
-                            ExpirationDate = new DateTime(2024, 4, 16, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4332),
+                            ExpirationDate = new DateTime(2024, 4, 16, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1728),
                             Name = "Coś z super marketu",
                             Price = 2.2m
                         },
@@ -721,7 +721,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 4L,
                             CategoryId = 4L,
                             Description = "Uroda",
-                            ExpirationDate = new DateTime(2024, 5, 9, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4336),
+                            ExpirationDate = new DateTime(2024, 5, 9, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1732),
                             Name = "Coś dla urody",
                             Price = 30.2m
                         },
@@ -730,7 +730,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 5L,
                             CategoryId = 5L,
                             Description = "Zdrowie",
-                            ExpirationDate = new DateTime(2024, 5, 14, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4338),
+                            ExpirationDate = new DateTime(2024, 5, 14, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1735),
                             Name = "Coś dla zdrowia",
                             Price = 11.2m
                         },
@@ -739,7 +739,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 6L,
                             CategoryId = 6L,
                             Description = "Motoryzacja",
-                            ExpirationDate = new DateTime(2025, 2, 8, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4353),
+                            ExpirationDate = new DateTime(2025, 2, 8, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1748),
                             Name = "Coś dla motoryzacji",
                             Price = 1123.2m
                         },
@@ -748,7 +748,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 7L,
                             CategoryId = 7L,
                             Description = "Telefony i akcesoria",
-                            ExpirationDate = new DateTime(2024, 5, 7, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4356),
+                            ExpirationDate = new DateTime(2024, 5, 7, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1751),
                             Name = "Jakiś tam telefon",
                             Price = 1.2m
                         },
@@ -757,7 +757,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 8L,
                             CategoryId = 8L,
                             Description = "Komputery",
-                            ExpirationDate = new DateTime(2024, 5, 18, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4359),
+                            ExpirationDate = new DateTime(2024, 5, 18, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1781),
                             Name = "Jakiś tam komputer",
                             Price = 112.2m
                         },
@@ -766,7 +766,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 9L,
                             CategoryId = 9L,
                             Description = "AGD",
-                            ExpirationDate = new DateTime(2024, 6, 9, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4362),
+                            ExpirationDate = new DateTime(2024, 6, 9, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1785),
                             Name = "Jakaś tam lodówka",
                             Price = 112.26m
                         },
@@ -775,7 +775,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 10L,
                             CategoryId = 10L,
                             Description = "Wyposażenie",
-                            ExpirationDate = new DateTime(2025, 4, 9, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4366),
+                            ExpirationDate = new DateTime(2025, 4, 9, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1790),
                             Name = "Jakiś tam obraz",
                             Price = 112.22m
                         },
@@ -784,7 +784,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 11L,
                             CategoryId = 11L,
                             Description = "Narzędzia",
-                            ExpirationDate = new DateTime(2024, 5, 28, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4395),
+                            ExpirationDate = new DateTime(2024, 5, 28, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1793),
                             Name = "Jakiś tam młotek",
                             Price = 112.24m
                         },
@@ -793,7 +793,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 12L,
                             CategoryId = 12L,
                             Description = "Ogród",
-                            ExpirationDate = new DateTime(2033, 9, 24, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4398),
+                            ExpirationDate = new DateTime(2033, 9, 24, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1796),
                             Name = "Jakaś tam doniczka",
                             Price = 1212.2m
                         },
@@ -802,7 +802,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 13L,
                             CategoryId = 13L,
                             Description = "Produkty spożywcze",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4401),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1799),
                             Name = "Jakiś tam chleb",
                             Price = 1412.2m
                         },
@@ -811,7 +811,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 14L,
                             CategoryId = 14L,
                             Description = "Artykuły dla zwierząt",
-                            ExpirationDate = new DateTime(2024, 4, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4404),
+                            ExpirationDate = new DateTime(2024, 4, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1803),
                             Name = "Jakaś tam karma ogólna",
                             Price = 112.2m
                         },
@@ -820,7 +820,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 15L,
                             CategoryId = 15L,
                             Description = "Utrzymanie czystości",
-                            ExpirationDate = new DateTime(2024, 5, 7, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4422),
+                            ExpirationDate = new DateTime(2024, 5, 7, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1820),
                             Name = "Jakaś tam miotła",
                             Price = 234m
                         },
@@ -829,7 +829,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 16L,
                             CategoryId = 16L,
                             Description = "Pielęgnacja",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4502),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1824),
                             Name = "Jakiś tam krem",
                             Price = 1412.2m
                         },
@@ -838,7 +838,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 17L,
                             CategoryId = 17L,
                             Description = "Makijaż",
-                            ExpirationDate = new DateTime(2024, 4, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4506),
+                            ExpirationDate = new DateTime(2024, 4, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1834),
                             Name = "Jakaś tam podkład",
                             Price = 112.2m
                         },
@@ -847,7 +847,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 18L,
                             CategoryId = 18L,
                             Description = "Perfumy",
-                            ExpirationDate = new DateTime(2024, 5, 7, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4513),
+                            ExpirationDate = new DateTime(2024, 5, 7, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1859),
                             Name = "Jakaś tam dezodorant",
                             Price = 234m
                         },
@@ -856,7 +856,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 19L,
                             CategoryId = 19L,
                             Description = "Domowa apteczka",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4516),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1863),
                             Name = "Jakiś tam bandarz",
                             Price = 1412.2m
                         },
@@ -865,7 +865,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 20L,
                             CategoryId = 20L,
                             Description = "Urządzenia medyczne",
-                            ExpirationDate = new DateTime(2024, 4, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4519),
+                            ExpirationDate = new DateTime(2024, 4, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1866),
                             Name = "Jakiś tam rozrusznik serca",
                             Price = 112.2m
                         },
@@ -874,7 +874,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 21L,
                             CategoryId = 21L,
                             Description = "Medycyna naturalna",
-                            ExpirationDate = new DateTime(2024, 5, 7, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4522),
+                            ExpirationDate = new DateTime(2024, 5, 7, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1869),
                             Name = "Jakaś tam herbatka naturalna",
                             Price = 234m
                         },
@@ -883,7 +883,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 22L,
                             CategoryId = 22L,
                             Description = "Opony i felgi",
-                            ExpirationDate = new DateTime(2024, 8, 23, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4543),
+                            ExpirationDate = new DateTime(2024, 8, 23, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1872),
                             Name = "Jakieś tam felgi",
                             Price = 1412.2m
                         },
@@ -892,7 +892,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 23L,
                             CategoryId = 23L,
                             Description = "Części samochodowe",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4545),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1875),
                             Name = "Jakaś tam lampa",
                             Price = 112.2m
                         },
@@ -901,7 +901,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 24L,
                             CategoryId = 24L,
                             Description = "Warsztat",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4548),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1879),
                             Name = "Jakaś tam śrubka",
                             Price = 234m
                         },
@@ -910,7 +910,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 25L,
                             CategoryId = 25L,
                             Description = "Smartfony",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4551),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1881),
                             Name = "Jakiś tam IPhone",
                             Price = 112.2m
                         },
@@ -919,7 +919,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 26L,
                             CategoryId = 26L,
                             Description = "Tablety",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4553),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1885),
                             Name = "Jakiś tam tablet",
                             Price = 234.1m
                         },
@@ -928,7 +928,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 27L,
                             CategoryId = 27L,
                             Description = "Laptopy",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4556),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1888),
                             Name = "Jakiś tam laptop acer",
                             Price = 112.2m
                         },
@@ -937,7 +937,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 28L,
                             CategoryId = 28L,
                             Description = "Komputery stacjonarne",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4558),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1891),
                             Name = "Jakiś tam stacjonarny",
                             Price = 234.1m
                         },
@@ -946,7 +946,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 29L,
                             CategoryId = 29L,
                             Description = "AGD małe",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4561),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1912),
                             Name = "Jakieś tam małe agd",
                             Price = 112.2m
                         },
@@ -955,7 +955,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 30L,
                             CategoryId = 30L,
                             Description = "AGD do zabudowy",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4563),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1915),
                             Name = "Jakaś tam agd zabudowa",
                             Price = 234.1m
                         },
@@ -964,7 +964,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 31L,
                             CategoryId = 31L,
                             Description = "AGD",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4566),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1918),
                             Name = "Jakiś tam odkurzacz agd",
                             Price = 234.1m
                         },
@@ -973,7 +973,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 32L,
                             CategoryId = 32L,
                             Description = "Garnki i patelnie",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4585),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1922),
                             Name = "Jakiś tam garnek",
                             Price = 112.2m
                         },
@@ -982,7 +982,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 33L,
                             CategoryId = 33L,
                             Description = "Dekoracje i ozdoby",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4588),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1924),
                             Name = "Jakaś tam dekoracja",
                             Price = 234.1m
                         },
@@ -991,7 +991,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 34L,
                             CategoryId = 34L,
                             Description = "Piły i pilarki",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4594),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1930),
                             Name = "Jakaś tam piła",
                             Price = 112.2m
                         },
@@ -1000,7 +1000,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 35L,
                             CategoryId = 35L,
                             Description = "Odkurzacze przemysłowe",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4596),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1933),
                             Name = "Jakiś tam przemysłowy odkurzacz",
                             Price = 234.1m
                         },
@@ -1009,7 +1009,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 36L,
                             CategoryId = 36L,
                             Description = "Nawozy i preparaty",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4600),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1936),
                             Name = "Jakiś tam nawóz",
                             Price = 112.2m
                         },
@@ -1018,7 +1018,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 37L,
                             CategoryId = 37L,
                             Description = "Meble ogrodowe",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4602),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1939),
                             Name = "Jakiś tam mebel do ogrodu",
                             Price = 234.1m
                         },
@@ -1027,7 +1027,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 38L,
                             CategoryId = 38L,
                             Description = "Kawy",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4604),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1942),
                             Name = "Jakaś tam kawa",
                             Price = 112.2m
                         },
@@ -1036,7 +1036,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 39L,
                             CategoryId = 39L,
                             Description = "Herbaty",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4607),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1963),
                             Name = "Jakaś tam herbata",
                             Price = 234.1m
                         },
@@ -1045,7 +1045,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 40L,
                             CategoryId = 40L,
                             Description = "Karmy",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4610),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1966),
                             Name = "Jakaś tam karma",
                             Price = 112.2m
                         },
@@ -1054,7 +1054,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 41L,
                             CategoryId = 41L,
                             Description = "Legowiska",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4613),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1969),
                             Name = "Jakieś tam legowisko",
                             Price = 234.1m
                         },
@@ -1063,7 +1063,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 42L,
                             CategoryId = 42L,
                             Description = "Środki czyszczące",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4615),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1972),
                             Name = "Jakaś tam szmatka",
                             Price = 112.2m
                         },
@@ -1072,7 +1072,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 43L,
                             CategoryId = 43L,
                             Description = "Suszarki na pranie",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4636),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1975),
                             Name = "Jakaś tam suszarka",
                             Price = 234.1m
                         },
@@ -1081,7 +1081,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 44L,
                             CategoryId = 44L,
                             Description = "Kremy do twarzy",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4638),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1978),
                             Name = "Jakiś tam krem na twarz",
                             Price = 112.2m
                         },
@@ -1090,7 +1090,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 45L,
                             CategoryId = 45L,
                             Description = "Szampony",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4641),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1981),
                             Name = "Jakiś tam szampon",
                             Price = 234.1m
                         },
@@ -1099,7 +1099,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 46L,
                             CategoryId = 46L,
                             Description = "Makijaż ust",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4644),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1984),
                             Name = "Jakaś tam szminka",
                             Price = 112.2m
                         },
@@ -1108,7 +1108,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 47L,
                             CategoryId = 47L,
                             Description = "Sztuczne rzęsy",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4646),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1988),
                             Name = "Jakaś tam rzęsa",
                             Price = 234.1m
                         },
@@ -1117,7 +1117,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 48L,
                             CategoryId = 48L,
                             Description = "Zestawy",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4650),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1991),
                             Name = "Jakiś tam zestaw perfum",
                             Price = 112.2m
                         },
@@ -1126,7 +1126,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 49L,
                             CategoryId = 49L,
                             Description = "Wody toaletowe",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4653),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(1994),
                             Name = "Jakaś tam woda",
                             Price = 234.1m
                         },
@@ -1135,7 +1135,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 50L,
                             CategoryId = 50L,
                             Description = "Suplementy diety",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4655),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2014),
                             Name = "Jakiś tam suplement",
                             Price = 112.2m
                         },
@@ -1144,7 +1144,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 51L,
                             CategoryId = 51L,
                             Description = "Leki bez recepty",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4658),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2017),
                             Name = "Jakaś tam tabletka",
                             Price = 234.1m
                         },
@@ -1153,7 +1153,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 52L,
                             CategoryId = 52L,
                             Description = "Inhalatory",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4661),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2021),
                             Name = "Jakiś tam inhalator",
                             Price = 112.2m
                         },
@@ -1162,7 +1162,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 53L,
                             CategoryId = 53L,
                             Description = "Termometry",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4682),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2024),
                             Name = "Jakiś tam termometr",
                             Price = 234.1m
                         },
@@ -1171,7 +1171,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 54L,
                             CategoryId = 54L,
                             Description = "Produkty konopne",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4684),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2027),
                             Name = "Jakaś tam roślinka CBD",
                             Price = 112.2m
                         },
@@ -1180,7 +1180,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 55L,
                             CategoryId = 55L,
                             Description = "Olejki eteryczne",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4687),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2030),
                             Name = "Jakiś tam olejek",
                             Price = 234.1m
                         },
@@ -1189,7 +1189,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 56L,
                             CategoryId = 56L,
                             Description = "Felgi aluminiowe",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4689),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2158),
                             Name = "Jakaś tam felga alu",
                             Price = 112.2m
                         },
@@ -1198,7 +1198,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 57L,
                             CategoryId = 57L,
                             Description = "Do motocykli",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4692),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2163),
                             Name = "Jakieś tam motory",
                             Price = 234.1m
                         },
@@ -1207,7 +1207,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 58L,
                             CategoryId = 58L,
                             Description = "Układ zawieszenia",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4694),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2166),
                             Name = "Jakaś tam sprężyna ",
                             Price = 112.2m
                         },
@@ -1216,7 +1216,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 59L,
                             CategoryId = 59L,
                             Description = "Części karoserii",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4697),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2169),
                             Name = "Jakaś tam maska",
                             Price = 234.1m
                         },
@@ -1225,7 +1225,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 60L,
                             CategoryId = 60L,
                             Description = "Zestawy narzędzi",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4700),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2172),
                             Name = "Jakaś tam paczka narzędzi",
                             Price = 112.2m
                         },
@@ -1234,7 +1234,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 61L,
                             CategoryId = 61L,
                             Description = "Klucze",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4702),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2175),
                             Name = "Jakiś tam klucz",
                             Price = 234.1m
                         },
@@ -1243,7 +1243,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 62L,
                             CategoryId = 62L,
                             Description = "Odkurzacze pionowe",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4705),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2178),
                             Name = "Jakiś tam odkurzacz pionowy 2000",
                             Price = 112.2m
                         },
@@ -1252,7 +1252,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 63L,
                             CategoryId = 63L,
                             Description = "Do kuchni",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4707),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2181),
                             Name = "Jakiś tam zlew",
                             Price = 234.1m
                         },
@@ -1261,7 +1261,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 64L,
                             CategoryId = 64L,
                             Description = "Płyty grzewcze",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4710),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2184),
                             Name = "Jakaś tam grzałka",
                             Price = 112.2m
                         },
@@ -1270,7 +1270,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 65L,
                             CategoryId = 65L,
                             Description = "Okapy",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4713),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2188),
                             Name = "Jakiś tam okap",
                             Price = 234.1m
                         },
@@ -1279,7 +1279,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 66L,
                             CategoryId = 66L,
                             Description = "Lodówki",
-                            ExpirationDate = new DateTime(2024, 8, 15, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4721),
+                            ExpirationDate = new DateTime(2024, 8, 15, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2194),
                             Name = "Jakaś tam lodówka ",
                             Price = 112.2m
                         },
@@ -1288,7 +1288,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 67L,
                             CategoryId = 67L,
                             Description = "Pralki",
-                            ExpirationDate = new DateTime(2024, 4, 25, 5, 11, 58, 886, DateTimeKind.Utc).AddTicks(4723),
+                            ExpirationDate = new DateTime(2024, 4, 25, 11, 52, 0, 384, DateTimeKind.Utc).AddTicks(2197),
                             Name = "Jakaś tam pralka",
                             Price = 234.1m
                         });

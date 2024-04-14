@@ -90,7 +90,7 @@
         computed: {
             sortedCategories() {
                 return this.categories.sort((a, b) => {
-                    return a.DisplayOrder - b.DisplayOrder;
+                    return a.displayOrder - b.displayOrder;
                 });
             }
         },

@@ -15,42 +15,48 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Id = 1,
                 Name = "Elektronika",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
                 Id = 2,
                 Name = "Dom i ogród",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 4,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
                 Id = 3,
                 Name = "Super market",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
                 Id = 4,
                 Name = "Uroda",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 5,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
                 Id = 5,
                 Name = "Zdrowie",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 6,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
                 Id = 6,
                 Name = "Motoryzacja",
                 Description = "root",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ===== root end ======
 
@@ -64,7 +70,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Telefony i akcesoria",
                 ParentId = 1,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -72,7 +79,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Komputery",
                 ParentId = 1,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -80,7 +88,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "AGD",
                 ParentId = 1,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- elektronika end -----
 
@@ -91,7 +100,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Wyposażenie",
                 ParentId = 2,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -99,7 +109,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Narzędzia",
                 ParentId = 2,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -107,7 +118,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Ogród",
                 ParentId = 2,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Dom i ogród end -----
 
@@ -118,7 +130,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Produkty spożywcze",
                 ParentId = 3,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -126,7 +139,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Artykuły dla zwierząt",
                 ParentId = 3,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -134,7 +148,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Utrzymanie czystości",
                 ParentId = 3,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Super market end -----
 
@@ -145,7 +160,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Pielęgnacja",
                 ParentId = 4,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -153,7 +169,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Makijaż",
                 ParentId = 4,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -161,7 +178,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Perfumy",
                 ParentId = 4,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Uroda end -----
 
@@ -172,7 +190,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Domowa apteczka",
                 ParentId = 5,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -180,7 +199,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Urządzenia medyczne",
                 ParentId = 5,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -188,7 +208,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Medycyna naturalna",
                 ParentId = 5,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Zdrowie end -----
 
@@ -199,7 +220,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Opony i felgi",
                 ParentId = 6,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -207,7 +229,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Części samochodowe",
                 ParentId = 6,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -215,7 +238,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Warsztat",
                 ParentId = 6,
                 Description = "first child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Motoryzacja end -----
 
@@ -232,7 +256,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Smartfony",
                 ParentId = 7,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -240,7 +265,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Tablety",
                 ParentId = 7,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Telefony i akcesoria end -----
 
@@ -251,7 +277,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Laptopy",
                 ParentId = 8,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -259,7 +286,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Komputery stacjonarne",
                 ParentId = 8,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Komputery end -----
 
@@ -270,7 +298,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "AGD małe",
                 ParentId = 9,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 3,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -278,7 +307,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "AGD do zabudowy",
                 ParentId = 9,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -286,7 +316,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "AGD",
                 ParentId = 9,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- AGD end -----
 
@@ -297,7 +328,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Garnki i patelnie",
                 ParentId = 10,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -305,7 +337,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Dekoracje i ozdoby",
                 ParentId = 10,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Wyposażenie end -----
 
@@ -316,7 +349,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Piły i pilarki",
                 ParentId = 11,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -324,7 +358,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Odkurzacze przemysłowe",
                 ParentId = 11,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Narzędzia end -----
 
@@ -335,7 +370,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Nawozy i preparaty",
                 ParentId = 12,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -343,7 +379,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Meble ogrodowe",
                 ParentId = 12,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Ogród end -----
 
@@ -354,7 +391,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Kawy",
                 ParentId = 13,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -362,7 +400,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Herbaty",
                 ParentId = 13,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Produkty spożywcze end -----
 
@@ -373,7 +412,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Karmy",
                 ParentId = 14,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -381,7 +421,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Legowiska",
                 ParentId = 14,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Artykuły dla zwierząt end -----
 
@@ -392,7 +433,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Środki czyszczące",
                 ParentId = 15,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -400,7 +442,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Suszarki na pranie",
                 ParentId = 15,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Utrzymanie czystości end -----
 
@@ -412,7 +455,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Kremy do twarzy",
                 ParentId = 16,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -420,7 +464,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Szampony",
                 ParentId = 16,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Pielęgnacja end -----
 
@@ -432,7 +477,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Makijaż ust",
                 ParentId = 17,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -440,7 +486,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Sztuczne rzęsy",
                 ParentId = 17,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Makijaż end -----
 
@@ -452,7 +499,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Zestawy",
                 ParentId = 18,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -460,7 +508,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Wody toaletowe",
                 ParentId = 18,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Perfumy end -----
 
@@ -472,7 +521,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Suplementy diety",
                 ParentId = 19,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -480,7 +530,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Leki bez recepty",
                 ParentId = 19,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Domowa apteczka end -----
 
@@ -492,7 +543,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Inhalatory",
                 ParentId = 20,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -500,7 +552,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Termometry",
                 ParentId = 20,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Urządzenia medyczne end -----
 
@@ -511,7 +564,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Produkty konopne",
                 ParentId = 21,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -519,7 +573,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Olejki eteryczne",
                 ParentId = 21,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Medycyna naturalna end -----
 
@@ -530,7 +585,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Felgi aluminiowe",
                 ParentId = 22,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -538,7 +594,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Do motocykli",
                 ParentId = 22,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Opony i felgi end -----
 
@@ -549,7 +606,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Układ zawieszenia",
                 ParentId = 23,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -557,7 +615,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Części karoserii",
                 ParentId = 23,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Części samochodowe end -----
 
@@ -568,7 +627,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Zestawy narzędzi",
                 ParentId = 24,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -576,7 +636,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Klucze",
                 ParentId = 24,
                 Description = "second child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- Warsztat end -----
 
@@ -593,7 +654,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Odkurzacze pionowe",
                 ParentId = 29,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -601,7 +663,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Do kuchni",
                 ParentId = 29,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- AGD małe end -----
 
@@ -612,7 +675,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Płyty grzewcze",
                 ParentId = 30,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -620,7 +684,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Okapy",
                 ParentId = 30,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- AGD do zabudowy end -----
 
@@ -631,7 +696,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Lodówki",
                 ParentId = 31,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 1,
+                ImageURL = "https://www.examplesite.pl"
             },
             new Category
             {
@@ -639,7 +705,8 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 Name = "Pralki",
                 ParentId = 31,
                 Description = "third child",
-                ImageURL = ""
+                DisplayOrder = 2,
+                ImageURL = "https://www.examplesite.pl"
             },
             // ----- AGD end -----
 

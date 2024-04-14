@@ -10,6 +10,7 @@ using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
+using TreeCraftingVoyager.Server.Services.CategoryService;
 
 namespace TreeCraftingVoyager.Server.Controllers
 {
@@ -18,15 +19,18 @@ namespace TreeCraftingVoyager.Server.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly IMapper _mapper;
+        private readonly ICategoryService _categoryService;
         private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
         private readonly ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _crudRepository;
 
         public CategoriesController(
             IMapper mapper,
+            ICategoryService categoryService,
             ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository,
             ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
         {
             _mapper = mapper;
+            _categoryService = categoryService;
             _treeRepository = treeRepository;
             _crudRepository = crudRepository;
         }
@@ -103,7 +107,7 @@ namespace TreeCraftingVoyager.Server.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = await _crudRepository.UpdateAsync(updateDto);
+            var result = await _categoryService.UpdateCategory(updateDto);
             if (result == null)
                 return NotFound("Kategoria nie została znaleziona");
 

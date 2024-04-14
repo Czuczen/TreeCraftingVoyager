@@ -23,9 +23,7 @@ namespace TreeCraftingVoyager.Server.Configuration
 
 
 
-            CreateMap<CategoryDto, CategoryViewModel>();
-
-            
+            //CreateMap<CategoryDto, CategoryViewModel>();
         }
     }
 }

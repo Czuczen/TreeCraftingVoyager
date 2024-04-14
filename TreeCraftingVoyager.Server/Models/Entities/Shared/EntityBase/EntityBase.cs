@@ -8,7 +8,7 @@ public abstract class EntityBase<TPrimaryKey> : IEntityBase<TPrimaryKey>
     public TPrimaryKey Id { get; set; }
 }
 
-public abstract class EntityBase : IEntityBase<long>
+public abstract class EntityBase : IEntityBase
 {
     [Key]
     public long Id { get; set; }

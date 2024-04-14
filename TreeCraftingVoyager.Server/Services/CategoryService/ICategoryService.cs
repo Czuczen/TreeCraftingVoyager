@@ -1,10 +1,10 @@
 ﻿using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleInterfaces;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 
-namespace TreeCraftingVoyager.Server.Services
+namespace TreeCraftingVoyager.Server.Services.CategoryService
 {
     public interface ICategoryService : ITransientDependency
     {
-        Task<IEnumerable<CategoryDto>> GetAllCategoriesIncludingProducts();
+        Task<CategoryDto> UpdateCategory(UpdateCategoryDto updateDto);
     }
 }

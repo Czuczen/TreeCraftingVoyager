@@ -3,7 +3,7 @@ using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Entities;
 
-namespace TreeCraftingVoyager.Server.Services
+namespace TreeCraftingVoyager.Server.Services.CategoryService
 {
     public class CategoryService : ICategoryService
     {
@@ -14,10 +14,14 @@ namespace TreeCraftingVoyager.Server.Services
             _crudRepository = crudRepository;
         }
 
-        public async Task<IEnumerable<CategoryDto>> GetAllCategoriesIncludingProducts()
+        public async Task<CategoryDto> UpdateCategory(UpdateCategoryDto updateDto)
         {
-            //return await _crudRepository.GetQuery(q => q.Include(c => c.Products)).ToListAsync();
-            return null;
+            if (updateDto.Id == updateDto.ParentId)
+                throw new InvalidOperationException("You cannot set the same category as parent.");
+            
+            var ret = await _crudRepository.UpdateAsync(updateDto);
+
+            return ret;
         }
     }
 }

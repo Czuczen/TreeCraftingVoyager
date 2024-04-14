@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleInterfaces;
 
-namespace TreeCraftingVoyager.Server.Data.SeedData
+namespace TreeCraftingVoyager.Server.Data.SeedData;
+
+public interface ISeeder : ITransientDependency
 {
-    public interface ISeeder : ITransientDependency
-    {
-        int Order { get; }
+    int Order { get; }
 
-        void Seed(ModelBuilder modelBuilder);
-    }
-
+    void Seed(ModelBuilder modelBuilder);
 }

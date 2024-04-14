@@ -1,7 +1,5 @@
 ﻿using TreeCraftingVoyager.Server.Attributes;
 using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleInterfaces;
-using TreeCraftingVoyager.Server.Data.Repositories.Crud;
-using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 using TreeCraftingVoyager.Server.Models.Entities.Shared;

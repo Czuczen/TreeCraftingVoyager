@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Text.Json.Serialization;
 using TreeCraftingVoyager.Server.Configuration.Dependencies;
 using TreeCraftingVoyager.Server.Data;
-using TreeCraftingVoyager.Server.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 

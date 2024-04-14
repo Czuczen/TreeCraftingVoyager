@@ -1,8 +1,7 @@
 ﻿using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleInterfaces;
 
-namespace TreeCraftingVoyager.Server.Services.ProductService
+namespace TreeCraftingVoyager.Server.Services.ProductService;
+
+public interface IProductService : ITransientDependency
 {
-    public interface IProductService : ITransientDependency
-    {
-    }
 }

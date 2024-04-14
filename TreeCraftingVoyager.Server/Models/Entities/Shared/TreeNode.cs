@@ -1,9 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
-using System.Diagnostics.CodeAnalysis;
-using System.Data.SqlTypes;
-using System.Text.Json.Serialization;
 
 namespace TreeCraftingVoyager.Server.Models.Entities.Shared;
 

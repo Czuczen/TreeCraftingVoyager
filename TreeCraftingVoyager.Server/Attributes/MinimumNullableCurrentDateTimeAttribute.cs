@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TreeCraftingVoyager.Server.Attributes
+namespace TreeCraftingVoyager.Server.Attributes;
+
+public class MinimumNullableCurrentDateTimeAttribute : ValidationAttribute
 {
-    public class MinimumNullableCurrentDateTimeAttribute : ValidationAttribute
+    public override bool IsValid(object? value)
     {
-        public override bool IsValid(object? value)
-        {
             if (value == null) return true;
 
             if (value is DateTime date)
@@ -13,5 +13,4 @@ namespace TreeCraftingVoyager.Server.Attributes
 
             return false;
         }
-    }
 }

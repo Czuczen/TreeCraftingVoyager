@@ -1,6 +1,5 @@
 ﻿using System.Text.Json.Serialization;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
-using TreeCraftingVoyager.Server.Models.Entities.Shared;
 
 namespace TreeCraftingVoyager.Server.Models.Dto.Shared;
 

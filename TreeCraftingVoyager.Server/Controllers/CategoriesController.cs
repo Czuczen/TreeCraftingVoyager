@@ -1,9 +1,5 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TreeCraftingVoyager.Server.Data.Repositories;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
@@ -12,115 +8,114 @@ using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
 using TreeCraftingVoyager.Server.Services.CategoryService;
 
-namespace TreeCraftingVoyager.Server.Controllers
+namespace TreeCraftingVoyager.Server.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class CategoriesController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CategoriesController : ControllerBase
+    private readonly ICategoryService _categoryService;
+    private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
+    private readonly ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _crudRepository;
+
+    public CategoriesController(
+        ICategoryService categoryService,
+        ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository,
+        ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
     {
-        private readonly ICategoryService _categoryService;
-        private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
-        private readonly ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _crudRepository;
+        _categoryService = categoryService;
+        _treeRepository = treeRepository;
+        _crudRepository = crudRepository;
+    }
 
-        public CategoriesController(
-            ICategoryService categoryService,
-            ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository,
-            ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
-        {
-            _categoryService = categoryService;
-            _treeRepository = treeRepository;
-            _crudRepository = crudRepository;
-        }
+    [HttpGet("GetByCategory/{id}")]
+    public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
+    {
+        var productTableName = RepositoryHelpers.GetTableNameByEntityDbName(nameof(Product));
+        var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product, ProductDto >(id, productTableName);
 
-        [HttpGet("GetByCategory/{id}")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
-        {
-            var productTableName = RepositoryHelpers.GetTableNameByEntityDbName(nameof(Product));
-            var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product, ProductDto >(id, productTableName);
+        return Ok(ret);
+    }
 
-            return Ok(ret);
-        }
+    [HttpGet("GetCategories")]
+    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetRootCategories()
+    {
+        var ret = await _treeRepository.GetRootObjects();
 
-        [HttpGet("GetCategories")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetRootCategories()
-        {
-            var ret = await _treeRepository.GetRootObjects();
+        return Ok(ret);
+    }
 
-            return Ok(ret);
-        }
+    [HttpGet("GetChildrens/{id}")]
+    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoryChildrens(long id)
+    {
+        var ret = await _crudRepository.GetQuery(q => q.Where(e => e.Id == id).Include(e => e.Childrens)).SingleOrDefaultAsync();
+        if (ret == null)
+            return NotFound();
 
-        [HttpGet("GetChildrens/{id}")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoryChildrens(long id)
-        {
-            var ret = await _crudRepository.GetQuery(q => q.Where(e => e.Id == id).Include(e => e.Childrens)).SingleOrDefaultAsync();
-            if (ret == null)
-                return NotFound();
+        return Ok(ret);
+    }
 
-            return Ok(ret);
-        }
+    [HttpGet("GetHierarchy")]
+    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesHierarchy()
+    {
+        var ret = await _treeRepository.GetAllRecursively();
 
-        [HttpGet("GetHierarchy")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesHierarchy()
-        {
-            var ret = await _treeRepository.GetAllRecursively();
+        return Ok(ret.Where(e => e.ParentId == null));
+    }
 
-            return Ok(ret.Where(e => e.ParentId == null));
-        }
+    [HttpGet("Get")]
+    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
+    {
+        var ret = await _crudRepository.GetAllAsync();
 
-        [HttpGet("Get")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
-        {
-            var ret = await _crudRepository.GetAllAsync();
+        return Ok(ret);
+    }
 
-            return Ok(ret);
-        }
+    [HttpGet("Get/{id}")]
+    public async Task<ActionResult<CategoryDto>> GetCategory(long id)
+    {
+        var ret = await _crudRepository.GetByIdAsync(id);
+        if (ret == null)
+            return NotFound();
 
-        [HttpGet("Get/{id}")]
-        public async Task<ActionResult<CategoryDto>> GetCategory(long id)
-        {
-            var ret = await _crudRepository.GetByIdAsync(id);
-            if (ret == null)
-                return NotFound();
+        return Ok(ret);
+    }
 
-            return Ok(ret);
-        }
+    [HttpPost("Create")]
+    public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryDto createDto)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
 
-        [HttpPost("Create")]
-        public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryDto createDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        var result = await _crudRepository.CreateAsync(createDto);
+        if (result == null)
+            return StatusCode(500, "Błąd serwera podczas tworzenia kategorii");
 
-            var result = await _crudRepository.CreateAsync(createDto);
-            if (result == null)
-                return StatusCode(500, "Błąd serwera podczas tworzenia kategorii");
+        return NoContent();
+    }
 
-            return NoContent();
-        }
+    [HttpPut("Update")]
+    public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto updateDto)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
 
-        [HttpPut("Update")]
-        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto updateDto)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        var result = await _categoryService.UpdateCategory(updateDto);
+        if (result == null)
+            return NotFound("Kategoria nie została znaleziona");
 
-            var result = await _categoryService.UpdateCategory(updateDto);
-            if (result == null)
-                return NotFound("Kategoria nie została znaleziona");
+        return NoContent();
+    }
 
-            return NoContent();
-        }
+    [HttpDelete("Delete/{id}")]
+    public async Task<IActionResult> DeleteCategory(long id)
+    {
+        var result = await _crudRepository.GetByIdAsync(id);
+        if (result == null)
+            return NotFound("Kategoria nie została znaleziona");
 
-        [HttpDelete("Delete/{id}")]
-        public async Task<IActionResult> DeleteCategory(long id)
-        {
-            var result = await _crudRepository.GetByIdAsync(id);
-            if (result == null)
-                return NotFound("Kategoria nie została znaleziona");
+        await _crudRepository.DeleteAsync(id);
 
-            await _crudRepository.DeleteAsync(id);
-
-            return NoContent();
-        }
+        return NoContent();
     }
 }

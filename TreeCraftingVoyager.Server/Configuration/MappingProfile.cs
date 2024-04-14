@@ -1,15 +1,11 @@
 ﻿using AutoMapper;
-using TreeCraftingVoyager.Server.Models.Dto.Category;
-using TreeCraftingVoyager.Server.Models.Dto.Product;
-using TreeCraftingVoyager.Server.Models.Entities;
-using TreeCraftingVoyager.Server.Models.ViewModels;
 
-namespace TreeCraftingVoyager.Server.Configuration
+namespace TreeCraftingVoyager.Server.Configuration;
+
+public class MappingProfile : Profile
 {
-    public class MappingProfile : Profile
+    public MappingProfile()
     {
-        public MappingProfile()
-        {
             // EntityBase => EntityDto
             CreateMap<Category, CategoryDto>();
             CreateMap<Product, ProductDto>();
@@ -25,5 +21,4 @@ namespace TreeCraftingVoyager.Server.Configuration
 
             //CreateMap<CategoryDto, CategoryViewModel>();
         }
-    }
 }

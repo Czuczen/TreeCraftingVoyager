@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
-using System;
 using TreeCraftingVoyager.Server.Attributes;
 using TreeCraftingVoyager.Server.Data;
-using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
-using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 using TreeCraftingVoyager.Server.Models.Entities.Shared;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
@@ -77,17 +73,17 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
         {
             var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
             var query = $@"
-            WITH RECURSIVE Tree AS (
-                SELECT *
-                FROM ""{tableName}""
-                WHERE ""ParentId"" IS NULL
-                UNION ALL
-                SELECT c.*
-                FROM ""{tableName}"" c
-                JOIN Tree t ON c.""ParentId"" = t.""Id""
-            )
-            SELECT * FROM Tree;
-            ";
+                WITH RECURSIVE Tree AS (
+                    SELECT *
+                    FROM ""{tableName}""
+                    WHERE ""ParentId"" IS NULL
+                    UNION ALL
+                    SELECT c.*
+                    FROM ""{tableName}"" c
+                    JOIN Tree t ON c.""ParentId"" = t.""Id""
+                )
+                SELECT * FROM Tree;
+                ";
 
             var entities = await _context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
 
@@ -98,17 +94,17 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
         {
             var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
             var query = $@"
-            WITH RECURSIVE Tree AS (
-                SELECT *
-                FROM ""{tableName}""
-                WHERE ""ParentId"" IS NULL
-                UNION ALL
-                SELECT c.*
-                FROM ""{tableName}"" c
-                JOIN Tree t ON c.""ParentId"" = t.""Id""
-            )
-            SELECT * FROM Tree;
-            ";
+                WITH RECURSIVE Tree AS (
+                    SELECT *
+                    FROM ""{tableName}""
+                    WHERE ""ParentId"" IS NULL
+                    UNION ALL
+                    SELECT c.*
+                    FROM ""{tableName}"" c
+                    JOIN Tree t ON c.""ParentId"" = t.""Id""
+                )
+                SELECT * FROM Tree;
+                ";
 
             var entities = await _context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
 

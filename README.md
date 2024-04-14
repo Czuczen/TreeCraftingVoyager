@@ -17,9 +17,9 @@
 5. W konsoli menedżera pakietów wpisz komende "Update-Database" i wciśnij Enter.  
 6. Uruchom aplikację (Ctrl+F5).  
 7. Frontend uruchomi się automatycznie, wystarczy po załadowaniu backendu uruchomić adres https://localhost:5173
-  
-  
+
 Jeśli projekty nadal się nie uruchamiają, skorzystaj z bardziej szczegółowych poradników poniżej.  
+
 Projekt zawiera kilka komponentów, z których każdy ma własny plik README z bardziej szczegółowymi informacjami:  
   
 - [Server - ASP.NET Core](TreeCraftingVoyager.Server/README.md)

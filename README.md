@@ -1,5 +1,8 @@
 # TreeCraftingVoyager
-  
+
+Zaprojektowałem aplikacje typu "Sklep" gdzie kategorie to węzły a produkty to liście.  
+Menu jest budowane rekurencyjnie.  
+Kliknięcie kategorii pobierze produkty należące do niej i jej wszystkich dzieci.  
   
 ## Jak uruchomić aplikację  
   

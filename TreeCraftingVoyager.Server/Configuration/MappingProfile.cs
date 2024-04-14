@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using TreeCraftingVoyager.Server.Models.Dto.Category;
+using TreeCraftingVoyager.Server.Models.Dto.Product;
+using TreeCraftingVoyager.Server.Models.Entities;
 
 namespace TreeCraftingVoyager.Server.Configuration;
 

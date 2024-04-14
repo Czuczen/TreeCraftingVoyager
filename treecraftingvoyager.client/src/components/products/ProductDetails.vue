@@ -53,7 +53,7 @@
                 }
             },
             formattedDate(expirationDate) {
-                return expirationDate ? moment(expirationDate).format('DD/MM/YYYY') : '';
+                return expirationDate ? moment(expirationDate).format('DD/MM/YYYY HH:mm') : '';
             }
         },
     };

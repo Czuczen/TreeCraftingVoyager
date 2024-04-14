@@ -38,7 +38,7 @@
             <div class="mb-3">
                 <label for="categoryParentId" class="form-label">Rodzic</label>
                 <select class="form-control" id="categoryParentId" v-model="category.parentId">
-                    <option value="null">Brak rodzica</option>
+                    <option :value=null>Brak rodzica</option>
                     <option v-for="parent in parents" :value="parent.id" :key="parent.id">
                         {{ parent.name }}
                     </option>

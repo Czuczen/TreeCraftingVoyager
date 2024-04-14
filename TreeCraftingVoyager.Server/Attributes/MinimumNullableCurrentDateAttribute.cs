@@ -9,7 +9,7 @@ public class MinimumNullableCurrentDateAttribute : ValidationAttribute
             if (value == null) return true;
 
             if (value is DateTime date)
-                return date.Date >= DateTime.Now.Date;
+                return date.Date >= DateTime.UtcNow.Date;
 
             return false;
         }

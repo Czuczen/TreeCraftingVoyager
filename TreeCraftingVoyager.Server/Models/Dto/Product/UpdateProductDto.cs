@@ -13,7 +13,7 @@ public class UpdateProductDto : EntityDto
     public string Description { get; set; }
 
     [Required(ErrorMessage = "Pole jest wymagane")]
-    [Range(0.1, 100, ErrorMessage = "Wybierz między 0.1 a 100000")]
+    [Range(0.01, 100000, ErrorMessage = "Wybierz między 0.01 a 100000")]
     public decimal Price { get; set; }
 
     [Required(ErrorMessage = "Pole jest wymagane")]

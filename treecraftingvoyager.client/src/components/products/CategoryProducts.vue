@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-4">
         <h2 class="text-center mb-3">Produkty</h2>
+        <div v-if="isLoading" class="loader"></div>
         <div v-for="product in products" :key="product.id" class="card mb-2">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
@@ -24,6 +25,7 @@
         data() {
             return {
                 products: [],
+                isLoading: false
             };
         },
         watch: {
@@ -37,11 +39,15 @@
         methods: {
             async fetchProductsByCategory() {
                 try {
+                    this.isLoading = true;
                     const id = this.$route.params.id;
                     fetch(`/api/Categories/GetByCategory/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.products = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);

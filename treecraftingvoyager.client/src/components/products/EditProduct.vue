@@ -3,6 +3,7 @@
 <template>
     <div class="container">
         <h2>Dodaj nowy produkt</h2>
+        <div v-if="isLoading" class="loader"></div>
         <form @submit.prevent="submitProduct">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nazwa produktu</label>
@@ -53,7 +54,8 @@
                 errors: {
                     Name: [],
                     ExpirationDate: []
-                }
+                },
+                isLoading: false 
             };
         },
         computed: {
@@ -69,7 +71,10 @@
         methods: {
             async fetchCategories() {
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Categories/Get');
+                    this.isLoading = false;
+
                     if (!response.ok) throw new Error('Failed to fetch categories');
 
                     this.categories = await response.json();
@@ -80,6 +85,7 @@
             },
             fetchProduct() {
                 const productId = this.$route.params.id;
+                this.isLoading = true;
                 fetch(`/api/Products/Get/${productId}`)
                     .then(response => response.json())
                     .then(data => {
@@ -90,12 +96,16 @@
                     .catch(error => {
                         console.error('There has been a problem with your fetch operation:', error);
                         alert("Coś poszło nie tak. Spróbuj ponownie.");
+                    })
+                    .finally(() => {
+                        this.isLoading = false;
                     });
             },
             async submitProduct() {
                 this.errors = {}; // Clear errors before submission
 
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Products/Update', {
                         method: 'PUT',
                         headers: {
@@ -103,6 +113,8 @@
                         },
                         body: JSON.stringify(this.product)
                     });
+
+                    this.isLoading = false;
 
                     if (!response.ok) {
                         const responseData = await response.json();

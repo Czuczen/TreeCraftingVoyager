@@ -1,4 +1,5 @@
 <template>
+    <div v-if="isLoading" class="loader"></div>
     <div class="accordion" id="logsAccordion">
         <div class="accordion-item" v-for="(logs, level) in logsData" :key="level">
             <h2 class="accordion-header" :id="'heading' + level">
@@ -21,16 +22,21 @@
     export default {
         data() {
             return {
-                logsData: {}
+                logsData: {},
+                isLoading: false 
             };
         },
         methods: {
             async fetchLogs() {
                 try {
+                    this.isLoading = true;
                     fetch('/api/AppManagement/GetLogs')
                         .then(r => r.json())
                         .then(json => {
                             this.logsData = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Error fetching logs:', error);

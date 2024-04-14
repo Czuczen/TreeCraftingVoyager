@@ -5,6 +5,7 @@
 <template>
     <div class="container mt-4">
         <h2 class="text-center mb-3">Szczegóły kategorii</h2>
+        <div v-if="isLoading" class="loader"></div>
         <div v-if="category" class="card">
             <img :src="category.ImageURL" class="card-img-top" alt="Zdjęcie kategorii" style="object-fit: cover; min-height: 3rem">
             <div class="card-body">
@@ -13,9 +14,6 @@
                 <!--ładowanie include?-->
                 <p class="card-text">Kategoria nadrzędna: {{ category.parentId }}</p>
             </div>
-        </div>
-        <div v-else class="text-center">
-            <p>Ładowanie szczegółów kategorii...</p>
         </div>
     </div>
 
@@ -28,6 +26,7 @@
         data() {
             return {
                 category: null,
+                isLoading: false 
             };
         },
         async created() {
@@ -36,11 +35,15 @@
         methods: {
             async fetchCategoryDetails() {
                 try {
+                    this.isLoading = true;
                     const id = this.$route.params.id;
                     fetch(`/api/Categories/Get/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.category = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);

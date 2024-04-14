@@ -4,6 +4,7 @@
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createProduct">Dodaj</button>
         </div>
+        <div v-if="isLoading" class="loader"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead class="table-info">
@@ -65,7 +66,8 @@
                 productNameToDelete: '',
                 deleteModal: null,
                 currentSort: 'name',
-                currentSortDir: 'asc'
+                currentSortDir: 'asc',
+                isLoading: false 
             };
         },
         computed: {
@@ -82,10 +84,14 @@
         methods: {
             fetchProducts() {
                 try {
+                    this.isLoading = true;
                     fetch('/api/Products/Get')
                         .then(r => r.json())
                         .then(json => {
                             this.products = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);
@@ -112,27 +118,29 @@
             deleteProduct() {
                 if (!this.productIdToDelete) return;
 
+                this.isLoading = true;
                 fetch(`/api/Products/Delete/${this.productIdToDelete}`, {
                     method: 'DELETE',
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return;
-                    })
-                    .then(() => {
-                        this.fetchProducts();
-                    })
-                    .catch(error => {
-                        console.error('There has been a problem with your fetch operation:', error);
-                        alert("Coś poszło nie tak. Spróbuj ponownie.");
-                    })
-                    .finally(() => {
-                        this.deleteModal.hide();
-                        this.productIdToDelete = null;
-                        this.productNameToDelete = '';
-                    });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return;
+                })
+                .then(() => {
+                    this.fetchProducts();
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    alert("Coś poszło nie tak. Spróbuj ponownie.");
+                })
+                .finally(() => {
+                    this.deleteModal.hide();
+                    this.productIdToDelete = null;
+                    this.productNameToDelete = '';
+                    this.isLoading = false;
+                });
             },
             sortTable(sortKey) {
                 if (this.currentSort === sortKey) {

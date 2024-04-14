@@ -5,6 +5,7 @@
 <template>
     <div class="container">
         <h2>Edytuj kategorię</h2>
+        <div v-if="isLoading" class="loader"></div>
         <form @submit.prevent="submitCategory">
             <input type="hidden" id="categoryId" v-model="category.id">
             <div class="mb-3">
@@ -76,14 +77,18 @@
                     IsActive: [],
                     DisplayOrder: [],
                     ParentId: []
-                }
+                },
+                isLoading: false 
             };
         },
         methods: {
             async fetchParents() {
                 try {
+                    this.isLoading = true;
                     const categoryId = this.$route.params.id;
                     const response = await fetch('/api/Categories/Get');
+
+                    this.isLoading = false;
                     if (!response.ok) throw new Error('Failed to fetch parent categories');
 
                     let categories = await response.json();
@@ -100,6 +105,7 @@
                 this.errors = {}; // Clear errors before submission
 
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Categories/Update', {
                         method: 'PUT',
                         headers: {
@@ -107,6 +113,8 @@
                         },
                         body: JSON.stringify(this.category)
                     });
+
+                    this.isLoading = false;
 
                     if (!response.ok) {
                         const responseData = await response.json();

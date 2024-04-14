@@ -5,6 +5,7 @@
 <template>
     <div class="container">
         <h2>Dodaj nową kategorię</h2>
+        <div v-if="isLoading" class="loader"></div>
         <form @submit.prevent="submitCategory">
             <div class="mb-3">
                 <label for="categoryName" class="form-label">Nazwa kategorii</label>
@@ -71,13 +72,16 @@
                     ImageURL: [],
                     DisplayOrder: [],
                     ParentId: []
-                }
+                },
+                isLoading: false 
             };
         },
         methods: {
             async fetchParents() {
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Categories/Get');
+                    this.isLoading = false;
                     if (!response.ok) throw new Error('Failed to fetch parent categories');
                     this.parents = await response.json();
                 } catch (error) {
@@ -89,6 +93,7 @@
                 this.errors = {}; // Wyczyść błędy przed wysyłaniem
 
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Categories/Create', {
                         method: 'POST',
                         headers: {
@@ -98,6 +103,7 @@
                     });
 
                     const responseData = await response.json();
+                    this.isLoading = false;
 
                     if (!response.ok) {
                         this.errors = responseData.errors;

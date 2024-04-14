@@ -4,6 +4,7 @@
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createCategory">Dodaj</button>
         </div>
+        <div v-if="isLoading" class="loader"></div>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead class="table-info">
@@ -61,7 +62,8 @@
                 categoryNameToDelete: '',
                 deleteModal: null,
                 currentSort: 'name',
-                currentSortDir: 'asc'
+                currentSortDir: 'asc',
+                isLoading: false 
             };
         },
         computed: {
@@ -78,10 +80,14 @@
         methods: {
             fetchCategories() {
                 try {
+                    this.isLoading = true;
                     fetch('/api/Categories/Get')
                         .then(r => r.json())
                         .then(json => {
                             this.categories = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);
@@ -108,27 +114,29 @@
             deleteCategory() {
                 if (!this.categoryIdToDelete) return;
 
+                this.isLoading = true;
                 fetch(`/api/Categories/Delete/${this.categoryIdToDelete}`, {
                     method: 'DELETE',
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return;
-                    })
-                    .then(() => {
-                        this.fetchCategories();
-                    })
-                    .catch(error => {
-                        console.error('There has been a problem with your fetch operation:', error);
-                        alert("Coś poszło nie tak. Spróbuj ponownie.");
-                    })
-                    .finally(() => {
-                        this.deleteModal.hide();
-                        this.categoryIdToDelete = null;
-                        this.categoryNameToDelete = '';
-                    });
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return;
+                })
+                .then(() => {
+                    this.fetchCategories();
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    alert("Coś poszło nie tak. Spróbuj ponownie.");
+                })
+                .finally(() => {
+                    this.deleteModal.hide();
+                    this.categoryIdToDelete = null;
+                    this.categoryNameToDelete = '';
+                    this.isLoading = false;
+                });
             },
             sortTable(sortKey) {
                 if (this.currentSort === sortKey) {

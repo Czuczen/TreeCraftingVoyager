@@ -5,6 +5,7 @@
 <template>
     <div class="container mt-4">
         <h2 class="text-center mb-3">Szczegóły produktu</h2>
+        <div v-if="isLoading" class="loader"></div>
         <div v-if="product" class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
@@ -14,9 +15,6 @@
                 <!--ładowanie include?-->
                 <p class="card-text">Kategoria: {{ product.categoryId }}</p>
             </div>
-        </div>
-        <div v-else class="text-center">
-            <p>Ładowanie szczegółów produktu...</p>
         </div>
     </div>
 
@@ -30,6 +28,7 @@
         data() {
             return {
                 product: null,
+                isLoading: false 
             };
         },
         async created() {
@@ -38,11 +37,15 @@
         methods: {
             async fetchProductDetails() {
                 try {
+                    this.isLoading = true;
                     const id = this.$route.params.id;
                     fetch(`/api/Products/Get/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.product = json;
+                        })
+                        .finally(() => {
+                            this.isLoading = false;
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);

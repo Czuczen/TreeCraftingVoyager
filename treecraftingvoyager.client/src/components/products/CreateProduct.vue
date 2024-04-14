@@ -5,6 +5,7 @@
 <template>
     <div class="container">
         <h2>Dodaj nowy produkt</h2>
+        <div v-if="isLoading" class="loader"></div>
         <form @submit.prevent="submitProduct">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nazwa produktu</label>
@@ -19,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Cena</label>
-                <input type="number" class="form-control" id="productPrice" v-model.number="product.price"  step="0.01">
+                <input type="number" class="form-control" id="productPrice" v-model.number="product.price" step="0.01">
                 <div v-if="errors.Price && errors.Price.length" class="alert alert-danger">
                     {{ errors.Price[0] }}
                 </div>
@@ -68,7 +69,8 @@
                     ExpirationDate: [],
                     Price: [],
                     CategoryId: []
-                }
+                },
+                isLoading: false
             };
         },
         computed: {
@@ -84,7 +86,10 @@
         methods: {
             async fetchCategories() {
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Categories/Get');
+                    this.isLoading = false;
+
                     if (!response.ok) throw new Error('Failed to fetch categories');
                     this.categories = await response.json();
                 } catch (error) {
@@ -96,6 +101,7 @@
                 this.errors = {};
                 
                 try {
+                    this.isLoading = true;
                     const response = await fetch('/api/Products/Create', {
                         method: 'POST',
                         headers: {
@@ -103,6 +109,8 @@
                         },
                         body: JSON.stringify(this.product)
                     });
+
+                    this.isLoading = false;
 
                     if (response.status === 204) {
                         this.$router.push('/products');

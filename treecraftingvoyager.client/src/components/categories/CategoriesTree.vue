@@ -1,10 +1,11 @@
 ﻿<template>
-    <div v-if="isRoot" class="dropdown me-4">
+    <div v-if="isLoading" class="loader"></div>
+    <div id="primaryMenu" v-if="isRoot" class="dropdown me-4">
         <a class="dropdown-item dropdown-toggle" href="javascript:void(0);" @click.prevent="toggleSubmenu(null)">
             Sklep
         </a>
         <ul class="dropdown-menu" :style="{display: rootOpen ? 'block' : 'none'}">
-            <li v-for="category in categories" :key="category.id" class="dropdown-submenu">
+            <li v-for="category in sortedCategories" :key="category.id" class="dropdown-submenu">
                 <a class="dropdown-item" href="javascript:void(0);" @click.prevent="showCategoryProducts(category.id)">
                     {{ category.name }}
                 </a>
@@ -19,7 +20,7 @@
     </div>
 
     <template v-if="!isRoot">
-        <li v-for="category in categories" :key="category.id" class="dropdown-submenu">
+        <li v-for="category in sortedCategories" :key="category.id" class="dropdown-submenu">
             <a class="dropdown-item" href="javascript:void(0);" @click.prevent="showCategoryProducts(category.id)">
                 {{ category.name }}
             </a>
@@ -83,10 +84,19 @@
             return {
                 categories: [],
                 rootOpen: false,
+                isLoading: false 
             };
+        },
+        computed: {
+            sortedCategories() {
+                return this.categories.sort((a, b) => {
+                    return a.DisplayOrder - b.DisplayOrder;
+                });
+            }
         },
         methods: {
             fetchCategories() {
+                this.isLoading = true;
                 fetch('/api/Categories/GetHierarchy')
                     .then(response => {
                         if (!response.ok) {
@@ -103,6 +113,9 @@
                     .catch(error => {
                         console.error('Fetching error:', error);
                         alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
+                    })
+                    .finally(() => {
+                        this.isLoading = false;
                     });
             },
             toggleSubmenu(categoryId) {
@@ -123,9 +136,30 @@
             },
             showCategoryProducts(id) {
                 this.$router.push({ name: 'CategoryProducts', params: { id: id } });
+            },
+            closeMenu() {
+                this.rootOpen = false;
+                this.categories.forEach(cat => cat.open = false);
+            },
+            handleOutsideClick(event) {
+                const primaryMenu = document.getElementById('primaryMenu');
+                let targetElement = event.target; // clicked element
+
+                do {
+                    if (targetElement == primaryMenu) {
+                        return; // This means the click is inside primaryMenu, stop the function
+                    }
+                    // Go up the DOM
+                    targetElement = targetElement.parentNode;
+                } while (targetElement);
+
+                if (!this.$el.contains(event.target) && this.rootOpen) {
+                    this.closeMenu(); // Close the menu if the click is outside the component
+                }
             }
         },
         mounted() {
+            document.addEventListener('click', this.handleOutsideClick);
             if (!this.initialCategories.length) {
                 this.fetchCategories();
             } else {
@@ -134,6 +168,9 @@
                     open: false
                 }));
             }
+        },
+        beforeDestroy() {
+            document.removeEventListener('click', this.handleOutsideClick);
         },
     };
 </script>

@@ -8,7 +8,7 @@ using TreeCraftingVoyager.Server.Logging;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add logging to the file
-builder.AddFileLogger();
+//builder.AddFileLogger();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -25,8 +25,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// app.UseDefaultFiles(); // needed??
-// app.UseStaticFiles();
+app.UseDefaultFiles(); // needed??
+app.UseStaticFiles();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

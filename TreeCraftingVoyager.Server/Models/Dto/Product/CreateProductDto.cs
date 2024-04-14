@@ -5,20 +5,21 @@ namespace TreeCraftingVoyager.Server.Models.Dto.Product
 {
     public class CreateProductDto
     {
-        [Required]
-        [StringLength(100, MinimumLength = 4, ErrorMessage = "asdasdasdasdasdasdasd.")]
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        [StringLength(100, MinimumLength = 4, ErrorMessage = "Nazwa nie może być krótsza niż 4 i dłuższa niż 100")]
         public string Name { get; set; }
 
+        [StringLength(1000, ErrorMessage = "Opis nie może przekraczać 1000 znaków")]
         public string Description { get; set; }
 
-        [Required]
-        [Range(0.1, 100000)]
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        [Range(0.1, 100000, ErrorMessage = "Wybierz między 0.1 a 100000")]
         public decimal Price { get; set; }
 
-        [MinimumNullableCurrentDateTime]
+        [MinimumNullableCurrentDateTime(ErrorMessage = "Data i czas nie może być mniejsza niż aktualna")]
         public DateTime? ExpirationDate { get; set; }
 
-        [Required(ErrorMessage = "eeeeeeeeeeeeeee")]
+        [Required(ErrorMessage = "Pole jest wymagane")]
         [Range(1, long.MaxValue, ErrorMessage = "Wybierz kategorię")]
         public long CategoryId { get; set; }
     }

@@ -6,8 +6,10 @@ namespace TreeCraftingVoyager.Server.Models.Entities
 {
     public class Product : EntityBase
     {
+        [StringLength(100)]
         public string Name { get; set; }
 
+        [StringLength(1000)]
         public string Description { get; set; }
 
         public decimal Price { get; set; }

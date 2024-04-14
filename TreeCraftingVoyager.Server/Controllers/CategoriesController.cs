@@ -18,18 +18,15 @@ namespace TreeCraftingVoyager.Server.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
         private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
         private readonly ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _crudRepository;
 
         public CategoriesController(
-            IMapper mapper,
             ICategoryService categoryService,
             ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository,
             ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
         {
-            _mapper = mapper;
             _categoryService = categoryService;
             _treeRepository = treeRepository;
             _crudRepository = crudRepository;

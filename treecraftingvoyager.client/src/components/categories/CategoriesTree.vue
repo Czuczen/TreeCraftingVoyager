@@ -45,7 +45,7 @@
     .dropdown-submenu .dropdown-menu {
         display: none;
         position: absolute;
-        left: 100%; 
+        left: 100%;
         top: 0;
         margin-top: 0;
         margin-left: 0;
@@ -59,7 +59,7 @@
 
     @media (max-width: 768px) {
         .dropdown-submenu .dropdown-menu {
-            left: 0; /* Dla urządzeń mobilnych pozostaw rozwijanie w dół */
+            left: 0;
             top: 100%;
         }
     }
@@ -119,19 +119,19 @@
                     });
             },
             toggleSubmenu(categoryId) {
-                if (categoryId === null) { // Handle root category toggle
+                if (categoryId === null) {
                     this.rootOpen = !this.rootOpen;
-                    if (this.rootOpen) { // Close all other submenus when the root opens
+                    if (this.rootOpen) {
                         this.categories.forEach(cat => cat.open = false);
                     }
                 } else {
                     this.categories.forEach(cat => {
                         if (cat.id !== categoryId) {
-                            cat.open = false; // Close all other categories
+                            cat.open = false;
                         }
                     });
                     const category = this.categories.find(c => c.id === categoryId);
-                    category.open = !category.open; // Toggle the clicked category
+                    category.open = !category.open;
                 }
             },
             showCategoryProducts(id) {
@@ -143,18 +143,18 @@
             },
             handleOutsideClick(event) {
                 const primaryMenu = document.getElementById('primaryMenu');
-                let targetElement = event.target; // clicked element
+                let targetElement = event.target;
 
                 do {
                     if (targetElement == primaryMenu) {
-                        return; // This means the click is inside primaryMenu, stop the function
+                        return;
                     }
-                    // Go up the DOM
+                    
                     targetElement = targetElement.parentNode;
                 } while (targetElement);
 
                 if (!this.$el.contains(event.target) && this.rootOpen) {
-                    this.closeMenu(); // Close the menu if the click is outside the component
+                    this.closeMenu();
                 }
             }
         },

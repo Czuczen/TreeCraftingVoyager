@@ -7,7 +7,7 @@
         <h2 class="text-center mb-3">Szczegóły kategorii</h2>
         <div v-if="isLoading" class="loader"></div>
         <div v-if="category" class="card">
-            <img :src="category.ImageURL" class="card-img-top" alt="Zdjęcie kategorii" style="object-fit: cover; min-height: 3rem">
+            <img :src="category.imageURL" class="card-img-top" alt="Zdjęcie kategorii" style="object-fit: cover; min-height: 3rem">
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text">{{ category.description }}</p>
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <BackBtn></BackBtn>
+    <BackBtn :returnPath="'/categories'"></BackBtn>
 </template>
 
 <script>

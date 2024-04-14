@@ -17,6 +17,9 @@
             <div class="mb-3">
                 <label for="productDescription" class="form-label">Opis</label>
                 <input type="text" class="form-control" id="productDescription" v-model="product.description">
+                <div v-if="errors.Description && errors.Description.length" class="alert alert-danger">
+                    {{ errors.Description[0] }}
+                </div>
             </div>
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Cena</label>
@@ -45,7 +48,7 @@
                 </div>
             </div>
 
-            <FormBtns></FormBtns>
+            <FormBtns :returnPath="'/products'"></FormBtns>
         </form>
     </div>
 </template>
@@ -66,6 +69,7 @@
                 categories: [],
                 errors: {
                     Name: [],
+                    Description: [],
                     ExpirationDate: [],
                     Price: [],
                     CategoryId: []

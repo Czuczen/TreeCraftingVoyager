@@ -4,9 +4,15 @@
 
 <script>
     export default {
+        props: {
+            returnPath: {
+                type: String,
+                default: '/'
+            }
+        },
         methods: {
             goBack() {
-                this.$router.go(-1);
+                this.$router.push(this.returnPath);
             }
         }
     };

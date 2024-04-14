@@ -19,16 +19,7 @@ public abstract class TreeNodeDto<TPrimaryKey, T> : EntityDto<TPrimaryKey>
     public virtual ICollection<T> Childrens { get; set; } = new List<T>();
 }
 
-public abstract class TreeNodeDto<T> : EntityDto.EntityDto
-    where T : TreeNodeDto<T>
+public abstract class TreeNodeDto<T> : TreeNodeDto<long, T>
+    where T : TreeNodeDto<long, T>
 {
-    public string Name { get; set; }
-
-    public int DisplayOrder { get; set; }
-
-    public Nullable<long> ParentId { get; set; } // Nullable<> for mapper. TPrimaryKey? not working
-    [JsonIgnore]
-    public virtual T Parent { get; set; }
-
-    public virtual ICollection<T> Childrens { get; set; } = new List<T>();
 }

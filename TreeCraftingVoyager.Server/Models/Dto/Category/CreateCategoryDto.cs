@@ -4,18 +4,18 @@ namespace TreeCraftingVoyager.Server.Models.Dto.Category
 {
     public class CreateCategoryDto
     {
-        [Required]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "Nie może byc dłuższy niż 50 i krótrzy niż 4")]
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "Nazwa nie może być krótsza niż 4 i dłuższa niż 50")]
         public string Name { get; set; }
 
-        [StringLength(250, ErrorMessage = "Nie może byc dłuższy niż 250")]
+        [StringLength(250, ErrorMessage = "Opis nie może przekraczać 250 znaków")]
         public string Description { get; set; }
 
-        [Url]
+        [Url(ErrorMessage = "Podaj prawidłowy adres url (np. https://www.examplesite.pl)")]
         public string ImageURL { get; set; }
 
-        [Required]
-        [Range(1, 100)]
+        [Required(ErrorMessage = "Pole jest wymagane")]
+        [Range(1, 100, ErrorMessage = "Wybierz między 1 a 100")]
         public int DisplayOrder { get; set; }
 
         public long? ParentId { get; set; }

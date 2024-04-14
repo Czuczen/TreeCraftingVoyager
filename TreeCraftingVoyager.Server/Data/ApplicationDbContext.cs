@@ -10,8 +10,6 @@ namespace TreeCraftingVoyager.Server.Data
         private readonly IEnumerable<ISeeder>? _seeders;
 
 
-
-
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Product> Products { get; set; }
@@ -28,8 +26,17 @@ namespace TreeCraftingVoyager.Server.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Category>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasOne(e => e.Parent)
+                    .WithMany(e => e.Childrens)
+                    .HasForeignKey(e => e.ParentId)
+                    .OnDelete(DeleteBehavior.SetNull);
+            });
+
             //if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
-                foreach (var seeder in _seeders)
+            foreach (var seeder in _seeders)
                     seeder.Seed(modelBuilder);
         }
     }

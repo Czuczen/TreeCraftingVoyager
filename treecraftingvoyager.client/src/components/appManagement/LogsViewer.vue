@@ -23,7 +23,7 @@
         data() {
             return {
                 logsData: {},
-                isLoading: false 
+                isLoading: false
             };
         },
         methods: {

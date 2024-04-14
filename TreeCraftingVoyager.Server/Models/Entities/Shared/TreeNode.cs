@@ -11,6 +11,7 @@ public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
     where TPrimaryKey : struct // type in Nullable<TPrimaryKey> in ParentId must be nullable type
     where T : TreeNode<TPrimaryKey, T>
 {
+    [StringLength(100)]
     public string Name { get; set; }
 
     public int DisplayOrder { get; set; }

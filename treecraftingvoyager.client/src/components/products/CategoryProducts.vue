@@ -1,8 +1,8 @@
 <template>
     <div class="container mt-4">
         <h2 class="text-center mb-3">Produkty</h2>
-        <div v-if="isLoading" class="loader"></div>
         <div v-for="product in products" :key="product.id" class="card mb-2">
+            <div v-if="isLoading" class="loader"></div>
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.description }}</p>

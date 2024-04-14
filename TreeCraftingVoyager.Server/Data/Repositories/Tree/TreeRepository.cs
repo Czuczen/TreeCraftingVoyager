@@ -60,8 +60,8 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
                 ";
 
             var entities = await _context.Set<TLeaveBase>()
-                                    .FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId))
-                                    .ToListAsync();
+                .FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId))
+                .ToListAsync();
 
             return _mapper.Map<IEnumerable<TLeaveDto>>(entities);
         }

@@ -11,14 +11,10 @@ namespace TreeCraftingVoyager.Server.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IMapper _mapper;
         private readonly ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> _crudRepository;
 
-        public ProductsController(
-            IMapper mapper,
-            ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
+        public ProductsController(ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
         {
-            _mapper = mapper;
             _crudRepository = crudRepository;
         }
 

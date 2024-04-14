@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <FormBtns></FormBtns>
+            <FormBtns :returnPath="'/categories'"></FormBtns>
         </form>
     </div>
 </template>
@@ -65,7 +65,7 @@
                     description: '',
                     imageURL: '',
                     seoKeywords: '',
-                    displayOrder: 1,
+                    displayOrder: 0,
                     parentId: null
                 },
                 parents: [],
@@ -78,7 +78,7 @@
                     DisplayOrder: [],
                     ParentId: []
                 },
-                isLoading: false 
+                isLoading: false
             };
         },
         methods: {
@@ -102,7 +102,7 @@
                 }
             },
             async submitCategory() {
-                this.errors = {}; // Clear errors before submission
+                this.errors = {};
 
                 try {
                     this.isLoading = true;

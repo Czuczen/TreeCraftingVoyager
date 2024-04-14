@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <BackBtn></BackBtn>
+    <BackBtn :returnPath="'/products'"></BackBtn>
 </template>
 
 <script>

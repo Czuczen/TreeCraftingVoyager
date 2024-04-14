@@ -1,4 +1,6 @@
-<script setup>import FormBtns from '@/components/shared/FormBtns.vue';</script>
+<script setup>
+    import FormBtns from '@/components/shared/FormBtns.vue';
+</script>
 
 <template>
     <div class="container">
@@ -15,6 +17,9 @@
             <div class="mb-3">
                 <label for="productDescription" class="form-label">Opis</label>
                 <input type="text" class="form-control" id="productDescription" v-model="product.description">
+                <div v-if="errors.Description && errors.Description.length" class="alert alert-danger">
+                    {{ errors.Description[0] }}
+                </div>
             </div>
             <div class="mb-3">
                 <label for="productPrice" class="form-label">Cena</label>
@@ -31,9 +36,12 @@
                         {{ category.name }}
                     </option>
                 </select>
+                <div v-if="errors.CategoryId && errors.CategoryId.length" class="alert alert-danger">
+                    {{ errors.CategoryId[0] }}
+                </div>
             </div>
 
-            <FormBtns></FormBtns>
+            <FormBtns :returnPath="'/products'"></FormBtns>
         </form>
     </div>
 </template>
@@ -48,12 +56,14 @@
                     name: '',
                     description: '',
                     price: 0.0,
-                    categoryId: null
+                    categoryId: 0
                 },
                 categories: [],
                 errors: {
                     Name: [],
-                    ExpirationDate: []
+                    Description: [],
+                    Price: [],
+                    CategoryId: []
                 },
                 isLoading: false 
             };
@@ -102,7 +112,7 @@
                     });
             },
             async submitProduct() {
-                this.errors = {}; // Clear errors before submission
+                this.errors = {};
 
                 try {
                     this.isLoading = true;

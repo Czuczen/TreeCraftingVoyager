@@ -48,7 +48,7 @@
                 </div>
             </div>
 
-            <FormBtns></FormBtns>
+            <FormBtns :returnPath="'/categories'"></FormBtns>
         </form>
     </div>
 </template>
@@ -90,7 +90,7 @@
                 }
             },
             async submitCategory() {
-                this.errors = {}; // Wyczyść błędy przed wysyłaniem
+                this.errors = {};
 
                 try {
                     this.isLoading = true;
@@ -102,9 +102,15 @@
                         body: JSON.stringify(this.category)
                     });
 
-                    const responseData = await response.json();
                     this.isLoading = false;
 
+                    if (response.status === 204) {
+                        this.$router.push('/Categories');
+                        return;
+                    }
+
+                    const responseData = await response.json();
+                    
                     if (!response.ok) {
                         this.errors = responseData.errors;
                         throw new Error('Validation failed');

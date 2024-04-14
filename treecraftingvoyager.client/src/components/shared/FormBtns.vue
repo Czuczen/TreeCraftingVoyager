@@ -6,7 +6,7 @@
 <template>
     <div class="d-flex bd-highlight">
         <div class="bd-highlight me-auto">
-            <BackBtn></BackBtn>
+            <BackBtn :returnPath="returnPath"></BackBtn>
         </div>
         <div class="bd-highlight">
             <SaveBtn></SaveBtn>
@@ -14,3 +14,13 @@
     </div>
 </template>
 
+<script>
+    export default {
+        props: {
+            returnPath: {
+                type: String
+            }
+        },
+        
+    };
+</script>

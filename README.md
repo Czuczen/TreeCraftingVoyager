@@ -5,6 +5,13 @@ Menu jest budowane rekurencyjnie.
 Kliknięcie kategorii pobierze produkty należące do niej i jej wszystkich dzieci.  
   
 ## Jak uruchomić aplikację  
+Zainstaluj pakiety nuget: 
+Swashbuckle.AspNetCore  
+Microsoft.AspNetCore.SpaProxy  
+Npgsql.EntityFrameworkCore.PostgreSQL  
+Microsoft.EntityFrameworkCore.Design  
+Microsoft.EntityFrameworkCore.Tools  
+AutoMapper  
   
 1. W projekcie "**TreeCraftingVoyager.Server**" uzupełnij plik "**appsettings.json**":  
 ```  

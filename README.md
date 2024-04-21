@@ -1,8 +1,24 @@
-# Tree Crafting Voyager
+# Tree Crafting Voyager  
+  
+Ten projekt to aplikacja typu "Sklep", która wykorzystuje zaawansowane zarządzanie strukturą drzewiastą do reprezentowania kategorii i produktów. Aplikacja składa się z dwóch głównych komponentów: backendu napisanego w ASP.NET Core (Web API) z wykorzystaniem .NET 8 oraz frontendu stworzonego przy użyciu Vue.js z bibliotekami Bootstrap.  
+  
+W projekcie zastosowano wzorce projektowe takie jak: repository, strategy.
+  
+## Funkcjonalności  
+  
+Zarządzanie Strukturą Drzewiastą: Aplikacja pozwala na dodawanie, edycję, usuwanie oraz sortowanie węzłów (kategorii) i liści (produktów). Użytkownicy mogą również przenosić węzły między różnymi gałęziami drzewa.  
+  
+Dynamiczne Menu: Menu jest budowane rekurencyjnie i umożliwia łatwe nawigowanie po kategoriach i produktach.  
+Ładowanie Produktów: Kliknięcie w kategorię spowoduje załadowanie produktów należących do tej kategorii oraz wszystkich jej podkategorii.  
+Walidacja Danych: Aplikacja zawiera zabezpieczenia uniemożliwiające wprowadzenie nieprawidłowych danych.  
+Dane Przykładowe: Aplikacja zawiera funkcjonalność do wypełnienia baze danych przykładowymi danymi, co ułatwia testowanie i demonstrację funkcjonalności.  
 
-Zaprojektowałem aplikacje typu "Sklep" gdzie kategorie to węzły a produkty to liście.  
-Menu jest budowane rekurencyjnie.  
-Kliknięcie kategorii pobierze produkty należące do niej i jej wszystkich dzieci.  
+
+## Technologie  
+  
+Backend: ASP.NET Core Web API (.NET 8)  
+Frontend: Vue.js, Bootstrap  
+Baza danych: PostgreSQL  
   
 ## Jak uruchomić aplikację  
 

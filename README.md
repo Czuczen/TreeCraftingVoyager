@@ -1,4 +1,4 @@
-# TreeCraftingVoyager
+# Tree Crafting Voyager
 
 Zaprojektowałem aplikacje typu "Sklep" gdzie kategorie to węzły a produkty to liście.  
 Menu jest budowane rekurencyjnie.  

@@ -3,11 +3,13 @@ using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleI
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 using TreeCraftingVoyager.Server.Models.Entities.Shared;
+using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 
 namespace TreeCraftingVoyager.Server.Data.Repositories.Tree;
 
 [RegisterOpenGenericInterfaceInDi(typeof(ITreeRepository<,,,,>))]
 public interface ITreeRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : 
+    ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto>,
     IPerWebRequestDependency
     where TPrimaryKey : struct
     where TEntityBase : TreeNode<TPrimaryKey, TEntityBase>, IEntityBase<TPrimaryKey>, new()

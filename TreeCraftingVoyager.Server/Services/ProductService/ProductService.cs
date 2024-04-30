@@ -9,12 +9,8 @@ public class ProductService : IProductService
     private readonly ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> _crudRepository;
 
 
-    public ProductService(
-        ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
+    public ProductService(ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
     {
             _crudRepository = crudRepository;
-        }
-
-
-
+    }
 }

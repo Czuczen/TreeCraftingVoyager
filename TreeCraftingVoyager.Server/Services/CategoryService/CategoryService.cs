@@ -11,15 +11,15 @@ public class CategoryService : ICategoryService
     public CategoryService(ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
     {
             _crudRepository = crudRepository;
-        }
+    }
 
     public async Task<CategoryDto> UpdateCategory(UpdateCategoryDto updateDto)
     {
-            if (updateDto.Id == updateDto.ParentId)
-                throw new InvalidOperationException("You cannot set the same category as parent.");
+        if (updateDto.Id == updateDto.ParentId)
+            throw new InvalidOperationException("You cannot set the same category as parent.");
             
-            var ret = await _crudRepository.UpdateAsync(updateDto);
+        var ret = await _crudRepository.UpdateAsync(updateDto);
 
-            return ret;
-        }
+        return ret;
+    }
 }

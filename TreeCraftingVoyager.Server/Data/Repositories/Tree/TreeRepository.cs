@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using TreeCraftingVoyager.Server.Attributes;
 using TreeCraftingVoyager.Server.Data;
+using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 using TreeCraftingVoyager.Server.Models.Entities.Shared;
@@ -11,7 +12,8 @@ using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
 {
     [RegisterOpenGenericClassInDi(typeof(TreeRepository<,,,,>))]
-    public class TreeRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> : 
+    public class TreeRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto> :
+        CrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto>,
         ITreeRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TCreateDto>
         where TPrimaryKey : struct
         where TEntityBase : TreeNode<TPrimaryKey, TEntityBase>, IEntityBase<TPrimaryKey>, new()
@@ -19,16 +21,11 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
         where TUpdateDto : class, IEntityDto<TPrimaryKey>, new()
         where TCreateDto : class, new()
     {
-        private readonly ApplicationDbContext _context;
-        private readonly IMapper _mapper;
-
-
         public TreeRepository(
             ApplicationDbContext context, 
             IMapper mapper)
+            : base (context, mapper)
         {
-            _context = context;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<TLeaveDto>> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase, TLeaveDto>(long currNodeId, string leaveTableName)
@@ -55,18 +52,18 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
                 JOIN subnodes sc ON p.""{relFieldName}"" = sc.""Id""
                 ";
 
-            var entities = await _context.Set<TLeaveBase>()
+            var entities = await Context.Set<TLeaveBase>()
                 .FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId))
                 .ToListAsync();
 
-            return _mapper.Map<IEnumerable<TLeaveDto>>(entities);
+            return Mapper.Map<IEnumerable<TLeaveDto>>(entities);
         }
 
         public async Task<IEnumerable<TEntityDto>> GetRootObjects()
         {
-            var ret = await _context.Set<TEntityBase>().Where(e => e.ParentId == null).ToListAsync();
+            var ret = await Context.Set<TEntityBase>().Where(e => e.ParentId == null).ToListAsync();
 
-            return _mapper.Map<IEnumerable<TEntityDto>>(ret);
+            return Mapper.Map<IEnumerable<TEntityDto>>(ret);
         }
 
         public async Task<IEnumerable<TEntityDto>> GetAllRecursively()
@@ -85,9 +82,9 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
                 SELECT * FROM Tree;
                 ";
 
-            var entities = await _context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
+            var entities = await Context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
 
-            return _mapper.Map<IEnumerable<TEntityDto>>(entities);
+            return Mapper.Map<IEnumerable<TEntityDto>>(entities);
         }
 
         public async Task<IEnumerable<TReturn>> GetAllRecursively<TReturn>()
@@ -106,9 +103,9 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
                 SELECT * FROM Tree;
                 ";
 
-            var entities = await _context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
+            var entities = await Context.Set<TEntityBase>().FromSqlRaw(query).ToListAsync();
 
-            return _mapper.Map<IEnumerable<TReturn>>(entities);
+            return Mapper.Map<IEnumerable<TReturn>>(entities);
         }
     }
 }

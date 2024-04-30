@@ -16,16 +16,13 @@ public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _categoryService;
     private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
-    private readonly ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _crudRepository;
 
     public CategoriesController(
         ICategoryService categoryService,
-        ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository,
-        ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
+        ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository)
     {
         _categoryService = categoryService;
         _treeRepository = treeRepository;
-        _crudRepository = crudRepository;
     }
 
     [HttpGet("GetByCategory/{id}")]
@@ -48,7 +45,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("GetChildrens/{id}")]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoryChildrens(long id)
     {
-        var ret = await _crudRepository.GetQuery(q => q.Where(e => e.Id == id).Include(e => e.Childrens)).SingleOrDefaultAsync();
+        var ret = await _treeRepository.GetQuery(q => q.Where(e => e.Id == id).Include(e => e.Childrens)).SingleOrDefaultAsync();
         if (ret == null)
             return NotFound();
 
@@ -66,7 +63,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("Get")]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
     {
-        var ret = await _crudRepository.GetAllAsync();
+        var ret = await _treeRepository.GetAllAsync();
 
         return Ok(ret);
     }
@@ -74,7 +71,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("Get/{id}")]
     public async Task<ActionResult<CategoryDto>> GetCategory(long id)
     {
-        var ret = await _crudRepository.GetByIdAsync(id);
+        var ret = await _treeRepository.GetByIdAsync(id);
         if (ret == null)
             return NotFound();
 
@@ -87,7 +84,7 @@ public class CategoriesController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
 
-        var result = await _crudRepository.CreateAsync(createDto);
+        var result = await _treeRepository.CreateAsync(createDto);
         if (result == null)
             return StatusCode(500, "Błąd serwera podczas tworzenia kategorii");
 
@@ -110,11 +107,11 @@ public class CategoriesController : ControllerBase
     [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteCategory(long id)
     {
-        var result = await _crudRepository.GetByIdAsync(id);
+        var result = await _treeRepository.GetByIdAsync(id);
         if (result == null)
             return NotFound("Kategoria nie została znaleziona");
 
-        await _crudRepository.DeleteAsync(id);
+        await _treeRepository.DeleteAsync(id);
 
         return NoContent();
     }

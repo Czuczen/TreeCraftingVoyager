@@ -32,6 +32,14 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
             where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
             where TLeaveDto : class, IEntityDto<TPrimaryKey>, new()            
         {
+            var entities = await GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(currNodeId, leaveTableName).ToListAsync();
+
+            return Mapper.Map<IEnumerable<TLeaveDto>>(entities);
+        }
+
+        public IQueryable<TLeaveBase> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(long currNodeId, string leaveTableName)
+            where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
+        {
             var entityName = typeof(TEntityBase).Name;
             var tableName = RepositoryHelpers.GetTableNameByEntityDbName(entityName);
             var relFieldName = entityName + "Id";
@@ -52,11 +60,7 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
                 JOIN subnodes sc ON p.""{relFieldName}"" = sc.""Id""
                 ";
 
-            var entities = await Context.Set<TLeaveBase>()
-                .FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId))
-                .ToListAsync();
-
-            return Mapper.Map<IEnumerable<TLeaveDto>>(entities);
+            return Context.Set<TLeaveBase>().FromSqlRaw(query, new NpgsqlParameter(relFieldName, currNodeId));
         }
 
         public async Task<IEnumerable<TEntityDto>> GetRootObjects()

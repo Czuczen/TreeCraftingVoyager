@@ -8,9 +8,7 @@
                 <p class="card-text">{{ product.description }}</p>
                 <p class="card-text">{{ product.price }} zł</p>
                 <p class="card-text">{{ formattedDate(product.expirationDate) }}</p>
-                <!--ładowanie include?-->
-                <p class="card-text">Kategoria: {{ product.categoryId }}</p>
-
+                <p class="card-text">Kategoria: {{ product.categoryName }}</p>
             </div>
             <button class="btn btn-primary">Kup</button>
         </div>

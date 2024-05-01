@@ -11,8 +11,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text">{{ category.description }}</p>
-                <!--ładowanie include?-->
-                <p class="card-text">Kategoria nadrzędna: {{ category.parentId }}</p>
+                <p class="card-text">Kategoria nadrzędna: {{ category.parentName ?? "Brak"}}</p>
             </div>
         </div>
     </div>

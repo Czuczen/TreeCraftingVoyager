@@ -21,6 +21,9 @@ public interface ITreeRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDt
         where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
         where TLeaveDto : class, IEntityDto<TPrimaryKey>, new();
 
+    IQueryable<TLeaveBase> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(long currNodeId, string leaveTableName)
+        where TLeaveBase : class, IEntityBase<TPrimaryKey>, new();
+
     Task<IEnumerable<TEntityDto>> GetRootObjects();
 
     Task<IEnumerable<TEntityDto>> GetAllRecursively();

@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
+using TreeCraftingVoyager.Server.Models.ViewModels.Category;
+using TreeCraftingVoyager.Server.Models.ViewModels.Product;
+using TreeCraftingVoyager.Server.Services.ProductService;
 
 namespace TreeCraftingVoyager.Server.Controllers;
 
@@ -9,10 +13,17 @@ namespace TreeCraftingVoyager.Server.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase
 {
+    private readonly IMapper _mapper;
+    private readonly IProductService _productService;
     private readonly ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> _crudRepository;
 
-    public ProductsController(ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
+    public ProductsController(
+        IMapper mapper,
+        IProductService productService,
+        ICrudRepository<Product, ProductDto, UpdateProductDto, CreateProductDto> crudRepository)
     {
+        _mapper = mapper;
+        _productService = productService;
         _crudRepository = crudRepository;
     }
 
@@ -27,11 +38,11 @@ public class ProductsController : ControllerBase
     [HttpGet("Get/{id}")]
     public async Task<ActionResult<ProductDto>> GetProduct(long id)
     {
-        var ret = await _crudRepository.GetByIdAsync(id);
+        var ret = await _productService.GetProductDetails(id);
         if (ret == null)
             return NotFound();
 
-        return Ok(ret);
+        return Ok(_mapper.Map<ProductDetailsViewModel>(ret));
     }
 
     [HttpPost("Create")]

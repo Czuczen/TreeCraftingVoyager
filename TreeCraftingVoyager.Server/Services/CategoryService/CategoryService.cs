@@ -1,4 +1,5 @@
-﻿using TreeCraftingVoyager.Server.Data.Repositories.Crud;
+﻿using Microsoft.EntityFrameworkCore;
+using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Entities;
 
@@ -11,6 +12,17 @@ public class CategoryService : ICategoryService
     public CategoryService(ICrudRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> crudRepository)
     {
             _crudRepository = crudRepository;
+    }
+
+
+    public async Task<CategoryDto?> GetCategoryDetails(long id)
+    {
+        var ret = await _crudRepository.GetQuery(q => q
+            .Include(e => e.Parent)
+            .Where(e => e.Id == id))
+            .SingleOrDefaultAsync();
+
+        return ret;
     }
 
     public async Task<CategoryDto> UpdateCategory(UpdateCategoryDto updateDto)

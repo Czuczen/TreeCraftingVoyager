@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TreeCraftingVoyager.Server.Data.Repositories;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
@@ -6,6 +7,8 @@ using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
+using TreeCraftingVoyager.Server.Models.ViewModels.Category;
+using TreeCraftingVoyager.Server.Models.ViewModels.Product;
 using TreeCraftingVoyager.Server.Services.CategoryService;
 
 namespace TreeCraftingVoyager.Server.Controllers;
@@ -14,13 +17,16 @@ namespace TreeCraftingVoyager.Server.Controllers;
 [ApiController]
 public class CategoriesController : ControllerBase
 {
+    private readonly IMapper _mapper;
     private readonly ICategoryService _categoryService;
     private readonly ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> _treeRepository;
 
     public CategoriesController(
+        IMapper mapper,
         ICategoryService categoryService,
         ITreeRepository<Category, CategoryDto, UpdateCategoryDto, CreateCategoryDto> treeRepository)
     {
+        _mapper = mapper;
         _categoryService = categoryService;
         _treeRepository = treeRepository;
     }
@@ -29,9 +35,9 @@ public class CategoriesController : ControllerBase
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
     {
         var productTableName = RepositoryHelpers.GetTableNameByEntityDbName(nameof(Product));
-        var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product, ProductDto >(id, productTableName);
+        var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product>(id, productTableName).Include(e => e.Category).ToListAsync();
 
-        return Ok(ret);
+        return Ok(_mapper.Map<IEnumerable<ProductDetailsViewModel>>(ret));
     }
 
     [HttpGet("GetCategories")]
@@ -71,11 +77,11 @@ public class CategoriesController : ControllerBase
     [HttpGet("Get/{id}")]
     public async Task<ActionResult<CategoryDto>> GetCategory(long id)
     {
-        var ret = await _treeRepository.GetByIdAsync(id);
+        var ret = await _categoryService.GetCategoryDetails(id);
         if (ret == null)
             return NotFound();
 
-        return Ok(ret);
+        return Ok(_mapper.Map<CategoryDetailsViewModel>(ret));
     }
 
     [HttpPost("Create")]

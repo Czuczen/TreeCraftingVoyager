@@ -35,7 +35,7 @@ public class ApplicationDbContext : DbContext
         });
 
         //if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
-        foreach (var seeder in _seeders)
-            seeder.Seed(modelBuilder);
+            foreach (var seeder in _seeders)
+                seeder.Seed(modelBuilder);
     }
 }

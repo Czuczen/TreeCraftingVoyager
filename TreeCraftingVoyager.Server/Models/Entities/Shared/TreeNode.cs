@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 
 namespace TreeCraftingVoyager.Server.Models.Entities.Shared;
 
 public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
-    where TPrimaryKey : struct // type in Nullable<TPrimaryKey> in ParentId must be nullable type
+    where TPrimaryKey : struct
     where T : TreeNode<TPrimaryKey, T>
 {
     [StringLength(100)]
@@ -12,8 +13,8 @@ public abstract class TreeNode<TPrimaryKey, T> : EntityBase<TPrimaryKey>
 
     public int DisplayOrder { get; set; }
 
-    public Nullable<TPrimaryKey> ParentId { get; set; } // Nullable<> for entity framework migrations. TPrimaryKey? not working
-  
+    public TPrimaryKey? ParentId { get; set; }
+
     public virtual T Parent { get; set; }
    
     public virtual ICollection<T> Childrens { get; set; } = new List<T>();

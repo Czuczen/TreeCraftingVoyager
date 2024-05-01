@@ -6,7 +6,7 @@
     <div class="container">
         <h2>Dodaj nowy produkt</h2>
         <div v-if="isLoading" class="loader"></div>
-        <form @submit.prevent="submitProduct">
+        <form @submit.prevent="submitProduct" @keydown.enter.prevent="submitProduct">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nazwa produktu</label>
                 <input type="text" class="form-control" id="productName" v-model="product.name">

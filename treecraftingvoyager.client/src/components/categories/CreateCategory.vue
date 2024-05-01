@@ -6,7 +6,7 @@
     <div class="container">
         <h2>Dodaj nową kategorię</h2>
         <div v-if="isLoading" class="loader"></div>
-        <form @submit.prevent="submitCategory">
+        <form @submit.prevent="submitCategory" @keydown.enter.prevent="submitCategory">
             <div class="mb-3">
                 <label for="categoryName" class="form-label">Nazwa kategorii</label>
                 <input type="text" class="form-control" id="categoryName" v-model="category.name">

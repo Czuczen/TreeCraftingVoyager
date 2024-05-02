@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <nav class="navbar rounded-bottom navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom shadow-lg mb-3">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">TCV</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,8 +34,8 @@
             <router-view></router-view>
         </div>
 
-        <footer class="border-top footer text-muted mt-4">
-            <div class="container">
+        <footer class="border-top footer text-muted rounded-top shadow-lg mt-4">
+            <div class="container d-block">
                 &copy; 2024 - Tree Crafting Voyager - <router-link to="/privacy">Prywatność</router-link>
             </div>
         </footer>

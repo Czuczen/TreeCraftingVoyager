@@ -6,7 +6,7 @@ using TreeCraftingVoyager.Server.Logging;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add logging to the file
-// builder.AddFileLogger();
+builder.AddFileLogger();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));

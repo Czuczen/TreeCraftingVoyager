@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 using TreeCraftingVoyager.Server.Data.SeedData;
+using TreeCraftingVoyager.Server.Logging;
 using TreeCraftingVoyager.Server.Models.Entities;
 
 namespace TreeCraftingVoyager.Server.Data;
@@ -34,7 +36,7 @@ public class ApplicationDbContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull);
         });
 
-        //if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
+        if (!base.Database.GetAppliedMigrations().Any() && _seeders != null)
             foreach (var seeder in _seeders)
                 seeder.Seed(modelBuilder);
     }

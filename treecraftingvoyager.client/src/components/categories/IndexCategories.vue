@@ -1,13 +1,15 @@
 <template>
-    <div class="container mt-3">
-        <h4 class="text-center">Kategorie</h4>
+    <div class="container mt-3 text-center">
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Kategorie</h4>
+        </div>
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createCategory">Dodaj</button>
         </div>
         <div v-if="isLoading" class="loader"></div>
-        <div class="table-responsive">
+        <div class="table-responsive rounded">
             <table class="table table-bordered table-hover">
-                <thead class="table-info">
+                <thead class="table-dark">
                     <tr>
                         <th>#</th>
                         <th @click="sortTable('name')" class="sortable">Nazwa</th>
@@ -16,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-second">
-                    <tr v-for="(category, index) in sortedCategories" :key="category.id">
+                    <tr v-for="(category, index) in sortedCategories" :key="category.id" class="table-secondary">
                         <td>{{ index + 1 }}</td>
                         <td>{{ category.name }}</td>
                         <td>{{ category.description }}</td>

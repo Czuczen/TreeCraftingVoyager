@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h6 class="text-center">Strona główna</h6>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Strona główna</h4>
+        </div>
         <div class="text-center">
             Welcome!
         </div>

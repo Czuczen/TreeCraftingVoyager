@@ -1,6 +1,8 @@
 <template>
     <div class="container mt-4">
-        <h2 class="text-center mb-3">Produkty</h2>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Produkty</h4>
+        </div>
         <div v-for="product in products" :key="product.id" class="card mb-2">
             <div v-if="isLoading" class="loader"></div>
             <div class="card-body">

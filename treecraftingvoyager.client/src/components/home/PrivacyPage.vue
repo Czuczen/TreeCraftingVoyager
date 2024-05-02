@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h6 class="text-center">Prywatność</h6>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Prywatność</h4>
+        </div>
         <div class="text-center">
             Privacy site
         </div>

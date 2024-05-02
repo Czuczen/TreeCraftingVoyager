@@ -103,3 +103,35 @@ a {
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+.header-entry {
+    background: -moz-linear-gradient(to right, var(--color-background-light) 0%, var(--color-text-base) 50%, var(--color-background-light) 100%);
+    background: -webkit-linear-gradient(to right, var(--color-background-light) 0%, var(--color-text-base) 50%, var(--color-background-light) 100%);
+    background: linear-gradient(to right, var(--color-background-light) 0%, var(--color-text-base) 50%, var(--color-background-light) 90%);
+    color: #c1c8e4;
+    font-family: 'Arial', sans-serif;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-color: var(--color-chocolate-dark);
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s;
+    width: max-content;
+    border: 1px solid brown;
+}
+
+
+.glow-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+    transition: left 0.5s;
+}
+
+.glow-effect:hover::after {
+    left: 100%;
+}

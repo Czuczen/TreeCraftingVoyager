@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h6 class="text-center">O mnie</h6>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">O mnie</h4>
+        </div>
         <div class="text-center">
             Cześć!
         </div>

@@ -1,13 +1,15 @@
 <template>
-    <div class="container mt-3">
-        <h4 class="text-center">Produkty</h4>
+    <div class="container mt-3 text-center">
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Produkty</h4>
+        </div>
         <div class="d-flex justify-content-end">
             <button class="btn btn-primary mb-2" @click="createProduct">Dodaj</button>
         </div>
         <div v-if="isLoading" class="loader"></div>
-        <div class="table-responsive">
+        <div class="table-responsive rounded">
             <table class="table table-bordered table-hover">
-                <thead class="table-info">
+                <thead class="table-dark">
                     <tr>
                         <th>#</th>
                         <th @click="sortTable('name')" class="sortable">Nazwa</th>
@@ -17,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-second">
-                    <tr v-for="(product, index) in sortedProducts" :key="product.id">
+                    <tr v-for="(product, index) in sortedProducts" :key="product.id" class="table-secondary">
                         <td>{{ index + 1 }}</td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.price.toFixed(2) }} zł</td>

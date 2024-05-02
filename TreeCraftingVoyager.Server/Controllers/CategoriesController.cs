@@ -34,8 +34,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("GetByCategory/{id}")]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
     {
-        var productTableName = RepositoryHelpers.GetTableNameByEntityDbName(nameof(Product));
-        var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product>(id, productTableName).Include(e => e.Category).ToListAsync();
+        var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product>(id).Include(e => e.Category).ToListAsync();
 
         return Ok(_mapper.Map<IEnumerable<ProductDetailsViewModel>>(ret));
     }
@@ -74,14 +73,24 @@ public class CategoriesController : ControllerBase
         return Ok(ret);
     }
 
-    [HttpGet("Get/{id}")]
-    public async Task<ActionResult<CategoryDto>> GetCategory(long id)
+    [HttpGet("Details/{id}")]
+    public async Task<ActionResult<CategoryDto>> GetCategoryDetails(long id)
     {
         var ret = await _categoryService.GetCategoryDetails(id);
         if (ret == null)
             return NotFound();
 
         return Ok(_mapper.Map<CategoryDetailsViewModel>(ret));
+    }
+
+    [HttpGet("Get/{id}")]
+    public async Task<ActionResult<ProductDto>> GetCategory(long id)
+    {
+        var ret = await _treeRepository.GetByIdAsync(id);
+        if (ret == null)
+            return NotFound();
+
+        return Ok(ret);
     }
 
     [HttpPost("Create")]

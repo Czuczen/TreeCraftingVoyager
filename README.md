@@ -2,7 +2,7 @@
   
 Ten projekt to aplikacja typu "Sklep", która wykorzystuje zaawansowane zarządzanie strukturą drzewiastą do reprezentowania kategorii i produktów. Aplikacja składa się z dwóch głównych komponentów: backendu napisanego w ASP.NET Core (Web API) z wykorzystaniem .NET 8 oraz frontendu stworzonego przy użyciu Vue.js z bibliotekami Bootstrap.  
   
-W projekcie zastosowano wzorce projektowe takie jak: repository, strategy.
+W projekcie zastosowano wzorce projektowe takie jak: repository, strategy, singleton.
   
 ## Funkcjonalności  
   

@@ -21,6 +21,5 @@
                 type: String
             }
         },
-        
     };
 </script>

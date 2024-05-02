@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <BackBtn :returnPath="'/categories'"></BackBtn>
+    <BackBtn :returnPath="'/categories'" class="me-auto"></BackBtn>
 </template>
 
 <script>
@@ -25,7 +25,7 @@
         data() {
             return {
                 category: null,
-                isLoading: false 
+                isLoading: false
             };
         },
         async created() {
@@ -36,7 +36,7 @@
                 try {
                     this.isLoading = true;
                     const id = this.$route.params.id;
-                    fetch(`/api/Categories/Get/${id}`)
+                    fetch(`/api/Categories/Details/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.category = json;
@@ -46,7 +46,7 @@
                         });
                 } catch (error) {
                     console.error('Fetching error:', error);
-                     alert("Coś poszło nie tak. Spróbuj ponownie.");
+                    alert("Coś poszło nie tak. Spróbuj ponownie.");
                 }
             },
         },

@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-secondary m-1" @click="goBack">Wróć</button>
+    <button class="btn btn-secondary m-1" type="button" @click="goBack">Wróć</button>
 </template>
 
 <script>

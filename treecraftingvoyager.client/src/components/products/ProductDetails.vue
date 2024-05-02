@@ -38,7 +38,7 @@
                 try {
                     this.isLoading = true;
                     const id = this.$route.params.id;
-                    fetch(`/api/Products/Get/${id}`)
+                    fetch(`/api/Products/Details/${id}`)
                         .then(r => r.json())
                         .then(json => {
                             this.product = json;

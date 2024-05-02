@@ -28,7 +28,7 @@ public class CategoryService : ICategoryService
     public async Task<CategoryDto> UpdateCategory(UpdateCategoryDto updateDto)
     {
         if (updateDto.Id == updateDto.ParentId)
-            throw new InvalidOperationException("You cannot set the same category as parent.");
+            throw new InvalidOperationException("It is not possible to set the same category as parent");
             
         var ret = await _crudRepository.UpdateAsync(updateDto);
 

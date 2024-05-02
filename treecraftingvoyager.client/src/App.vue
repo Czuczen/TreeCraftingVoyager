@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container container-flex-auto">
         <header>
             <nav class="navbar rounded-bottom navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom shadow-lg mb-3">
                 <div class="container-fluid">
@@ -30,7 +30,7 @@
             </nav>
         </header>
 
-        <div class="container">
+        <div class="container container-flex-auto">
             <router-view></router-view>
         </div>
 

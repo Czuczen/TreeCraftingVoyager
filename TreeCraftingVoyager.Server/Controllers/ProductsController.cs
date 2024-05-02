@@ -35,14 +35,24 @@ public class ProductsController : ControllerBase
         return Ok(ret);
     }
 
-    [HttpGet("Get/{id}")]
-    public async Task<ActionResult<ProductDto>> GetProduct(long id)
+    [HttpGet("Details/{id}")]
+    public async Task<ActionResult<ProductDto>> GetProductDetails(long id)
     {
         var ret = await _productService.GetProductDetails(id);
         if (ret == null)
             return NotFound();
 
         return Ok(_mapper.Map<ProductDetailsViewModel>(ret));
+    }
+
+    [HttpGet("Get/{id}")]
+    public async Task<ActionResult<ProductDto>> GetProduct(long id)
+    {
+        var ret = await _crudRepository.GetByIdAsync(id);
+        if (ret == null)
+            return NotFound();
+
+        return Ok(ret);
     }
 
     [HttpPost("Create")]

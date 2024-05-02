@@ -28,20 +28,21 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
         {
         }
 
-        public async Task<IEnumerable<TLeaveDto>> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase, TLeaveDto>(long currNodeId, string leaveTableName)
+        public async Task<IEnumerable<TLeaveDto>> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase, TLeaveDto>(long currNodeId)
             where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
             where TLeaveDto : class, IEntityDto<TPrimaryKey>, new()            
         {
-            var entities = await GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(currNodeId, leaveTableName).ToListAsync();
+            var entities = await GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(currNodeId).ToListAsync();
 
             return Mapper.Map<IEnumerable<TLeaveDto>>(entities);
         }
 
-        public IQueryable<TLeaveBase> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(long currNodeId, string leaveTableName)
+        public IQueryable<TLeaveBase> GetCurrentNodeAndHisChildrensWithLeaves<TLeaveBase>(long currNodeId)
             where TLeaveBase : class, IEntityBase<TPrimaryKey>, new()
         {
+            var leaveTableName = Context.GetTableName<TPrimaryKey, TLeaveBase>();
             var entityName = typeof(TEntityBase).Name;
-            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(entityName);
+            var tableName = Context.GetTableName<TPrimaryKey, TEntityBase>();
             var relFieldName = entityName + "Id";
             var paramName = "@" + relFieldName;
 
@@ -72,7 +73,7 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
 
         public async Task<IEnumerable<TEntityDto>> GetAllRecursively()
         {
-            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
+            var tableName = Context.GetTableName<TPrimaryKey, TEntityBase>();
             var query = $@"
                 WITH RECURSIVE Tree AS (
                     SELECT *
@@ -93,7 +94,7 @@ namespace TreeCraftingVoyager.Server.Data.Repositories.Tree
 
         public async Task<IEnumerable<TReturn>> GetAllRecursively<TReturn>()
         {
-            var tableName = RepositoryHelpers.GetTableNameByEntityDbName(typeof(TEntityBase).Name);
+            var tableName = Context.GetTableName<TPrimaryKey, TEntityBase>();
             var query = $@"
                 WITH RECURSIVE Tree AS (
                     SELECT *

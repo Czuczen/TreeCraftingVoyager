@@ -4,7 +4,9 @@
 
 <template>
     <div class="container mt-4">
-        <h2 class="text-center mb-3">Szczegóły kategorii</h2>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Szczegóły kategorii</h4>
+        </div>
         <div v-if="isLoading" class="loader"></div>
         <div v-if="category" class="card">
             <img :src="category.imageURL" class="card-img-top" alt="Zdjęcie kategorii" style="object-fit: cover; min-height: 3rem">

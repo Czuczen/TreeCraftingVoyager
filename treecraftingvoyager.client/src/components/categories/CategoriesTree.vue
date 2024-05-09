@@ -9,7 +9,7 @@
                 <a class="dropdown-item" href="javascript:void(0);" @click.prevent="showCategoryProducts(category.id)">
                     {{ category.name }}
                 </a>
-                <span class="toggle-icon" @click.prevent="toggleSubmenu(category.id)">
+                <span v-if="category.childrens && category.childrens.length" class="toggle-icon" @click.prevent="toggleSubmenu(category.id)">
                     <i>→</i>
                 </span>
                 <ul v-if="category.childrens && category.childrens.length" class="dropdown-menu" :style="{display: category.open ? 'block' : 'none'}">

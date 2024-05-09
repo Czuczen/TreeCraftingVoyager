@@ -4,7 +4,9 @@
 
 <template>
     <div class="container mt-4">
-        <h2 class="text-center mb-3">Szczegóły produktu</h2>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Szczegóły produktu</h4>
+        </div>
         <div v-if="isLoading" class="loader"></div>
         <div v-if="product" class="card">
             <div class="card-body">
@@ -17,7 +19,7 @@
         </div>
     </div>
 
-    <BackBtn :returnPath="'/products'"></BackBtn>
+    <BackBtn :returnPath="'/products'" class="me-auto"></BackBtn>
 </template>
 
 <script>

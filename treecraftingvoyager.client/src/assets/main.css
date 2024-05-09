@@ -76,8 +76,9 @@ a {
     margin-bottom: 0.2rem;
     border-radius: 0.15rem;
     color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+    background-color: #ff0000;
+    border-color: #721c24;
+    color: whitesmoke;
 }
 
 .loader {

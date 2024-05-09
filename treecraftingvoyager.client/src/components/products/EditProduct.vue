@@ -4,9 +4,11 @@
 
 <template>
     <div class="container">
-        <h2>Dodaj nowy produkt</h2>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Dodaj nowy produkt</h4>
+        </div>
         <div v-if="isLoading" class="loader"></div>
-        <form @submit.prevent="submitProduct" @keydown.enter.prevent="submitProduct">
+        <form @submit.prevent="submitProduct" @keydown.enter.prevent="submitProduct" class="text-white">
             <div class="mb-3">
                 <label for="productName" class="form-label">Nazwa produktu</label>
                 <input type="text" class="form-control" id="productName" v-model="product.name">

@@ -4,9 +4,11 @@
 
 <template>
     <div class="container">
-        <h2>Edytuj kategorię</h2>
+        <div class="d-flex justify-content-center">
+            <h4 class="header-entry px-5 glow-effect">Edytuj kategorię</h4>
+        </div>
         <div v-if="isLoading" class="loader"></div>
-        <form @submit.prevent="submitCategory" @keydown.enter.prevent="submitCategory">
+        <form @submit.prevent="submitCategory" @keydown.enter.prevent="submitCategory" class="text-white">
             <input type="hidden" id="categoryId" v-model="category.id">
             <div class="mb-3">
                 <label for="categoryName" class="form-label">Nazwa kategorii</label>

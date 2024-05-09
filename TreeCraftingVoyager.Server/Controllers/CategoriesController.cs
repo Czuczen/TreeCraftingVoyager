@@ -68,7 +68,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("Get")]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
     {
-        var ret = await _treeRepository.GetAllAsync();
+        var ret = (await _treeRepository.GetAllAsync()).OrderBy(e => e.Name);
 
         return Ok(ret);
     }

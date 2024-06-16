@@ -140,6 +140,46 @@ public class CrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDto, TC
         return Mapper.Map<TEntityDto>(entityEntry.Entity);
     }
 
+
+    public async Task<IEnumerable<TEntityDto>> CreateOrUpdateMultiAsync(IEnumerable<TEntityDto> entities)
+    {
+        var addEntities = new List<TEntityBase>();
+        var updateEntities = new List<TEntityBase>();
+
+        foreach (var item in entities)
+        {
+            if (EqualityComparer<TPrimaryKey>.Default.Equals(item.Id, default))
+                addEntities.Add(Mapper.Map<TEntityBase>(item));
+            else
+            {
+                var existingEntity = await Context.Set<TEntityBase>().FindAsync(item.Id);
+
+                var updateType = typeof(TEntityDto);
+                var entityType = typeof(TEntityBase);
+                var entityProperties = entityType.GetProperties().ToList();
+
+                foreach (var updateProp in updateType.GetProperties())
+                {
+                    var newVal = updateProp.GetValue(item);
+                    var entProp = entityProperties.Single(item => item.Name == updateProp.Name);
+                    entProp.SetValue(existingEntity, newVal);
+                }
+
+                updateEntities.Add(existingEntity);
+            }
+        }
+
+        if (addEntities.Any())
+            await Context.Set<TEntityBase>().AddRangeAsync(addEntities);
+
+        if (updateEntities.Any())
+            Context.Set<TEntityBase>().UpdateRange(updateEntities);
+
+        await Context.SaveChangesAsync();
+
+        return Mapper.Map<IEnumerable<TEntityDto>>(addEntities.Concat(updateEntities));
+    }
+
     public void Delete(TPrimaryKey id)
     {
         var entity = Context.Set<TEntityBase>().Find(id);

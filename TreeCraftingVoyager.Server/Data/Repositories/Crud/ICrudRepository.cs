@@ -36,6 +36,8 @@ public interface ICrudRepository<TPrimaryKey, TEntityBase, TEntityDto, TUpdateDt
 
     Task<TEntityDto> UpdateAsync(TUpdateDto entity);
 
+    Task<IEnumerable<TEntityDto>> CreateOrUpdateMultiAsync(IEnumerable<TEntityDto> entities);
+
     void Delete(TPrimaryKey id);
 
     Task DeleteAsync(TPrimaryKey id);

@@ -2,7 +2,7 @@
 {
     public static class ClientApps
     {
-        public const string ClientApp1Dev = "https://localhost:7265";
+        public const string ClientApp1Dev = "https://localhost:5173";
 
         public const string ClientApp1Prod = "https://yourfrontendurl1.com";
         public const string ClientApp2Prod = "https://yourfrontendurl2.com";

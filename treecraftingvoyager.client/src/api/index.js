@@ -31,7 +31,7 @@ const apiClient = {
         });
         return response.json();
     },
-    // delete itp.
+    // Additional methods (PUT, DELETE, etc.) can be added here
 };
 
 export default apiClient;

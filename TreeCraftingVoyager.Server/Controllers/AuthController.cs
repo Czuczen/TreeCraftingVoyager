@@ -71,7 +71,7 @@ namespace TreeCraftingVoyager.Server.Controllers
             {
                 return Ok(new { isAuthenticated = true });
             }
-
+            
             return Ok(new { isAuthenticated = false });
         }
 

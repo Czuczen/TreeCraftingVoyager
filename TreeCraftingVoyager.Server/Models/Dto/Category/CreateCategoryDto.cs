@@ -15,7 +15,6 @@ public class CreateCategoryDto
     public string Description { get; set; }
 
     [Url(ErrorMessage = "Podaj prawidłowy adres url (np. https://www.examplesite.pl)")]
-    //[SecurityValidate]
     public string ImageURL { get; set; }
 
     [Required(ErrorMessage = "Pole jest wymagane")]

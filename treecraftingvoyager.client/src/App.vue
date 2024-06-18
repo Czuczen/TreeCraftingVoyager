@@ -25,14 +25,14 @@
                         <div>
                             <router-link class="nav-link text-dark ms-2" to="/logs">Logi</router-link>
                         </div>
-                        <!--<div v-if="isAuthenticated">
+                        <div v-if="isAuthenticated">
                             <span class="nav-link text-dark">Welcome, {{ userEmail }}!</span>
                             <button @click="logout" class="btn btn-link nav-link text-dark">Wyloguj</button>
                         </div>
                         <div v-else>
                             <button @click="toggleLoginForm" class="btn btn-link nav-link text-dark">Zaloguj</button>
                             <router-link class="nav-link text-dark ms-2" to="/register">Zarejestruj</router-link>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -95,7 +95,7 @@
             }
         },
         mounted() {
-            /*this.$store.dispatch('checkAuth');*/
+            this.$store.dispatch('checkAuth');
         }
     };
 </script>

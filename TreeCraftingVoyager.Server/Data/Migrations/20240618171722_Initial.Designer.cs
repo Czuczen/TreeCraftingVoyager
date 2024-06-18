@@ -12,7 +12,7 @@ using TreeCraftingVoyager.Server.Data;
 namespace TreeCraftingVoyager.Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240501095254_Initial")]
+    [Migration("20240618171722_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,10 +20,116 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("text");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("text");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
 
             modelBuilder.Entity("TreeCraftingVoyager.Server.Models.Entities.Category", b =>
                 {
@@ -699,7 +805,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 1L,
                             CategoryId = 1L,
                             Description = "Elektronika",
-                            ExpirationDate = new DateTime(2027, 1, 26, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(1079),
+                            ExpirationDate = new DateTime(2027, 3, 15, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(6315),
                             Name = "Coś elektronicznego",
                             Price = 1.2m
                         },
@@ -708,7 +814,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 2L,
                             CategoryId = 2L,
                             Description = "Dom i ogród",
-                            ExpirationDate = new DateTime(2024, 8, 9, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2166),
+                            ExpirationDate = new DateTime(2024, 9, 26, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7298),
                             Name = "Coś do domu i ogrodu",
                             Price = 20.3m
                         },
@@ -717,7 +823,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 3L,
                             CategoryId = 3L,
                             Description = "Super market",
-                            ExpirationDate = new DateTime(2024, 5, 3, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2170),
+                            ExpirationDate = new DateTime(2024, 6, 20, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7302),
                             Name = "Coś z super marketu",
                             Price = 2.2m
                         },
@@ -726,7 +832,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 4L,
                             CategoryId = 4L,
                             Description = "Uroda",
-                            ExpirationDate = new DateTime(2024, 5, 26, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2173),
+                            ExpirationDate = new DateTime(2024, 7, 13, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7304),
                             Name = "Coś dla urody",
                             Price = 30.2m
                         },
@@ -735,7 +841,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 5L,
                             CategoryId = 5L,
                             Description = "Zdrowie",
-                            ExpirationDate = new DateTime(2024, 5, 31, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2176),
+                            ExpirationDate = new DateTime(2024, 7, 18, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7307),
                             Name = "Coś dla zdrowia",
                             Price = 11.2m
                         },
@@ -744,7 +850,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 6L,
                             CategoryId = 6L,
                             Description = "Motoryzacja",
-                            ExpirationDate = new DateTime(2025, 2, 25, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2188),
+                            ExpirationDate = new DateTime(2025, 4, 14, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7319),
                             Name = "Coś dla motoryzacji",
                             Price = 1123.2m
                         },
@@ -753,7 +859,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 7L,
                             CategoryId = 7L,
                             Description = "Telefony i akcesoria",
-                            ExpirationDate = new DateTime(2024, 5, 24, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2190),
+                            ExpirationDate = new DateTime(2024, 7, 11, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7345),
                             Name = "Jakiś tam telefon",
                             Price = 1.2m
                         },
@@ -762,7 +868,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 8L,
                             CategoryId = 8L,
                             Description = "Komputery",
-                            ExpirationDate = new DateTime(2024, 6, 4, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2194),
+                            ExpirationDate = new DateTime(2024, 7, 22, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7347),
                             Name = "Jakiś tam komputer",
                             Price = 112.2m
                         },
@@ -771,7 +877,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 9L,
                             CategoryId = 9L,
                             Description = "AGD",
-                            ExpirationDate = new DateTime(2024, 6, 26, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2196),
+                            ExpirationDate = new DateTime(2024, 8, 13, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7497),
                             Name = "Jakaś tam lodówka",
                             Price = 112.26m
                         },
@@ -780,7 +886,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 10L,
                             CategoryId = 10L,
                             Description = "Wyposażenie",
-                            ExpirationDate = new DateTime(2025, 4, 26, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2201),
+                            ExpirationDate = new DateTime(2025, 6, 13, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7504),
                             Name = "Jakiś tam obraz",
                             Price = 112.22m
                         },
@@ -789,7 +895,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 11L,
                             CategoryId = 11L,
                             Description = "Narzędzia",
-                            ExpirationDate = new DateTime(2024, 6, 14, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2227),
+                            ExpirationDate = new DateTime(2024, 8, 1, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7507),
                             Name = "Jakiś tam młotek",
                             Price = 112.24m
                         },
@@ -798,7 +904,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 12L,
                             CategoryId = 12L,
                             Description = "Ogród",
-                            ExpirationDate = new DateTime(2033, 10, 11, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2230),
+                            ExpirationDate = new DateTime(2033, 11, 28, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7509),
                             Name = "Jakaś tam doniczka",
                             Price = 1212.2m
                         },
@@ -807,7 +913,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 13L,
                             CategoryId = 13L,
                             Description = "Produkty spożywcze",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2232),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7511),
                             Name = "Jakiś tam chleb",
                             Price = 1412.2m
                         },
@@ -816,7 +922,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 14L,
                             CategoryId = 14L,
                             Description = "Artykuły dla zwierząt",
-                            ExpirationDate = new DateTime(2024, 5, 2, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2235),
+                            ExpirationDate = new DateTime(2024, 6, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7514),
                             Name = "Jakaś tam karma ogólna",
                             Price = 112.2m
                         },
@@ -825,7 +931,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 15L,
                             CategoryId = 15L,
                             Description = "Utrzymanie czystości",
-                            ExpirationDate = new DateTime(2024, 5, 24, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2254),
+                            ExpirationDate = new DateTime(2024, 7, 11, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7531),
                             Name = "Jakaś tam miotła",
                             Price = 234m
                         },
@@ -834,7 +940,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 16L,
                             CategoryId = 16L,
                             Description = "Pielęgnacja",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2257),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7534),
                             Name = "Jakiś tam krem",
                             Price = 1412.2m
                         },
@@ -843,7 +949,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 17L,
                             CategoryId = 17L,
                             Description = "Makijaż",
-                            ExpirationDate = new DateTime(2024, 5, 2, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2260),
+                            ExpirationDate = new DateTime(2024, 6, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7557),
                             Name = "Jakaś tam podkład",
                             Price = 112.2m
                         },
@@ -852,7 +958,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 18L,
                             CategoryId = 18L,
                             Description = "Perfumy",
-                            ExpirationDate = new DateTime(2024, 5, 24, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2266),
+                            ExpirationDate = new DateTime(2024, 7, 11, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7564),
                             Name = "Jakaś tam dezodorant",
                             Price = 234m
                         },
@@ -861,7 +967,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 19L,
                             CategoryId = 19L,
                             Description = "Domowa apteczka",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2269),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7567),
                             Name = "Jakiś tam bandarz",
                             Price = 1412.2m
                         },
@@ -870,7 +976,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 20L,
                             CategoryId = 20L,
                             Description = "Urządzenia medyczne",
-                            ExpirationDate = new DateTime(2024, 5, 2, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2271),
+                            ExpirationDate = new DateTime(2024, 6, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7569),
                             Name = "Jakiś tam rozrusznik serca",
                             Price = 112.2m
                         },
@@ -879,7 +985,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 21L,
                             CategoryId = 21L,
                             Description = "Medycyna naturalna",
-                            ExpirationDate = new DateTime(2024, 5, 24, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2274),
+                            ExpirationDate = new DateTime(2024, 7, 11, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7571),
                             Name = "Jakaś tam herbatka naturalna",
                             Price = 234m
                         },
@@ -888,7 +994,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 22L,
                             CategoryId = 22L,
                             Description = "Opony i felgi",
-                            ExpirationDate = new DateTime(2024, 9, 9, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2296),
+                            ExpirationDate = new DateTime(2024, 10, 27, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7574),
                             Name = "Jakieś tam felgi",
                             Price = 1412.2m
                         },
@@ -897,7 +1003,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 23L,
                             CategoryId = 23L,
                             Description = "Części samochodowe",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2299),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7576),
                             Name = "Jakaś tam lampa",
                             Price = 112.2m
                         },
@@ -906,7 +1012,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 24L,
                             CategoryId = 24L,
                             Description = "Warsztat",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2301),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7578),
                             Name = "Jakaś tam śrubka",
                             Price = 234m
                         },
@@ -915,7 +1021,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 25L,
                             CategoryId = 25L,
                             Description = "Smartfony",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2304),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7580),
                             Name = "Jakiś tam IPhone",
                             Price = 112.2m
                         },
@@ -924,7 +1030,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 26L,
                             CategoryId = 26L,
                             Description = "Tablety",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2306),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7583),
                             Name = "Jakiś tam tablet",
                             Price = 234.1m
                         },
@@ -933,7 +1039,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 27L,
                             CategoryId = 27L,
                             Description = "Laptopy",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2309),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7585),
                             Name = "Jakiś tam laptop acer",
                             Price = 112.2m
                         },
@@ -942,7 +1048,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 28L,
                             CategoryId = 28L,
                             Description = "Komputery stacjonarne",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2311),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7604),
                             Name = "Jakiś tam stacjonarny",
                             Price = 234.1m
                         },
@@ -951,7 +1057,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 29L,
                             CategoryId = 29L,
                             Description = "AGD małe",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2314),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7607),
                             Name = "Jakieś tam małe agd",
                             Price = 112.2m
                         },
@@ -960,7 +1066,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 30L,
                             CategoryId = 30L,
                             Description = "AGD do zabudowy",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2317),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7609),
                             Name = "Jakaś tam agd zabudowa",
                             Price = 234.1m
                         },
@@ -969,7 +1075,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 31L,
                             CategoryId = 31L,
                             Description = "AGD",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2319),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7611),
                             Name = "Jakiś tam odkurzacz agd",
                             Price = 234.1m
                         },
@@ -978,7 +1084,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 32L,
                             CategoryId = 32L,
                             Description = "Garnki i patelnie",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2339),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7613),
                             Name = "Jakiś tam garnek",
                             Price = 112.2m
                         },
@@ -987,7 +1093,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 33L,
                             CategoryId = 33L,
                             Description = "Dekoracje i ozdoby",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2341),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7616),
                             Name = "Jakaś tam dekoracja",
                             Price = 234.1m
                         },
@@ -996,7 +1102,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 34L,
                             CategoryId = 34L,
                             Description = "Piły i pilarki",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2347),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7622),
                             Name = "Jakaś tam piła",
                             Price = 112.2m
                         },
@@ -1005,7 +1111,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 35L,
                             CategoryId = 35L,
                             Description = "Odkurzacze przemysłowe",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2350),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7624),
                             Name = "Jakiś tam przemysłowy odkurzacz",
                             Price = 234.1m
                         },
@@ -1014,7 +1120,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 36L,
                             CategoryId = 36L,
                             Description = "Nawozy i preparaty",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2352),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7627),
                             Name = "Jakiś tam nawóz",
                             Price = 112.2m
                         },
@@ -1023,7 +1129,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 37L,
                             CategoryId = 37L,
                             Description = "Meble ogrodowe",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2355),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7629),
                             Name = "Jakiś tam mebel do ogrodu",
                             Price = 234.1m
                         },
@@ -1032,7 +1138,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 38L,
                             CategoryId = 38L,
                             Description = "Kawy",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2357),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7648),
                             Name = "Jakaś tam kawa",
                             Price = 112.2m
                         },
@@ -1041,7 +1147,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 39L,
                             CategoryId = 39L,
                             Description = "Herbaty",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2360),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7651),
                             Name = "Jakaś tam herbata",
                             Price = 234.1m
                         },
@@ -1050,7 +1156,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 40L,
                             CategoryId = 40L,
                             Description = "Karmy",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2362),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7653),
                             Name = "Jakaś tam karma",
                             Price = 112.2m
                         },
@@ -1059,7 +1165,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 41L,
                             CategoryId = 41L,
                             Description = "Legowiska",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2365),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7656),
                             Name = "Jakieś tam legowisko",
                             Price = 234.1m
                         },
@@ -1068,7 +1174,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 42L,
                             CategoryId = 42L,
                             Description = "Środki czyszczące",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2367),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7658),
                             Name = "Jakaś tam szmatka",
                             Price = 112.2m
                         },
@@ -1077,7 +1183,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 43L,
                             CategoryId = 43L,
                             Description = "Suszarki na pranie",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2387),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7660),
                             Name = "Jakaś tam suszarka",
                             Price = 234.1m
                         },
@@ -1086,7 +1192,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 44L,
                             CategoryId = 44L,
                             Description = "Kremy do twarzy",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2389),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7662),
                             Name = "Jakiś tam krem na twarz",
                             Price = 112.2m
                         },
@@ -1095,7 +1201,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 45L,
                             CategoryId = 45L,
                             Description = "Szampony",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2393),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7667),
                             Name = "Jakiś tam szampon",
                             Price = 234.1m
                         },
@@ -1104,7 +1210,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 46L,
                             CategoryId = 46L,
                             Description = "Makijaż ust",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2396),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7669),
                             Name = "Jakaś tam szminka",
                             Price = 112.2m
                         },
@@ -1113,7 +1219,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 47L,
                             CategoryId = 47L,
                             Description = "Sztuczne rzęsy",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2398),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7672),
                             Name = "Jakaś tam rzęsa",
                             Price = 234.1m
                         },
@@ -1122,7 +1228,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 48L,
                             CategoryId = 48L,
                             Description = "Zestawy",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2401),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7674),
                             Name = "Jakiś tam zestaw perfum",
                             Price = 112.2m
                         },
@@ -1131,7 +1237,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 49L,
                             CategoryId = 49L,
                             Description = "Wody toaletowe",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2404),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7692),
                             Name = "Jakaś tam woda",
                             Price = 234.1m
                         },
@@ -1140,7 +1246,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 50L,
                             CategoryId = 50L,
                             Description = "Suplementy diety",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2406),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7695),
                             Name = "Jakiś tam suplement",
                             Price = 112.2m
                         },
@@ -1149,7 +1255,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 51L,
                             CategoryId = 51L,
                             Description = "Leki bez recepty",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2409),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7697),
                             Name = "Jakaś tam tabletka",
                             Price = 234.1m
                         },
@@ -1158,7 +1264,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 52L,
                             CategoryId = 52L,
                             Description = "Inhalatory",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2411),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7700),
                             Name = "Jakiś tam inhalator",
                             Price = 112.2m
                         },
@@ -1167,7 +1273,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 53L,
                             CategoryId = 53L,
                             Description = "Termometry",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2431),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7703),
                             Name = "Jakiś tam termometr",
                             Price = 234.1m
                         },
@@ -1176,7 +1282,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 54L,
                             CategoryId = 54L,
                             Description = "Produkty konopne",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2434),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7705),
                             Name = "Jakaś tam roślinka CBD",
                             Price = 112.2m
                         },
@@ -1185,7 +1291,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 55L,
                             CategoryId = 55L,
                             Description = "Olejki eteryczne",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2437),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7708),
                             Name = "Jakiś tam olejek",
                             Price = 234.1m
                         },
@@ -1194,7 +1300,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 56L,
                             CategoryId = 56L,
                             Description = "Felgi aluminiowe",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2439),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7710),
                             Name = "Jakaś tam felga alu",
                             Price = 112.2m
                         },
@@ -1203,7 +1309,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 57L,
                             CategoryId = 57L,
                             Description = "Do motocykli",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2442),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7712),
                             Name = "Jakieś tam motory",
                             Price = 234.1m
                         },
@@ -1212,7 +1318,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 58L,
                             CategoryId = 58L,
                             Description = "Układ zawieszenia",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2444),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7715),
                             Name = "Jakaś tam sprężyna ",
                             Price = 112.2m
                         },
@@ -1221,7 +1327,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 59L,
                             CategoryId = 59L,
                             Description = "Części karoserii",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2447),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7717),
                             Name = "Jakaś tam maska",
                             Price = 234.1m
                         },
@@ -1230,7 +1336,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 60L,
                             CategoryId = 60L,
                             Description = "Zestawy narzędzi",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2449),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7720),
                             Name = "Jakaś tam paczka narzędzi",
                             Price = 112.2m
                         },
@@ -1239,7 +1345,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 61L,
                             CategoryId = 61L,
                             Description = "Klucze",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2452),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7722),
                             Name = "Jakiś tam klucz",
                             Price = 234.1m
                         },
@@ -1248,7 +1354,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 62L,
                             CategoryId = 62L,
                             Description = "Odkurzacze pionowe",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2454),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7724),
                             Name = "Jakiś tam odkurzacz pionowy 2000",
                             Price = 112.2m
                         },
@@ -1257,7 +1363,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 63L,
                             CategoryId = 63L,
                             Description = "Do kuchni",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2457),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7727),
                             Name = "Jakiś tam zlew",
                             Price = 234.1m
                         },
@@ -1266,7 +1372,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 64L,
                             CategoryId = 64L,
                             Description = "Płyty grzewcze",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2459),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7729),
                             Name = "Jakaś tam grzałka",
                             Price = 112.2m
                         },
@@ -1275,7 +1381,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 65L,
                             CategoryId = 65L,
                             Description = "Okapy",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2462),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7731),
                             Name = "Jakiś tam okap",
                             Price = 234.1m
                         },
@@ -1284,7 +1390,7 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 66L,
                             CategoryId = 66L,
                             Description = "Lodówki",
-                            ExpirationDate = new DateTime(2024, 9, 1, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2468),
+                            ExpirationDate = new DateTime(2024, 10, 19, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7738),
                             Name = "Jakaś tam lodówka ",
                             Price = 112.2m
                         },
@@ -1293,10 +1399,151 @@ namespace TreeCraftingVoyager.Server.Data.Migrations
                             Id = 67L,
                             CategoryId = 67L,
                             Description = "Pralki",
-                            ExpirationDate = new DateTime(2024, 5, 12, 9, 52, 53, 92, DateTimeKind.Utc).AddTicks(2471),
+                            ExpirationDate = new DateTime(2024, 6, 29, 17, 17, 20, 537, DateTimeKind.Utc).AddTicks(7740),
                             Name = "Jakaś tam pralka",
                             Price = 234.1m
                         });
+                });
+
+            modelBuilder.Entity("TreeCraftingVoyager.Server.Models.Management.Account", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("TreeCraftingVoyager.Server.Models.Management.Role", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Account", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Account", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Account", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("TreeCraftingVoyager.Server.Models.Management.Account", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TreeCraftingVoyager.Server.Models.Entities.Category", b =>

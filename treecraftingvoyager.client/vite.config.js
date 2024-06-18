@@ -53,6 +53,7 @@ export default defineConfig({
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
-        }
+        },
+        open: true // This will open the browser automatically when Vite server starts
     }
 })

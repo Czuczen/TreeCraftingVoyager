@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from '@/store';
 
 const routes = [
     {
@@ -20,6 +21,10 @@ const routes = [
         path: '/logs',
         name: 'LogsViewer',
         component: () => import('@/components/appManagement/LogsViewer.vue'),
+        meta: {
+            requiresAuth: true,
+            isAdmin: true
+        }
     },
     {
         path: '/categories',
@@ -37,6 +42,9 @@ const routes = [
         path: '/create-category',
         name: 'CreateCategory',
         component: () => import('@/components/categories/CreateCategory.vue'),
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: '/category-details/:id',
@@ -47,6 +55,9 @@ const routes = [
         path: '/edit-category/:id',
         name: 'EditCategory',
         component: () => import('@/components/categories/EditCategory.vue'),
+        meta: {
+            requiresAuth: true,
+        }
     },
 
     
@@ -54,6 +65,9 @@ const routes = [
         path: '/create-product',
         name: 'CreateProduct',
         component: () => import('@/components/products/CreateProduct.vue'),
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: '/category-product/:id',
@@ -64,17 +78,55 @@ const routes = [
         path: '/edit-product/:id',
         name: 'EditProduct',
         component: () => import('@/components/products/EditProduct.vue'),
+        meta: {
+            requiresAuth: true,
+        }
     },
     {
         path: '/category-products/:id',
         name: 'CategoryProducts',
         component: () => import('@/components/products/CategoryProducts.vue'),
     },
+
+
+
+
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('@/components/auth/Login.vue'),
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: () => import('@/components/auth/Register.vue'),
+    },
+    //{
+    //    path: '/admin',
+    //    name: 'admin',
+    //    component: () => import('@/components/auth/admin.vue'),
+    //    meta: {
+    //        requiresAuth: true,
+    //        isAdmin: true
+    //    }
+    //}
 ];
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
 });
+
+//router.beforeEach((to, from, next) => {
+//    if (to.matched.some(record => record.meta.requiresAuth)) {
+//        if (!store.getters.isLoggedIn) {
+//            next('/login');
+//        } else {
+//            next();
+//        }
+//    } else {
+//        next();
+//    }
+//});
 
 export default router;

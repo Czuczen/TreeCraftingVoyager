@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
@@ -55,6 +56,7 @@ public class ProductsController : ControllerBase
         return Ok(ret);
     }
 
+    //[Authorize]
     [HttpPost("Create")]
     public async Task<ActionResult> CreateProduct([FromBody] CreateProductDto createDto)
     {
@@ -68,6 +70,7 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize]
     [HttpPut("Update")]
     public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductDto updateDto)
     {
@@ -81,6 +84,7 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize]
     [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteProduct(long id)
     {

@@ -10,9 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Consts\**" />
     <Compile Remove="Logs\**" />
+    <Content Remove="Consts\**" />
     <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Consts\**" />
     <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Consts\**" />
     <None Remove="Logs\**" />
   </ItemGroup>
 
@@ -43,7 +47,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Consts\" />
     <Folder Include="Data\Migrations\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>

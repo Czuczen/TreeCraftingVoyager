@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using TreeCraftingVoyager.Server.Logging;
 using TreeCraftingVoyager.Server.Models.ViewModels;
 
 namespace TreeCraftingVoyager.Server.Controllers;
 
+//[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 [ApiController]
 public class AppManagementController : ControllerBase

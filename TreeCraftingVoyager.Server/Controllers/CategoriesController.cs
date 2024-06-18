@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TreeCraftingVoyager.Server.Data.Repositories;
@@ -93,6 +94,7 @@ public class CategoriesController : ControllerBase
         return Ok(ret);
     }
 
+    //[Authorize]
     [HttpPost("Create")]
     public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryDto createDto)
     {
@@ -106,6 +108,7 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize]
     [HttpPut("Update")]
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto updateDto)
     {
@@ -119,6 +122,7 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
+    //[Authorize]
     [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteCategory(long id)
     {

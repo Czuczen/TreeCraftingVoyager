@@ -13,15 +13,18 @@ namespace TreeCraftingVoyager.Server.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly ILogger<AuthController> _logger;
         private readonly UserManager<Account> _userManager;
         private readonly SignInManager<Account> _signInManager;
         private readonly IConfiguration _configuration;
 
         public AuthController(
+            ILogger<AuthController> logger,
             UserManager<Account> userManager,
             SignInManager<Account> signInManager,
             IConfiguration configuration)
         {
+            _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
@@ -95,7 +98,10 @@ namespace TreeCraftingVoyager.Server.Controllers
                 signingCredentials: creds
             );
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var ret = new JwtSecurityTokenHandler().WriteToken(token);
+            _logger.LogDebug($"Generated Token: {ret}");
+
+            return ret;
         }
     }
 }

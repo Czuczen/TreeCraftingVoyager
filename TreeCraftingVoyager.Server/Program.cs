@@ -28,7 +28,8 @@ builder.Services.RegisterDependenciesByConvention();
 
 // JWT Authentication Configuration
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+//var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -37,6 +38,29 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+            var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+            logger.LogInformation("Raw token received: {0}", token);
+            context.Token = token;
+            return Task.CompletedTask;
+        },
+        OnAuthenticationFailed = context =>
+        {
+            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+            logger.LogError("Authentication failed: {0}", context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnTokenValidated = context =>
+        {
+            var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+            logger.LogInformation("Token validated for {0}", context.Principal.Identity.Name);
+            return Task.CompletedTask;
+        }
+    };
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -55,9 +79,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigins",
         corsBuilder =>
         {
-            corsBuilder.WithOrigins(ClientApps.OriginsListProd)
+            corsBuilder.WithOrigins(ClientApps.OriginsListProd.Concat(ClientApps.OriginsListDev).ToArray())
                        .AllowAnyHeader()
-                       .AllowAnyMethod();
+                       .AllowAnyMethod()
+                       .AllowCredentials();
         });
 });
 
@@ -72,11 +97,11 @@ builder.Services.AddAuthorization(options =>
     // add more if needed
 });
 
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
-    options.HttpsPort = 7265; // Make sure this port is correct for your hosting
-});
+//builder.Services.AddHttpsRedirection(options =>
+//{
+//    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+//    options.HttpsPort = 7265; // Make sure this port is correct for your hosting
+//});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -113,19 +138,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
 
-    // Update CORS policy to include localhost for development
-    app.UseCors(options =>
-    {
-        options.WithOrigins(ClientApps.OriginsListDev)
-               .AllowAnyHeader()
-               .AllowAnyMethod();
-    });
-}
-else
-{
-    app.UseCors("AllowSpecificOrigins");
-}
+app.UseCors("AllowSpecificOrigins");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

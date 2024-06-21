@@ -24,8 +24,7 @@ const apiClient = {
             credentials: 'include', // To include cookies
         });
         return response.json();
-    },
-    // Additional methods (PUT, DELETE, etc.) can be added here
+    }
 };
 
 export default apiClient;

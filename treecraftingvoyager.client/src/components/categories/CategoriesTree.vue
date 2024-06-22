@@ -96,27 +96,27 @@
         },
         methods: {
             fetchCategories() {
-                this.isLoading = true;
-                fetch('/api/Categories/GetHierarchy')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        this.categories = data.map(category => ({
-                            ...category,
-                            open: false
-                        }));
-                    })
-                    .catch(error => {
-                        console.error('Fetching error:', error);
-                        alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
-                    })
-                    .finally(() => {
-                        this.isLoading = false;
-                    });
+                //this.isLoading = true;
+                //fetch('/api/Categories/GetHierarchy')
+                //    .then(response => {
+                //        if (!response.ok) {
+                //            throw new Error('Network response was not ok');
+                //        }
+                //        return response.json();
+                //    })
+                //    .then(data => {
+                //        this.categories = data.map(category => ({
+                //            ...category,
+                //            open: false
+                //        }));
+                //    })
+                //    .catch(error => {
+                //        console.error('Fetching error:', error);
+                //        alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
+                //    })
+                //    .finally(() => {
+                //        this.isLoading = false;
+                //    });
             },
             toggleSubmenu(categoryId) {
                 if (categoryId === null) {

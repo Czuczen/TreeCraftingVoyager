@@ -49,8 +49,14 @@ export default defineConfig({
                 target,
                 changeOrigin: true,
                 secure: false,
+                configure: (proxy, options) => {
+                    proxy.on('proxyReq', (proxyReq, req, res) => {
+                        console.log('Proxying request to:', target);
+                        console.log('Request Headers:', proxyReq.getHeaders());
+                    });
+                }
             }
-        }, 
+        },
         port: 5173,
         https: {
             key: fs.readFileSync(keyFilePath),

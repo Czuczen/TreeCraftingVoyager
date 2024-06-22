@@ -44,8 +44,20 @@ builder.Services.AddAuthentication(options =>
         {
             var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            logger.LogInformation("Raw token received: {0}", token);
-            context.Token = token;
+
+            logger.LogInformation("Authorization Header: {0}", context.Request.Headers["Authorization"].FirstOrDefault());
+            logger.LogInformation("Extracted Token: {0}", token);
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                context.Token = token;
+                logger.LogInformation("Token successfully set in context: {0}", context.Token);
+            }
+            else
+            {
+                logger.LogWarning("Token is missing or not in the correct format.");
+            }
+
             return Task.CompletedTask;
         },
         OnAuthenticationFailed = context =>
@@ -90,12 +102,12 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers();
 
 // Add authorization policies
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
-    // add more if needed
-});
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+//    options.AddPolicy("RequireUserRole", policy => policy.RequireRole("User"));
+//    // add more if needed
+//});
 
 //builder.Services.AddHttpsRedirection(options =>
 //{

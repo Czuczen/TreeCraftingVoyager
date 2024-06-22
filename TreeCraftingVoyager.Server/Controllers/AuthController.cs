@@ -98,6 +98,7 @@ namespace TreeCraftingVoyager.Server.Controllers
                 signingCredentials: creds
             );
 
+            var sdf = new JwtSecurityToken();
             var ret = new JwtSecurityTokenHandler().WriteToken(token);
             _logger.LogDebug($"Generated Token: {ret}");
 

@@ -20,7 +20,7 @@ public static class DependencyInjection
         Register(services, assembly, ScopedType);
         Register(services, assembly, SingletonType);
 
-        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddAutoMapper(typeof(MappingProfileConfiguration));
         
         LogRegisteredServicesByConvention(services);
     }

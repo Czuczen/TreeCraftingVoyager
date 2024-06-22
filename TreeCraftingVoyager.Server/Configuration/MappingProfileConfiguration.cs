@@ -7,9 +7,9 @@ using TreeCraftingVoyager.Server.Models.ViewModels.Product;
 
 namespace TreeCraftingVoyager.Server.Configuration;
 
-public class MappingProfile : Profile
+public class MappingProfileConfiguration : Profile
 {
-    public MappingProfile()
+    public MappingProfileConfiguration()
     {
         // EntityBase => EntityDto
         CreateMap<Category, CategoryDto>();

@@ -1,5 +1,5 @@
 const getHeaders = () => {
-    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
+    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1") || '';
     console.log('Token from cookie:', token);
     return {
         'Content-Type': 'application/json',

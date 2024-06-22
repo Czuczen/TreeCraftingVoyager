@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 
 namespace TreeCraftingVoyager.Server.Models.Entities.Shared;

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -7,32 +6,32 @@ using System.Security.Claims;
 using System.Text;
 using TreeCraftingVoyager.Server.Models.Management;
 
-namespace TreeCraftingVoyager.Server.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private readonly ILogger<AuthController> _logger;
-        private readonly UserManager<Account> _userManager;
-        private readonly SignInManager<Account> _signInManager;
-        private readonly IConfiguration _configuration;
+namespace TreeCraftingVoyager.Server.Controllers;
 
-        public AuthController(
-            ILogger<AuthController> logger,
-            UserManager<Account> userManager,
-            SignInManager<Account> signInManager,
-            IConfiguration configuration)
-        {
+[Route("api/[controller]")]
+[ApiController]
+public class AuthController : ControllerBase
+{
+    private readonly ILogger<AuthController> _logger;
+    private readonly UserManager<Account> _userManager;
+    private readonly SignInManager<Account> _signInManager;
+    private readonly IConfiguration _configuration;
+
+    public AuthController(
+        ILogger<AuthController> logger,
+        UserManager<Account> userManager,
+        SignInManager<Account> signInManager,
+        IConfiguration configuration)
+    {
             _logger = logger;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
         }
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
-        {
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody] RegisterModel model)
+    {
             if (model == null)
             {
                 return BadRequest("Invalid client request");
@@ -49,9 +48,9 @@ namespace TreeCraftingVoyager.Server.Controllers
             return BadRequest(result.Errors);
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
-        {
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginModel model)
+    {
             if (model == null)
             {
                 return BadRequest("Invalid client request");
@@ -67,9 +66,9 @@ namespace TreeCraftingVoyager.Server.Controllers
             return Unauthorized();
         }
 
-        [HttpGet("check")]
-        public IActionResult Check()
-        {
+    [HttpGet("check")]
+    public IActionResult Check()
+    {
             if (User.Identity.IsAuthenticated)
             {
                 return Ok(new { isAuthenticated = true });
@@ -78,8 +77,8 @@ namespace TreeCraftingVoyager.Server.Controllers
             return Ok(new { isAuthenticated = false });
         }
 
-        private string GenerateJwtToken(Account user)
-        {
+    private string GenerateJwtToken(Account user)
+    {
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
@@ -104,5 +103,4 @@ namespace TreeCraftingVoyager.Server.Controllers
 
             return ret;
         }
-    }
 }

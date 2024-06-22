@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using TreeCraftingVoyager.Server.Models.Management;
 
-namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
+namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders;
+
+public class AccountDataSeeder
 {
-    public class AccountDataSeeder
+    public async Task SeedUsersAsync(UserManager<Account> userManager)
     {
-        public async Task SeedUsersAsync(UserManager<Account> userManager)
-        {
             // Example: creating an admin user
             var adminEmail = "admin@treecraftingvoyager.com";
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
@@ -20,5 +20,4 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 }
             }
         }
-    }
 }

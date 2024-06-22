@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
-using TreeCraftingVoyager.Server.Models.ViewModels.Category;
 using TreeCraftingVoyager.Server.Models.ViewModels.Product;
 using TreeCraftingVoyager.Server.Services.ProductService;
 

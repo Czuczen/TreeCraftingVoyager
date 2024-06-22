@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using TreeCraftingVoyager.Server.Models.Management;
 
-namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
+namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders;
+
+public class RoleDataSeeder
 {
-    public class RoleDataSeeder
+    public async Task SeedRolesAsync(RoleManager<Role> roleManager)
     {
-        public async Task SeedRolesAsync(RoleManager<Role> roleManager)
-        {
             var roles = new[] { "Admin", "User", "Seller" };
             foreach (var role in roles)
             {
@@ -16,5 +16,4 @@ namespace TreeCraftingVoyager.Server.Data.SeedData.Seeders
                 }
             }
         }
-    }
 }

@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TreeCraftingVoyager.Server.Data.Repositories;
-using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Dto.Product;

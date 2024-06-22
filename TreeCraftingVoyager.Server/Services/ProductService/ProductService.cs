@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
-using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
 

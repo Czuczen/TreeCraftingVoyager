@@ -1,20 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.Logging;
 
-namespace TreeCraftingVoyager.Server.Configuration
+namespace TreeCraftingVoyager.Server.Configuration;
+
+public static class JwtConfiguration
 {
-    public static class JwtConfiguration
+    public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)
     {
-        public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)
-        {
-            var jwtSettings = builder.Configuration.GetSection("Jwt");
-            var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
+        var jwtSettings = builder.Configuration.GetSection("Jwt");
+        var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
-            builder.Services.AddAuthentication(options =>
+        builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -69,7 +66,6 @@ namespace TreeCraftingVoyager.Server.Configuration
                 };
             });
 
-            return builder;
-        }
+        return builder;
     }
 }

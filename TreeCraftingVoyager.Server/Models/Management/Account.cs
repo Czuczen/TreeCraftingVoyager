@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using TreeCraftingVoyager.Server.Models.Entities.Shared.EntityBase;
 
-namespace TreeCraftingVoyager.Server.Models.Management
+namespace TreeCraftingVoyager.Server.Models.Management;
+
+public class Account : IdentityUser, IEntityBase<string>
 {
-    public class Account : IdentityUser, IEntityBase<string>
-    {
-    }
 }

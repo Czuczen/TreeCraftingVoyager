@@ -1,8 +1,7 @@
-﻿namespace TreeCraftingVoyager.Server.Models.Management
+﻿namespace TreeCraftingVoyager.Server.Models.Management;
+
+public class LoginModel
 {
-    public class LoginModel
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

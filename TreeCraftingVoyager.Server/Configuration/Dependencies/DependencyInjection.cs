@@ -12,8 +12,9 @@ public static class DependencyInjection
     private static readonly Type ScopedType = typeof(IPerWebRequestDependency);
     private static readonly Type SingletonType = typeof(ISingletonDependency);
 
-    public static void RegisterDependenciesByConvention(this IServiceCollection services)
+    public static WebApplicationBuilder AddDependenciesByConvention(this WebApplicationBuilder builder)
     {
+        var services = builder.Services;
         var assembly = Assembly.GetExecutingAssembly();
 
         Register(services, assembly, TransientType);
@@ -23,6 +24,8 @@ public static class DependencyInjection
         services.AddAutoMapper(typeof(MappingProfileConfiguration));
         
         LogRegisteredServicesByConvention(services);
+
+        return builder;
     }
 
     private static void Register(IServiceCollection services, Assembly assembly, Type dependencyType)

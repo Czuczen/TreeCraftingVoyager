@@ -9,12 +9,12 @@ namespace TreeCraftingVoyager.Server.Configuration
 {
     public static class JwtConfiguration
     {
-        public static void AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static WebApplicationBuilder AddJwtAuthentication(this WebApplicationBuilder builder)
         {
-            var jwtSettings = configuration.GetSection("Jwt");
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
             var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
-            services.AddAuthentication(options =>
+            builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,6 +68,8 @@ namespace TreeCraftingVoyager.Server.Configuration
                     IssuerSigningKey = new SymmetricSecurityKey(key)
                 };
             });
+
+            return builder;
         }
     }
 }

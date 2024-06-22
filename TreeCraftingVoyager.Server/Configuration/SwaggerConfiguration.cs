@@ -5,10 +5,10 @@ namespace TreeCraftingVoyager.Server.Configuration
 {
     public static class SwaggerConfiguration
     {
-        public static void AddSwaggerDocumentation(this IServiceCollection services)
+        public static WebApplicationBuilder AddSwaggerDocumentation(this WebApplicationBuilder builder)
         {
-            services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen(c =>
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(c =>
             {
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -34,6 +34,8 @@ namespace TreeCraftingVoyager.Server.Configuration
                     }
                 });
             });
+
+            return builder;
         }
     }
 }

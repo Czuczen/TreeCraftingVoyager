@@ -15,10 +15,12 @@ namespace TreeCraftingVoyager.Server.Configuration
 
             app.UseCors("AllowSpecificOrigins");
 
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles();
 
             app.UseHttpsRedirection();
+
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -28,6 +30,8 @@ namespace TreeCraftingVoyager.Server.Configuration
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("/index.html");
             });
+
+            app.UseLocalizationConfiguration();
         }
     }
 }

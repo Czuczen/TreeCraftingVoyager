@@ -22,7 +22,7 @@ public static class FileLoggerFactory
         return _loggerInstance;
     }
 
-    public static void AddFileLogger(this WebApplicationBuilder builder)
+    public static WebApplicationBuilder AddFileLogger(this WebApplicationBuilder builder)
     {
         var fileLoggingConfig = builder.Configuration.GetSection("Logging:FileLogging").Get<FileLoggerConfiguration>();
 
@@ -30,6 +30,8 @@ public static class FileLoggerFactory
         {
             builder.Logging.AddProvider(_providerInstance ??= new FileLoggerProvider(fileLoggingConfig));
         }
+
+        return builder;
     }
 
     private static ILogger CreateLoggerInstance()

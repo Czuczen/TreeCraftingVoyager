@@ -23,19 +23,28 @@ public static class JwtConfiguration
                     OnMessageReceived = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
-                        var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
 
-                        logger.LogInformation("Authorization Header: {0}", context.Request.Headers["Authorization"].FirstOrDefault());
-                        logger.LogInformation("Extracted Token: {0}", token);
+                        logger.LogInformation("Authorization Header: {0}", authHeader);
 
-                        if (!string.IsNullOrEmpty(token))
+                        if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
                         {
-                            context.Token = token;
-                            logger.LogInformation("Token successfully set in context: {0}", context.Token);
+                            var token = authHeader.Substring("Bearer ".Length).Trim();
+                            logger.LogInformation("Extracted Token: {0}", token);
+
+                            if (!string.IsNullOrEmpty(token))
+                            {
+                                context.Token = token;
+                                logger.LogInformation("Token successfully set in context: {0}", context.Token);
+                            }
+                            else
+                            {
+                                logger.LogWarning("Token is empty after extracting from Authorization header.");
+                            }
                         }
                         else
                         {
-                            logger.LogWarning("Token is missing or not in the correct format.");
+                            logger.LogWarning("Authorization header is missing or does not start with 'Bearer '");
                         }
 
                         return Task.CompletedTask;
@@ -43,13 +52,39 @@ public static class JwtConfiguration
                     OnAuthenticationFailed = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                        var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
+
                         logger.LogError("Authentication failed: {0}", context.Exception.Message);
+                        logger.LogError("Failed Token: {0}", token);
+
                         return Task.CompletedTask;
                     },
                     OnTokenValidated = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
                         logger.LogInformation("Token validated for {0}", context.Principal.Identity.Name);
+                        logger.LogInformation("Validated Token: {0}", context.SecurityToken.SecurityKey);
+                        return Task.CompletedTask;
+                    },
+                    OnChallenge = context =>
+                    {
+                        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                        var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
+
+                        logger.LogInformation("OnChallenge: {0}", context.ErrorDescription);
+                        logger.LogInformation("Token on Challenge: {0}", token);
+                        return Task.CompletedTask;
+                    },
+                    OnForbidden = context =>
+                    {
+                        var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                        var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
+
+                        logger.LogInformation("OnForbidden: {0}", context.HttpContext.Request.Path);
+                        logger.LogInformation("Token on Forbidden: {0}", token);
                         return Task.CompletedTask;
                     }
                 };

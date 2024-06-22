@@ -1,6 +1,5 @@
-﻿namespace TreeCraftingVoyager.Server.Resources
+﻿namespace TreeCraftingVoyager.Server.Resources;
+
+public class SharedResources
 {
-    public class SharedResources
-    {
-    }
 }

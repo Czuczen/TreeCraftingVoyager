@@ -54,6 +54,9 @@ export default defineConfig({
                         console.log('Proxying request to:', target);
                         console.log('Request Headers:', proxyReq.getHeaders());
                     });
+                    proxy.on('proxyRes', (proxyRes, req, res) => {
+                        console.log('Response Headers:', proxyRes.headers);
+                    });
                 }
             }
         },

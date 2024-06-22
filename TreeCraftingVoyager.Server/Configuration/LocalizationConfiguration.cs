@@ -14,7 +14,7 @@ public static class LocalizationConfiguration
             var supportedCultures = new[]
             {
                 new CultureInfo("en-US"),
-                new CultureInfo("pl-PL")
+                //new CultureInfo("pl-PL")
             };
 
             options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-US");

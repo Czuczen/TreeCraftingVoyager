@@ -69,13 +69,13 @@ public class AuthController : ControllerBase
     [HttpGet("check")]
     public IActionResult Check()
     {
-            if (User.Identity.IsAuthenticated)
-            {
-                return Ok(new { isAuthenticated = true });
-            }
-            
-            return Ok(new { isAuthenticated = false });
+        if (User.Identity.IsAuthenticated)
+        {
+            return Ok(new { isAuthenticated = true });
         }
+            
+        return Ok(new { isAuthenticated = false });
+    }
 
     private string GenerateJwtToken(Account user)
     {

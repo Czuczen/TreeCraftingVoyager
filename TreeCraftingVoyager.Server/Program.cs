@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddFileLogger()
         .AddLocalizationServices()
-        .AddFileLogger()
         .AddDatabase()
         .AddIdentityServices()
         .AddDependenciesByConvention()

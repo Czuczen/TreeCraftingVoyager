@@ -70,32 +70,32 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Check()
     {
         //var user = await _userManager.GetUserAsync(User);
-        var user = await _userManager.FindByEmailAsync("aa@wp.pl");
-        var token = GenerateJwtToken(user);
+        //var user = await _userManager.FindByEmailAsync("aa@wp.pl");
+        //var token = GenerateJwtToken(user);
 
-        var sendedToken = "";
-        var authHeader = Request.Headers["Authorization"].FirstOrDefault();
-        if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
-        {
-            sendedToken = authHeader.Substring("Bearer ".Length).Trim();
-        }
+        //var sendedToken = "";
+        //var authHeader = Request.Headers["Authorization"].FirstOrDefault();
+        //if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+        //{
+        //    sendedToken = authHeader.Substring("Bearer ".Length).Trim();
+        //}
 
-        if (token == sendedToken)
-        {
-            return Ok(new { isAuthenticated = true });
-        }
-
-        return Ok(new { isAuthenticated = false });
-
-        // not working 
-        // ERROR 22.06.2024 19:28:19,116 || Authentication failed: IDX14100: JWT is not well formed, there are no dots(.).
-        // The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
-        //if (User.Identity.IsAuthenticated)
+        //if (token == sendedToken)
         //{
         //    return Ok(new { isAuthenticated = true });
         //}
 
         //return Ok(new { isAuthenticated = false });
+
+        // not working 
+        // ERROR 22.06.2024 19:28:19,116 || Authentication failed: IDX14100: JWT is not well formed, there are no dots(.).
+        // The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+        if (User.Identity.IsAuthenticated)
+        {
+            return Ok(new { isAuthenticated = true });
+        }
+
+        return Ok(new { isAuthenticated = false });
     }
 
     private string GenerateJwtToken(Account user)

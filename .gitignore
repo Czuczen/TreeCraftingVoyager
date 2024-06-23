@@ -46,3 +46,6 @@ logs/
 
 # Ignore Visual Studio Code files
 .vscode/
+
+# Ignore Vite timestamp and hash config files
+vite.config.js.timestamp-*.mjs

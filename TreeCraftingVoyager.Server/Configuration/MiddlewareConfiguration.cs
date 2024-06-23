@@ -10,17 +10,12 @@ public static class MiddlewareConfiguration
             app.UseSwaggerUI();
         }
 
+        app.UseHttpsRedirection();
+        app.UseRouting();
         app.UseCors("AllowSpecificOrigins");
 
-        //app.UseDefaultFiles();
-        //app.UseStaticFiles();
-
-        app.UseHttpsRedirection();
-
-        app.UseRouting();
-
         app.UseAuthentication();
-        app.UseAuthorization();
+        //app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {

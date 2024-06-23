@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TreeCraftingVoyager.Server.Configuration;
 
@@ -23,10 +24,11 @@ public static class JwtConfiguration
                     OnMessageReceived = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
+                        logger.LogInformation("OnMessageReceived triggered");
 
                         foreach (var header in context.Request.Headers)
                         {
-                            logger.LogInformation("Header: {0} = {1}", header.Key, header.Value);
+                            logger.LogInformation("Header: {0} - {1}", header.Key, header.Value);
                         }
 
                         var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
@@ -41,7 +43,12 @@ public static class JwtConfiguration
                             if (token.Split('.').Length == 3)
                             {
                                 context.Token = token;
+                                var tokenAsString = context.Token.ToString();
                                 logger.LogInformation("Token successfully set in context: {0}", context.Token);
+                                logger.LogInformation("Token successfully set in context (toString): {0}", tokenAsString);
+
+                                // ERROR 22.06.2024 19:28:19,116 || Authentication failed: IDX14100: JWT is not well formed, there are no dots(.).
+                                // The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
                             }
                             else
                             {
@@ -102,7 +109,8 @@ public static class JwtConfiguration
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 }
                 };
             });
 

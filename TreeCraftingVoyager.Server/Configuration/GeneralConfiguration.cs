@@ -47,8 +47,8 @@ public static class GeneralConfiguration
 
     public static WebApplicationBuilder AddControllers(this WebApplicationBuilder builder)
     {
-        builder.Services.AddControllers()
-            .AddDataAnnotationsLocalization(); // needed?
+        builder.Services.AddControllers();
+           // .AddDataAnnotationsLocalization(); // needed?
 
         return builder;
     }

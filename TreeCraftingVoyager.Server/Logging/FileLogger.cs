@@ -35,7 +35,7 @@ public class FileLogger : ILogger, IDisposable
                 RotateLogFiles();
             }
 
-            var nowDateTime = DateTime.Now;
+            var nowDateTime = DateTime.UtcNow;
             var logMessage = $"{logLevel.ToString().ToUpper()} {nowDateTime},{nowDateTime.Millisecond} || {formatter(state, exception)}";
             if (exception != null)
             {

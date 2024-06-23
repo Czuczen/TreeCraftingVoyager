@@ -24,31 +24,26 @@ public static class JwtConfiguration
                     OnMessageReceived = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
-                        logger.LogInformation("OnMessageReceived triggered");
+                        logger.LogDebug("OnMessageReceived triggered");
 
                         foreach (var header in context.Request.Headers)
                         {
-                            logger.LogInformation("Header: {0} - {1}", header.Key, header.Value);
+                            logger.LogDebug("Header: {0} - {1}", header.Key, header.Value);
                         }
 
                         var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
 
-                        logger.LogInformation("Authorization Header: {0}", authHeader);
+                        logger.LogDebug("Authorization Header: {0}", authHeader);
 
                         if (!string.IsNullOrEmpty(authHeader) && authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
                         {
                             var token = authHeader.Substring("Bearer ".Length).Trim();
-                            logger.LogInformation("Extracted Token: {0}", token);
+                            logger.LogDebug("Extracted Token: {0}", token);
+                            logger.LogDebug("Token from context: {0}", context.Token);
 
                             if (token.Split('.').Length == 3)
                             {
-                                context.Token = token;
-                                var tokenAsString = context.Token.ToString();
-                                logger.LogInformation("Token successfully set in context: {0}", context.Token);
-                                logger.LogInformation("Token successfully set in context (toString): {0}", tokenAsString);
-
-                                // ERROR 22.06.2024 19:28:19,116 || Authentication failed: IDX14100: JWT is not well formed, there are no dots(.).
-                                // The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
+                                logger.LogDebug("Token is correct: {0}", token);
                             }
                             else
                             {
@@ -65,8 +60,8 @@ public static class JwtConfiguration
                     OnTokenValidated = context =>
                     {
                         var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerEvents>>();
-                        logger.LogInformation("Token validated for {0}", context.Principal.Identity.Name);
-                        logger.LogInformation("Validated Token: {0}", context.SecurityToken.SecurityKey);
+                        logger.LogDebug("Token validated for {0}", context.Principal?.Identity?.Name);
+                        logger.LogDebug("Validated Token: {0}", context.SecurityToken);
                         return Task.CompletedTask;
                     },
                     OnAuthenticationFailed = context =>
@@ -75,8 +70,8 @@ public static class JwtConfiguration
                         var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
                         var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
 
-                        logger.LogError("Authentication failed: {0}", context.Exception.Message);
-                        logger.LogError("Failed Token: {0}", token);
+                        logger.LogDebug("Authentication failed: {0}", context.Exception.Message);
+                        logger.LogDebug("Failed Token: {0}", token);
                         return Task.CompletedTask;
                     },
                     OnChallenge = context =>
@@ -85,8 +80,8 @@ public static class JwtConfiguration
                         var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
                         var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
 
-                        logger.LogInformation("OnChallenge: {0}", context.ErrorDescription);
-                        logger.LogInformation("Token on Challenge: {0}", token);
+                        logger.LogDebug("OnChallenge: {0}", context.ErrorDescription);
+                        logger.LogDebug("Token on Challenge: {0}", token);
                         return Task.CompletedTask;
                     },
                     OnForbidden = context =>
@@ -95,21 +90,28 @@ public static class JwtConfiguration
                         var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
                         var token = authHeader?.StartsWith("Bearer ") == true ? authHeader.Substring("Bearer ".Length).Trim() : "No token found";
 
-                        logger.LogInformation("OnForbidden: {0}", context.HttpContext.Request.Path);
-                        logger.LogInformation("Token on Forbidden: {0}", token);
+                        logger.LogDebug("OnForbidden: {0}", context.HttpContext.Request.Path);
+                        logger.LogDebug("Token on Forbidden: {0}", token);
                         return Task.CompletedTask;
                     }
                 };
+
+                if (builder.Environment.IsDevelopment())
+                {
+                    options.IncludeErrorDetails = true;
+                    options.RequireHttpsMetadata = false;
+                }
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = true,
+                    ValidateLifetime = false,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = jwtSettings["Issuer"],
                     ValidAudience = jwtSettings["Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ClockSkew = TimeSpan.Zero,
                     ValidAlgorithms = new[] { SecurityAlgorithms.HmacSha256 }
                 };
             });

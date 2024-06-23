@@ -69,9 +69,6 @@ public class AuthController : ControllerBase
     [HttpGet("check")]
     public async Task<IActionResult> Check()
     {
-        // not working 
-        // ERROR 22.06.2024 19:28:19,116 || Authentication failed: IDX14100: JWT is not well formed, there are no dots(.).
-        // The token needs to be in JWS or JWE Compact Serialization Format. (JWS): 'EncodedHeader.EndcodedPayload.EncodedSignature'. (JWE): 'EncodedProtectedHeader.EncodedEncryptedKey.EncodedInitializationVector.EncodedCiphertext.EncodedAuthenticationTag'.
         if (User.Identity.IsAuthenticated)
         {
             return Ok(new { isAuthenticated = true });
@@ -96,7 +93,7 @@ public class AuthController : ControllerBase
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.Now.AddMinutes(30),
+            expires: DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds
         );
 

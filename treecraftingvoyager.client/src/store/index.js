@@ -41,7 +41,7 @@ export default createStore({
         },
         async checkAuth({ commit }) {
             try {
-                const response = await apiClient.get('auth/check?email' + this.state.userEmail);
+                const response = await apiClient.get('auth/check');
                 if (response.data.isAuthenticated) {
                     commit('setAuthentication', true);
                     //const userResponse = await apiClient.get('auth/user');

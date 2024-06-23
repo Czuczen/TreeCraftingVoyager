@@ -35,10 +35,20 @@ public static class GeneralConfiguration
             options.AddPolicy("AllowSpecificOrigins",
                 corsBuilder =>
                 {
-                    corsBuilder.WithOrigins(ClientApps.OriginsListProd.Concat(ClientApps.OriginsListDev).ToArray())
+                    corsBuilder.WithOrigins(builder.Environment.IsDevelopment() ? ClientApps.OriginsListDev : ClientApps.OriginsListProd)
                                .AllowAnyHeader()
                                .AllowAnyMethod()
                                .AllowCredentials();
+
+                    // needed?
+                    //.SetIsOriginAllowed(origin =>
+                    //{
+                    //     if (string.IsNullOrWhiteSpace(origin)) return false;
+
+                    //     var allowedOrigins = builder.Environment.IsDevelopment() ? ClientApps.OriginsListDev : ClientApps.OriginsListProd;
+
+                    //     return allowedOrigins.Contains(origin);
+                    //});
                 });
         });
 
@@ -53,14 +63,27 @@ public static class GeneralConfiguration
         return builder;
     }
 
-    public static void UseCorsPolicy(this IApplicationBuilder app)
+    public static WebApplicationBuilder AddHttpsRedirection(this WebApplicationBuilder builder)
     {
-        app.UseCors("AllowSpecificOrigins");
-    }
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 7265;
+            });
+        }
+        else
+        {
+            builder.Services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
 
-    public static void UseSwaggerDocumentation(this IApplicationBuilder app)
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
+                // in far future
+                options.HttpsPort = 443; // Make sure the port is correct for your hosting
+            });
+        }
+        
+        return builder;
     }
 }

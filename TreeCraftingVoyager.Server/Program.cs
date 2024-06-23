@@ -12,7 +12,8 @@ builder.AddFileLogger()
         .AddJwtAuthentication()
         .AddCorsPolicy()
         .AddControllers()
-        .AddSwaggerDocumentation();
+        .AddSwaggerDocumentation()
+        .AddHttpsRedirection();
 
 var app = builder.Build();
 

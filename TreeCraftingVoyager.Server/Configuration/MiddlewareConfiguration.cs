@@ -1,4 +1,6 @@
-﻿namespace TreeCraftingVoyager.Server.Configuration;
+﻿using System.IdentityModel.Tokens.Jwt;
+
+namespace TreeCraftingVoyager.Server.Configuration;
 
 public static class MiddlewareConfiguration
 {

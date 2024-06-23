@@ -5,9 +5,13 @@ export default createStore({
     state: {
         token: document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1") || '',
         isAuthenticated: false,
-        userEmail: ''
+        userEmail: '',
+        userId: ''
     },
     mutations: {
+        setUserId(state, id) {
+            state.userId = id;
+        },
         setAuthentication(state, isAuthenticated) {
             state.isAuthenticated = isAuthenticated;
         },
@@ -31,6 +35,7 @@ export default createStore({
                 commit('setToken', response.data.token);
                 commit('setAuthentication', true);
                 commit('setUserEmail', credentials.email);
+                commit('setUserId', response.data.id);
             }
         },
         async register({ dispatch }, userData) {
@@ -44,11 +49,13 @@ export default createStore({
                 const response = await apiClient.get('auth/check');
                 if (response.data.isAuthenticated) {
                     commit('setAuthentication', true);
-                    //const userResponse = await apiClient.get('auth/user');
-                    //commit('setUserEmail', userResponse.email);
+                    commit('setUserEmail', response.data.email);
+                    commit('setUserId', response.data.id);
                 } else {
                     commit('setAuthentication', false);
                     commit('setToken', '');
+                    commit('setUserEmail', '');
+                    commit('setUserId', '');
                 }
             } catch (error) {
                 commit('setAuthentication', false);

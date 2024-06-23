@@ -47,8 +47,8 @@ export default defineConfig({
         proxy: {
             '^/api/': {
                 target,
-                changeOrigin: true,
-                secure: false,
+                changeOrigin: env.NODE_ENV !== 'development',
+                secure: env.NODE_ENV !== 'development',
                 configure: (proxy, options) => {
                     proxy.on('proxyReq', (proxyReq, req, res) => {
                         console.log('Proxying request to:', target);

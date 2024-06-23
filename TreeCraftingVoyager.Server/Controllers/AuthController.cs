@@ -60,7 +60,12 @@ public class AuthController : ControllerBase
         if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
         {
             var token = GenerateJwtToken(user);
-            return Ok(new { Token = token });
+            return Ok(new 
+            { 
+                token = token,
+                id = user.Id,
+                email = user.Email
+            });
         }
 
         return Unauthorized();
@@ -71,7 +76,15 @@ public class AuthController : ControllerBase
     {
         if (User.Identity.IsAuthenticated)
         {
-            return Ok(new { isAuthenticated = true });
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+
+            return Ok(new
+            {
+                isAuthenticated = true,
+                id = userId,
+                email = userEmail
+            });
         }
 
         return Ok(new { isAuthenticated = false });
@@ -81,9 +94,9 @@ public class AuthController : ControllerBase
     {
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+            new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.NameIdentifier, user.Id)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));

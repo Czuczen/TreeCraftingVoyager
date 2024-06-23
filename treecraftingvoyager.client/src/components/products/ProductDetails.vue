@@ -24,6 +24,8 @@
 
 <script>
     import moment from 'moment';
+    import apiClient from '@/api';
+
     export default {
         name: 'ProductDetails',
         data() {
@@ -40,8 +42,8 @@
                 try {
                     this.isLoading = true;
                     const id = this.$route.params.id;
-                    fetch(`/api/Products/Details/${id}`)
-                        .then(r => r.json())
+                    apiClient.get(`Products/Details/${id}`)
+                        .then(r => r.data)
                         .then(json => {
                             this.product = json;
                         })

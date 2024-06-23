@@ -55,7 +55,7 @@ public class ProductsController : ControllerBase
         return Ok(ret);
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpPost("Create")]
     public async Task<ActionResult> CreateProduct([FromBody] CreateProductDto createDto)
     {
@@ -69,7 +69,7 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpPut("Update")]
     public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductDto updateDto)
     {
@@ -83,7 +83,7 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteProduct(long id)
     {

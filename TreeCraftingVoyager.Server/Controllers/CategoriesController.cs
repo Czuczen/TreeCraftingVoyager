@@ -92,7 +92,7 @@ public class CategoriesController : ControllerBase
         return Ok(ret);
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpPost("Create")]
     public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryDto createDto)
     {
@@ -106,7 +106,7 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpPut("Update")]
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto updateDto)
     {
@@ -120,7 +120,7 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
-    [Authorize]
+    //[Authorize]
     [HttpDelete("Delete/{id}")]
     public async Task<IActionResult> DeleteCategory(long id)
     {

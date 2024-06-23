@@ -57,6 +57,7 @@
 
 <script>
     import moment from 'moment';
+    import apiClient from '@/api';
 
     export default {
         data() {
@@ -93,11 +94,9 @@
             async fetchCategories() {
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Categories/Get');
+                    const response = await apiClient.get('Categories/Get');
                     this.isLoading = false;
-
-                    if (!response.ok) throw new Error('Failed to fetch categories');
-                    this.categories = await response.json();
+                    this.categories = await response.data;
                 } catch (error) {
                     console.error('Fetching error:', error);
                     alert("Nie udało się wczytać kategorii. Spróbuj ponownie.");
@@ -108,14 +107,7 @@
                 
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Products/Create', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.product)
-                    });
-
+                    const response = await apiClient.post('Products/Create', this.product );
                     this.isLoading = false;
 
                     if (response.status === 204) {
@@ -123,9 +115,9 @@
                         return;
                     }
 
-                    const responseData = await response.json();
+                    const responseData = await response.data;
 
-                    if (!response.ok) {
+                    if (response.status !== 200) {
                         this.errors = responseData.errors;
                         throw new Error('Validation failed');
                     }

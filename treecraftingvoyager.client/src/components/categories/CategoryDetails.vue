@@ -22,6 +22,8 @@
 </template>
 
 <script>
+    import apiClient from '@/api';
+
     export default {
         name: 'CategoryDetails',
         data() {
@@ -38,8 +40,8 @@
                 try {
                     this.isLoading = true;
                     const id = this.$route.params.id;
-                    fetch(`/api/Categories/Details/${id}`)
-                        .then(r => r.json())
+                    apiClient.get(`Categories/Details/${id}`)
+                        .then(r => r.data)
                         .then(json => {
                             this.category = json;
                         })

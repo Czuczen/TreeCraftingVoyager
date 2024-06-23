@@ -21,10 +21,10 @@ const routes = [
         path: '/logs',
         name: 'LogsViewer',
         component: () => import('@/components/appManagement/LogsViewer.vue'),
-        meta: {
-            requiresAuth: true,
-            isAdmin: true
-        }
+        //meta: {
+        //    requiresAuth: true,
+        //    isAdmin: true
+        //}
     },
     {
         path: '/categories',
@@ -42,9 +42,9 @@ const routes = [
         path: '/create-category',
         name: 'CreateCategory',
         component: () => import('@/components/categories/CreateCategory.vue'),
-        meta: {
-            requiresAuth: true,
-        }
+        //meta: {
+        //    requiresAuth: true,
+        //}
     },
     {
         path: '/category-details/:id',
@@ -55,9 +55,9 @@ const routes = [
         path: '/edit-category/:id',
         name: 'EditCategory',
         component: () => import('@/components/categories/EditCategory.vue'),
-        meta: {
-            requiresAuth: true,
-        }
+        //meta: {
+        //    requiresAuth: true,
+        //}
     },
 
     
@@ -65,9 +65,9 @@ const routes = [
         path: '/create-product',
         name: 'CreateProduct',
         component: () => import('@/components/products/CreateProduct.vue'),
-        meta: {
-            requiresAuth: true,
-        }
+        //meta: {
+        //    requiresAuth: true,
+        //}
     },
     {
         path: '/category-product/:id',
@@ -78,9 +78,9 @@ const routes = [
         path: '/edit-product/:id',
         name: 'EditProduct',
         component: () => import('@/components/products/EditProduct.vue'),
-        meta: {
-            requiresAuth: true,
-        }
+        //meta: {
+        //    requiresAuth: true,
+        //}
     },
     {
         path: '/category-products/:id',

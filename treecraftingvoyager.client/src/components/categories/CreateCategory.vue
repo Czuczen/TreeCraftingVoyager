@@ -57,6 +57,8 @@
 
 
 <script>
+    import apiClient from '@/api';
+
     export default {
         data() {
             return {
@@ -82,10 +84,9 @@
             async fetchParents() {
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Categories/Get');
+                    const response = await apiClient.get('Categories/Get');
                     this.isLoading = false;
-                    if (!response.ok) throw new Error('Failed to fetch parent categories');
-                    this.parents = await response.json();
+                    this.parents = await response.data;
                 } catch (error) {
                     console.error('Fetching error:', error);
                     alert("Nie udało się wczytać kategorii rodzica. Spróbuj ponownie.");
@@ -96,14 +97,7 @@
 
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Categories/Create', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.category)
-                    });
-
+                    const response = await apiClient.post('Categories/Create', this.category);
                     this.isLoading = false;
 
                     if (response.status === 204) {
@@ -111,9 +105,9 @@
                         return;
                     }
 
-                    const responseData = await response.json();
+                    const responseData = await response.data;
                     
-                    if (!response.ok) {
+                    if (response.status === 400) {
                         this.errors = responseData.errors;
                         throw new Error('Validation failed');
                     }

@@ -19,6 +19,7 @@
 
 <script>
     import moment from 'moment';
+    import apiClient from '@/api';
 
     export default {
         name: 'CategoryProducts',
@@ -41,8 +42,8 @@
                 try {
                     this.isLoading = true;
                     const id = this.$route.params.id;
-                    fetch(`/api/Categories/GetByCategory/${id}`)
-                        .then(r => r.json())
+                    apiClient.get(`Categories/GetByCategory/${id}`)
+                        .then(r => r.data)
                         .then(json => {
                             this.products = json;
                         })

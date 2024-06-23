@@ -58,6 +58,7 @@
 <script>
     import { Modal } from 'bootstrap';
     import moment from 'moment';
+    import apiClient from '@/api';
 
     export default {
         name: "IndexProducts",
@@ -87,8 +88,8 @@
             fetchProducts() {
                 try {
                     this.isLoading = true;
-                    fetch('/api/Products/Get')
-                        .then(r => r.json())
+                    apiClient.get('Products/Get')
+                        .then(r => r.data)
                         .then(json => {
                             this.products = json;
                         })
@@ -121,21 +122,9 @@
                 if (!this.productIdToDelete) return;
 
                 this.isLoading = true;
-                fetch(`/api/Products/Delete/${this.productIdToDelete}`, {
-                    method: 'DELETE',
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return;
-                })
+                apiClient.delete(`Products/Delete/${this.productIdToDelete}`)
                 .then(() => {
                     this.fetchProducts();
-                })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                    alert("Coś poszło nie tak. Spróbuj ponownie.");
                 })
                 .finally(() => {
                     this.deleteModal.hide();

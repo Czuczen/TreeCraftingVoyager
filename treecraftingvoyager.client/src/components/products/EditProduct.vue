@@ -50,6 +50,7 @@
 
 <script>
     import moment from 'moment';
+    import apiClient from '@/api';
 
     export default {
         data() {
@@ -84,12 +85,9 @@
             async fetchCategories() {
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Categories/Get');
+                    const response = await apiClient.get('Categories/Get');
                     this.isLoading = false;
-
-                    if (!response.ok) throw new Error('Failed to fetch categories');
-
-                    this.categories = await response.json();
+                    this.categories = await response.data;
                 } catch (error) {
                     console.error('Fetching error:', error);
                     alert("Nie udało się wczytać kategorii. Spróbuj ponownie.");
@@ -98,8 +96,8 @@
             fetchProduct() {
                 const productId = this.$route.params.id;
                 this.isLoading = true;
-                fetch(`/api/Products/Get/${productId}`)
-                    .then(response => response.json())
+                apiClient.get(`Products/Get/${productId}`)
+                    .then(response => response.data)
                     .then(data => {
                         if (data) {
                             this.product = { ...this.product, ...data };
@@ -118,18 +116,11 @@
 
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Products/Update', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.product)
-                    });
-
+                    const response = await apiClient.put('Products/Update', this.product);
                     this.isLoading = false;
 
-                    if (!response.ok) {
-                        const responseData = await response.json();
+                    if (response.status !== 204) {
+                        const responseData = await response.data;
                         this.errors = responseData.errors;
                         throw new Error('Validation failed');
                     }

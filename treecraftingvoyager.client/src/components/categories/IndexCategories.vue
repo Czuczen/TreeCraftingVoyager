@@ -55,6 +55,8 @@
 
 <script>
     import { Modal } from 'bootstrap';
+    import apiClient from '@/api';
+
     export default {
         name: "IndexCategories",
         data() {
@@ -83,8 +85,8 @@
             fetchCategories() {
                 try {
                     this.isLoading = true;
-                    fetch('/api/Categories/Get')
-                        .then(r => r.json())
+                    apiClient.get('Categories/Get')
+                        .then(r => r.data)
                         .then(json => {
                             this.categories = json;
                         })
@@ -117,21 +119,9 @@
                 if (!this.categoryIdToDelete) return;
 
                 this.isLoading = true;
-                fetch(`/api/Categories/Delete/${this.categoryIdToDelete}`, {
-                    method: 'DELETE',
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return;
-                })
+                apiClient.delete(`Categories/Delete/${this.categoryIdToDelete}`)
                 .then(() => {
                     this.fetchCategories();
-                })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                    alert("Coś poszło nie tak. Spróbuj ponownie.");
                 })
                 .finally(() => {
                     this.deleteModal.hide();

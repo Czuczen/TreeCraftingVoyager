@@ -58,6 +58,8 @@
 
 
 <script>
+    import apiClient from '@/api';
+
     export default {
         data() {
             return {
@@ -88,12 +90,10 @@
                 try {
                     this.isLoading = true;
                     const categoryId = this.$route.params.id;
-                    const response = await fetch('/api/Categories/Get');
-
+                    const response = await apiClient.get('Categories/Get');
                     this.isLoading = false;
-                    if (!response.ok) throw new Error('Failed to fetch parent categories');
 
-                    let categories = await response.json();
+                    let categories = await response.data;
                     this.parents = categories.filter(category => category.id != categoryId);
                     if (categoryId)
                         this.category = categories.find(category => category.id == categoryId) || this.category;
@@ -108,18 +108,11 @@
 
                 try {
                     this.isLoading = true;
-                    const response = await fetch('/api/Categories/Update', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(this.category)
-                    });
-
+                    const response = await apiClient.put('Categories/Update', this.category );
                     this.isLoading = false;
 
-                    if (!response.ok) {
-                        const responseData = await response.json();
+                    if (response.status !== 204) {
+                        const responseData = await response.data;
                         this.errors = responseData.errors;
                         throw new Error('Validation failed');
                     }

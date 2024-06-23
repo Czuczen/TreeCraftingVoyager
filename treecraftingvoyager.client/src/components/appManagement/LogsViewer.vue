@@ -19,6 +19,8 @@
 </template>
 
 <script>
+    import apiClient from '@/api';
+
     export default {
         data() {
             return {
@@ -30,8 +32,8 @@
             async fetchLogs() {
                 try {
                     this.isLoading = true;
-                    fetch('/api/AppManagement/GetLogs')
-                        .then(r => r.json())
+                    apiClient.get('AppManagement/GetLogs')
+                        .then(r => r.data)
                         .then(json => {
                             this.logsData = json;
                         })

@@ -68,6 +68,8 @@
 
 
 <script>
+    import apiClient from '@/api';
+
     export default {
         name: 'CategoriesTree',
         props: {
@@ -97,12 +99,9 @@
         methods: {
             fetchCategories() {
                 //this.isLoading = true;
-                //fetch('/api/Categories/GetHierarchy')
+                //apiClient.get('Categories/GetHierarchy')
                 //    .then(response => {
-                //        if (!response.ok) {
-                //            throw new Error('Network response was not ok');
-                //        }
-                //        return response.json();
+                //        return response.data;
                 //    })
                 //    .then(data => {
                 //        this.categories = data.map(category => ({

@@ -41,11 +41,11 @@ export default createStore({
         },
         async checkAuth({ commit }) {
             try {
-                const response = await apiClient.get('auth/check');
+                const response = await apiClient.get('auth/check?email' + this.state.userEmail);
                 if (response.data.isAuthenticated) {
                     commit('setAuthentication', true);
-                    const userResponse = await apiClient.get('auth/user');
-                    commit('setUserEmail', userResponse.email);
+                    //const userResponse = await apiClient.get('auth/user');
+                    //commit('setUserEmail', userResponse.email);
                 } else {
                     commit('setAuthentication', false);
                     commit('setToken', '');

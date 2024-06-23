@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const apiClient = axios.create({
     baseURL: '/api',
-   // withCredentials: true, // Included cookies in requests
+    withCredentials: true, // Included cookies in requests
     headers: {
         'Content-Type': 'application/json'
     }

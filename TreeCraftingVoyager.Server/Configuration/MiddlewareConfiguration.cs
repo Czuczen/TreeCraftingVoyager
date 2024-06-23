@@ -6,6 +6,7 @@ public static class MiddlewareConfiguration
     {
         if (app.ApplicationServices.GetRequiredService<IHostEnvironment>().IsDevelopment())
         {
+            app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI();
         }
@@ -15,7 +16,7 @@ public static class MiddlewareConfiguration
         app.UseCors("AllowSpecificOrigins");
 
         app.UseAuthentication();
-        //app.UseAuthorization();
+        app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {

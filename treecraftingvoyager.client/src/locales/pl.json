@@ -1,0 +1,12 @@
+{
+  "welcome": "Witamy",
+  "login": "Zaloguj",
+  "register": "Zarejestruj",
+  "email": "Email",
+  "password": "Hasło",
+  "confirmPassword": "Powtórz hasło",
+  "required": "To pole jest wymagane",
+  "invalidEmail": "Proszę podać prawidłowy adres email",
+  "passwordMinLength": "Hasło musi mieć co najmniej {min} znaków",
+  "passwordsMustMatch": "Hasła muszą się zgadzać"
+}

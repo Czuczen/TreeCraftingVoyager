@@ -30,17 +30,13 @@
                             <button @click="logout" class="btn btn-link nav-link text-dark">Wyloguj</button>
                         </div>
                         <div v-else>
-                            <button @click="toggleLoginForm" class="btn btn-link nav-link text-dark">Zaloguj</button>
+                            <router-link class="nav-link text-dark ms-2" to="/login">Zaloguj</router-link>
                             <router-link class="nav-link text-dark ms-2" to="/register">Zarejestruj</router-link>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-
-        <div v-if="showLoginForm" class="login-form-container">
-            <Login @login="handleLoginSuccess" />
-        </div>
 
         <div class="container container-flex-auto">
             <router-view></router-view>
@@ -54,45 +50,19 @@
     </div>
 </template>
 
-<style scoped>
-    .login-form-container {
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        width: 300px;
-        background: white;
-        border: 1px solid #ccc;
-        padding: 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-</style>
-
 <script>
     import { mapActions, mapState } from 'vuex';
     import CategoriesTree from '@/components/categories/CategoriesTree.vue';
-    import Login from '@/components/auth/Login.vue';
 
     export default {
         components: {
-            CategoriesTree,
-            Login
-        },
-        data() {
-            return {
-                showLoginForm: false
-            };
+            CategoriesTree
         },
         computed: {
             ...mapState(['isAuthenticated', 'userEmail'])
         },
         methods: {
-            ...mapActions(['logout']),
-            toggleLoginForm() {
-                this.showLoginForm = !this.showLoginForm;
-            },
-            handleLoginSuccess() {
-                this.showLoginForm = false;
-            }
+            ...mapActions(['logout'])
         },
         mounted() {
             this.$store.dispatch('checkAuth');

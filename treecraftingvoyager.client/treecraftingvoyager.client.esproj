@@ -14,6 +14,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\components\appManagement\" />
+    <Folder Include="src\localization\" />
+    <Folder Include="src\locales\" />
+    <Folder Include="src\validation\" />
     <Folder Include="src\router\" />
   </ItemGroup>
 </Project>

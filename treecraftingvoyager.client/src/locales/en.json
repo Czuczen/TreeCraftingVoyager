@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome",
+  "login": "Login",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "required": "This field is required",
+  "invalidEmail": "Please enter a valid email address",
+  "passwordMinLength": "Password must be at least {min} characters long",
+  "passwordsMustMatch": "Passwords must match"
+}

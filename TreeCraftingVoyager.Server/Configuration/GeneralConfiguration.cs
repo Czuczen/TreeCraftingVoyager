@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using TreeCraftingVoyager.Server.Constants;
 using TreeCraftingVoyager.Server.Data;
 using TreeCraftingVoyager.Server.Models.Management;
@@ -84,6 +85,26 @@ public static class GeneralConfiguration
             });
         }
         
+        return builder;
+    }
+
+    public static WebApplicationBuilder AddAuthorizationPolicies(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+            options.AddPolicy("CustomerPolicy", policy => policy.RequireRole("Customer"));
+            options.AddPolicy("VendorPolicy", policy => policy.RequireRole("Vendor"));
+
+            // soon
+            //options.AddPolicy("CanEditProducts", policy =>
+            //    policy.RequireClaim("permission", "edit_products"));
+            //options.AddPolicy("CanViewOrders", policy =>
+            //    policy.RequireClaim("permission", "view_orders"));
+            //options.AddPolicy("CanManageInventory", policy =>
+            //    policy.RequireClaim("permission", "manage_inventory"));
+        });
+
         return builder;
     }
 }

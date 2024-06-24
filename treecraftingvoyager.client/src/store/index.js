@@ -6,7 +6,9 @@ export default createStore({
         token: document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1") || '',
         isAuthenticated: false,
         userEmail: '',
-        userId: ''
+        userId: '',
+        userClaims: [],
+        userRoles: []
     },
     mutations: {
         setUserId(state, id) {
@@ -26,6 +28,12 @@ export default createStore({
         setUserEmail(state, email) {
             state.userEmail = email;
         },
+        setUserClaims(state, claims) {
+            state.userClaims = claims;
+        },
+        setUserRoles(state, roles) {
+            state.userRoles = roles;
+        }
     },
     actions: {
         async login({ commit }, credentials) {
@@ -36,6 +44,12 @@ export default createStore({
                 commit('setAuthentication', true);
                 commit('setUserEmail', credentials.email);
                 commit('setUserId', response.data.id);
+
+
+                //const decodedToken = JSON.parse(atob(response.data.token.split('.')[1]));
+                //commit('setUserClaims', decodedToken);
+                //const roles = decodedToken.role ? (Array.isArray(decodedToken.role) ? decodedToken.role : [decodedToken.role]) : [];
+                //commit('setUserRoles', roles);
             }
         },
         async register({ dispatch }, userData) {
@@ -51,6 +65,11 @@ export default createStore({
                     commit('setAuthentication', true);
                     commit('setUserEmail', response.data.email);
                     commit('setUserId', response.data.id);
+
+                    //const decodedToken = JSON.parse(atob(response.data.token.split('.')[1]));
+                    //commit('setUserClaims', decodedToken);
+                    //const roles = decodedToken.role ? (Array.isArray(decodedToken.role) ? decodedToken.role : [decodedToken.role]) : [];
+                    //commit('setUserRoles', roles);
                 } else {
                     commit('setAuthentication', false);
                     commit('setToken', '');
@@ -60,15 +79,20 @@ export default createStore({
             } catch (error) {
                 commit('setAuthentication', false);
                 commit('setToken', '');
+                commit('setUserEmail', '');
+                commit('setUserId', '');
             }
         },
         logout({ commit }) {
-            commit('setToken', '');
             commit('setAuthentication', false);
+            commit('setToken', '');
             commit('setUserEmail', '');
+            commit('setUserId', '');
         },
     },
     getters: {
         isLoggedIn: state => !!state.token,
+        userClaims: state => state.userClaims,
+        userRoles: state => state.userRoles
     }
 });

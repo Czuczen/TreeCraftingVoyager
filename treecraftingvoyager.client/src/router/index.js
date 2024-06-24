@@ -23,7 +23,8 @@ const routes = [
         component: () => import('@/components/appManagement/LogsViewer.vue'),
         //meta: {
         //    requiresAuth: true,
-        //    isAdmin: true
+        //    requiredClaims: ['permission:view_logs'],
+        //    requiredRoles: ['Admin']
         //}
     },
     {
@@ -122,6 +123,25 @@ router.beforeEach((to, from, next) => {
         if (!store.getters.isLoggedIn) {
             next('/login');
         } else {
+            const userClaims = store.getters.userClaims;
+            const userRoles = store.getters.userRoles;
+
+            if (to.meta.requiredClaims) {
+                const hasRequiredClaims = to.meta.requiredClaims.every(claim => userClaims.some(userClaim => userClaim === claim));
+                if (!hasRequiredClaims) {
+                    next('/');
+                    return;
+                }
+            }
+
+            if (to.meta.requiredRoles) {
+                const hasRequiredRoles = to.meta.requiredRoles.every(role => userRoles.includes(role));
+                if (!hasRequiredRoles) {
+                    next('/');
+                    return;
+                }
+            }
+
             next();
         }
     } else {

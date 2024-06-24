@@ -42,6 +42,7 @@ public class AuthController : ControllerBase
 
         if (result.Succeeded)
         {
+            //await _userManager.AddClaimAsync(user, new Claim("permission", "view_logs")); exsample
             return Ok(new { Result = "User created successfully" });
         }
 
@@ -90,14 +91,26 @@ public class AuthController : ControllerBase
         return Ok(new { isAuthenticated = false });
     }
 
-    private string GenerateJwtToken(Account user)
+    private async Task<string> GenerateJwtToken(Account user)
     {
-        var claims = new[]
+        var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };
+
+
+        //var userClaims = await _userManager.GetClaimsAsync(user);
+        //claims.AddRange(userClaims);
+
+        //var roles = await _userManager.GetRolesAsync(user);
+        //foreach (var role in roles)
+        //{
+        //    claims.Add(new Claim(ClaimTypes.Role, role));
+        //    var roleClaims = await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role));
+        //    claims.AddRange(roleClaims);
+        //}
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

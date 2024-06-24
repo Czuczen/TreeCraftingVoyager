@@ -8,5 +8,6 @@
   "required": "To pole jest wymagane",
   "invalidEmail": "Proszę podać prawidłowy adres email",
   "passwordMinLength": "Hasło musi mieć co najmniej {min} znaków",
-  "passwordsMustMatch": "Hasła muszą się zgadzać"
+  "passwordsMustMatch": "Hasła muszą się zgadzać",
+  "rememberMe": "Zapamiętaj mnie"
 }

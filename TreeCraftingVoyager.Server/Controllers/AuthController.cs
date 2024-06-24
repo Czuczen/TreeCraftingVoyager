@@ -57,19 +57,46 @@ public class AuthController : ControllerBase
             return BadRequest("Invalid client request");
         }
 
-        var user = await _userManager.FindByEmailAsync(model.Email);
-        if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+        if (!ModelState.IsValid)
         {
-            var token = GenerateJwtToken(user);
-            return Ok(new 
-            { 
-                token = token,
-                id = user.Id,
-                email = user.Email
-            });
+            return BadRequest(ModelState);
         }
 
-        return Unauthorized();
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user != null)
+        {
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+
+            if (result.Succeeded)
+            {
+                var token = await GenerateJwtToken(user, model.RememberMe);
+                return Ok(new
+                {
+                    token = token,
+                    id = user.Id,
+                    email = user.Email
+                });
+            }
+
+            if (result.RequiresTwoFactor)
+            {
+                // Uncomment and implement 2FA if required
+                // return RedirectToPage("./LoginWith2fa", new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            }
+
+            if (result.IsLockedOut)
+            {
+                _logger.LogWarning("User account locked out.");
+                // Uncomment and implement lockout page if required
+                // return RedirectToPage("./Lockout");
+
+                ModelState.AddModelError(string.Empty, "This account has been locked out, please try again later.");
+                return BadRequest(ModelState);
+            }
+        }
+
+        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        return BadRequest(ModelState);
     }
 
     [HttpGet("check")]
@@ -91,7 +118,7 @@ public class AuthController : ControllerBase
         return Ok(new { isAuthenticated = false });
     }
 
-    private async Task<string> GenerateJwtToken(Account user)
+    private async Task<string> GenerateJwtToken(Account user, bool rememberMe)
     {
         var claims = new List<Claim>
         {
@@ -119,7 +146,7 @@ public class AuthController : ControllerBase
             issuer: _configuration["Jwt:Issuer"],
             audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(30),
+            expires: rememberMe ? DateTime.UtcNow.AddDays(7) : DateTime.UtcNow.AddMinutes(30),
             signingCredentials: creds
         );
 

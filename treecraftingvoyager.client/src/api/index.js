@@ -24,11 +24,11 @@ apiClient.interceptors.response.use(response => {
     return response;
 }, error => {
 
-    if (error.response) {
-        if (error.response.status === 400 && error.response.data && error.response.data.errors) {
-            return error.response; 
-        }
-    }
+    //if (error.response) {
+    //    if (error.response.status === 400 && error.response.data && error.response.data.errors) {
+    //        return error.response; 
+    //    }
+    //}
 
     console.error(error);
     return Promise.reject(error);

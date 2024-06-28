@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import AuthService from '@/services/authService';
-import * as jwtDecode from 'jwt-decode'; // named import
+import jwtDecode from 'jwt-decode';
 
 export default createStore({
     state: {
@@ -40,7 +40,7 @@ export default createStore({
         async login({ commit }, credentials) {
             const response = await AuthService.login(credentials);
             if (response.token) {
-                const decodedToken = jwtDecode.default(response.token);
+                const decodedToken = jwtDecode(response.token);
                 commit('setToken', response.token);
                 commit('setAuthentication', true);
                 commit('setUserEmail', decodedToken.email);
@@ -59,7 +59,7 @@ export default createStore({
                 const response = await AuthService.checkAuth();
                 if (response.isAuthenticated) {
                     const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
-                    const decodedToken = jwtDecode.default(token);
+                    const decodedToken = jwtDecode(token);
                     commit('setAuthentication', true);
                     commit('setUserEmail', decodedToken.email);
                     commit('setUserId', decodedToken.sub);

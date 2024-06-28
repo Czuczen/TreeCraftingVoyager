@@ -63,7 +63,7 @@
                 backendErrors.value = {};
                 try {
                     await store.dispatch('login', { email: email.value, password: password.value, rememberMe: rememberMe.value });
-                    const returnUrl = route.query.returnUrl || '/';
+                    const returnUrl = '/';
                     router.push(returnUrl);
                 } catch (error) {
                     if (error.response && error.response.data) {

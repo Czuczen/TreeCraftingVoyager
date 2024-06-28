@@ -100,22 +100,9 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("check")]
-    public async Task<IActionResult> Check()
+    public IActionResult Check()
     {
-        if (User.Identity.IsAuthenticated)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-
-            return Ok(new
-            {
-                isAuthenticated = true,
-                id = userId,
-                email = userEmail
-            });
-        }
-
-        return Ok(new { isAuthenticated = false });
+        return Ok(new { isAuthenticated = User.Identity.IsAuthenticated });
     }
 
     private async Task<string> GenerateJwtToken(Account user, bool rememberMe)

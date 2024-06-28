@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
-import apiClient from '@/api';
+import AuthService from '@/services/authService';
+import * as jwtDecode from 'jwt-decode'; // named import
 
 export default createStore({
     state: {
@@ -37,39 +38,32 @@ export default createStore({
     },
     actions: {
         async login({ commit }, credentials) {
-            const response = await apiClient.post('auth/login', credentials);
-            if (response.data.token) {
-                console.log("Token after login req: " + response.data.token);
-                commit('setToken', response.data.token);
+            const response = await AuthService.login(credentials);
+            if (response.token) {
+                const decodedToken = jwtDecode.default(response.token);
+                commit('setToken', response.token);
                 commit('setAuthentication', true);
-                commit('setUserEmail', credentials.email);
-                commit('setUserId', response.data.id);
-
-
-                //const decodedToken = JSON.parse(atob(response.data.token.split('.')[1]));
-                //commit('setUserClaims', decodedToken);
-                //const roles = decodedToken.role ? (Array.isArray(decodedToken.role) ? decodedToken.role : [decodedToken.role]) : [];
-                //commit('setUserRoles', roles);
+                commit('setUserEmail', decodedToken.email);
+                commit('setUserId', decodedToken.sub);
+                // Set user claims and roles if available in the token
             }
         },
         async register({ dispatch }, userData) {
-            const response = await apiClient.post('auth/register', userData);
+            const response = await AuthService.register(userData);
             if (response.data.result === 'User created successfully') {
                 await dispatch('login', { email: userData.email, password: userData.password });
             }
         },
         async checkAuth({ commit }) {
             try {
-                const response = await apiClient.get('auth/check');
-                if (response.data.isAuthenticated) {
+                const response = await AuthService.checkAuth();
+                if (response.isAuthenticated) {
+                    const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, "$1");
+                    const decodedToken = jwtDecode.default(token);
                     commit('setAuthentication', true);
-                    commit('setUserEmail', response.data.email);
-                    commit('setUserId', response.data.id);
-
-                    //const decodedToken = JSON.parse(atob(response.data.token.split('.')[1]));
-                    //commit('setUserClaims', decodedToken);
-                    //const roles = decodedToken.role ? (Array.isArray(decodedToken.role) ? decodedToken.role : [decodedToken.role]) : [];
-                    //commit('setUserRoles', roles);
+                    commit('setUserEmail', decodedToken.email);
+                    commit('setUserId', decodedToken.sub);
+                    // Set user claims and roles if available in the token
                 } else {
                     commit('setAuthentication', false);
                     commit('setToken', '');
@@ -84,6 +78,7 @@ export default createStore({
             }
         },
         logout({ commit }) {
+            AuthService.logout();
             commit('setAuthentication', false);
             commit('setToken', '');
             commit('setUserEmail', '');

@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="d-flex justify-content-center align-items-center">
         <div class="card w-50">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ $t('login') }}</h5>
@@ -45,8 +45,8 @@
 <script>
     import { ref } from 'vue';
     import { useForm } from 'vee-validate';
-    import { useStore } from 'vuex';
     import { useRouter, useRoute } from 'vue-router';
+    import { useStore } from 'vuex';
 
     export default {
         setup() {
@@ -62,18 +62,18 @@
             const login = handleSubmit(async () => {
                 backendErrors.value = {};
                 try {
-                    const response = await store.dispatch('login', { email: email.value, password: password.value, rememberMe: rememberMe.value });
+                    await store.dispatch('login', { email: email.value, password: password.value, rememberMe: rememberMe.value });
                     const returnUrl = route.query.returnUrl || '/';
                     router.push(returnUrl);
                 } catch (error) {
-                    if (error.errors) {
-                        backendErrors.value = error.errors;
-                    } else if (error.response?.data?.[""]?.[0]) {
-                        backendErrors.value.general = error.response.data[""][0];
+                    if (error.response && error.response.data) {
+                        backendErrors.value = error.response.data.errors || {};
+                        backendErrors.value.general = error.response.data.message || 'Login failed';
                     } else {
                         console.error(error);
                         backendErrors.value.general = 'Login failed';
                     }
+                    password.value = '';
                 }
             });
 

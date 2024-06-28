@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="d-flex justify-content-center align-items-center">
         <div class="card w-50">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ $t('register') }}</h5>
@@ -38,8 +38,8 @@
 <script>
     import { ref } from 'vue';
     import { useForm } from 'vee-validate';
-    import { useStore } from 'vuex';
     import { useRouter } from 'vue-router';
+    import { useStore } from 'vuex';
 
     export default {
         setup() {
@@ -57,8 +57,8 @@
                     await store.dispatch('register', { email: email.value, password: password.value });
                     router.push('/');
                 } catch (error) {
-                    if (error.errors) {
-                        backendErrors.value = error.errors;
+                    if (error.response && error.response.data) {
+                        backendErrors.value = error.response.data.errors || {};
                     } else {
                         console.error(error);
                         alert('Rejestracja nie powiodła się');

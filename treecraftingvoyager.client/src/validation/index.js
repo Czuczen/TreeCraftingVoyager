@@ -14,7 +14,7 @@ configure({
         en,
         pl
     }),
-    validateOnInput: true // Walidacja podczas wprowadzania danych
+    validateOnInput: false // Validation during data entry
 });
 
 export { Field, Form, ErrorMessage };

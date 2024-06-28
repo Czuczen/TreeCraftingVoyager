@@ -9,5 +9,5 @@
   "invalidEmail": "Please enter a valid email address",
   "passwordMinLength": "Password must be at least {min} characters long",
   "passwordsMustMatch": "Passwords must match",
-  "rememberMe": "Remember me"
+  "rememberMe": "Remember me?"
 }

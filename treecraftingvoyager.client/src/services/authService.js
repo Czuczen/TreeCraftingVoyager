@@ -12,7 +12,8 @@ class AuthService {
     register(user) {
         return apiClient.post('auth/register', {
             email: user.email,
-            password: user.password
+            password: user.password,
+            confirmPassword: user.confirmPassword
         });
     }
 

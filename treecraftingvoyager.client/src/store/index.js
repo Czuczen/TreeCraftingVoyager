@@ -43,6 +43,7 @@ export default createStore({
                 commit('setAuthentication', true);
                 commit('setUserEmail', response.email);
                 commit('setUserId', response.id);
+                // Set user claims and roles if available in the response
             }
         },
         async register({ dispatch }, userData) {
@@ -58,6 +59,7 @@ export default createStore({
                     commit('setAuthentication', true);
                     commit('setUserEmail', response.email);
                     commit('setUserId', response.id);
+                    // Set user claims and roles if available in the response
                 } else {
                     commit('setAuthentication', false);
                     commit('setToken', '');

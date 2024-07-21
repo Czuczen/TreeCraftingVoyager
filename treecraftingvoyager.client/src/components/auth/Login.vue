@@ -68,7 +68,7 @@ export default {
             } catch (error) {
                 if (error.response && error.response.data) {
                     backendErrors.value = error.response.data.errors || {};
-                    backendErrors.value.general = error.response.data.message || 'Login failed';
+                    backendErrors.value.general = error.response.data.message?.[0] || 'Login failed';
                 } else {
                     console.error(error);
                     backendErrors.value.general = 'Login failed';

@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Encodings.Web;
 using TreeCraftingVoyager.Server.Models.Management;
 
 namespace TreeCraftingVoyager.Server.Controllers;
@@ -16,17 +20,25 @@ public class AuthController : ControllerBase
     private readonly UserManager<Account> _userManager;
     private readonly SignInManager<Account> _signInManager;
     private readonly IConfiguration _configuration;
+    private readonly IUserStore<Account> _userStore;
+    private readonly IUserEmailStore<Account> _emailStore;
+    private readonly IEmailSender _emailSender;
 
     public AuthController(
         ILogger<AuthController> logger,
         UserManager<Account> userManager,
         SignInManager<Account> signInManager,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        IUserStore<Account> userStore,
+        IEmailSender emailSender)
     {
         _logger = logger;
         _userManager = userManager;
         _signInManager = signInManager;
         _configuration = configuration;
+        _userStore = userStore;
+        _emailStore = GetEmailStore();
+        _emailSender = emailSender;
     }
 
     [HttpPost("register")]
@@ -37,16 +49,57 @@ public class AuthController : ControllerBase
             return BadRequest("Invalid client request");
         }
 
-        var user = new Account { UserName = model.Email, Email = model.Email };
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var user = new Account
+        {
+            UserName = model.Email,
+            Email = model.Email
+        };
+
+        await _userStore.SetUserNameAsync(user, model.Email, CancellationToken.None);
+        await _emailStore.SetEmailAsync(user, model.Email, CancellationToken.None);
+
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
         {
-            //await _userManager.AddClaimAsync(user, new Claim("permission", "view_logs")); exsample
-            return Ok(new { Result = "User created successfully" });
+            _logger.LogInformation("User created a new account with password.");
+
+            var userId = await _userManager.GetUserIdAsync(user);
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            var callbackUrl = Url.Action(
+                "ConfirmEmail",
+                "Auth",
+                new { userId = userId, code = code },
+            protocol: HttpContext.Request.Scheme);
+
+            var emailContent = $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.";
+            await _emailSender.SendEmailAsync(model.Email, "Confirm your email", emailContent);
+
+            if (_userManager.Options.SignIn.RequireConfirmedAccount)
+            {
+                return Ok(new { Result = "User created successfully. Confirmation email sent." });
+                //return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+            }
+            else
+            {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return Ok(new { Result = "User created and signed in successfully" });
+                //return LocalRedirect(returnUrl);
+            }
         }
 
-        return BadRequest(result.Errors);
+        foreach (var error in result.Errors)
+        {
+            ModelState.AddModelError("message", error.Description);
+        }
+
+        return BadRequest(ModelState);
     }
 
     [HttpPost("login")]
@@ -76,26 +129,27 @@ public class AuthController : ControllerBase
                     id = user.Id,
                     email = user.Email
                 });
+
+                //return LocalRedirect(returnUrl);
             }
 
             if (result.RequiresTwoFactor)
             {
-                // Uncomment and implement 2FA if required
                 // return RedirectToPage("./LoginWith2fa", new { ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
             }
 
             if (result.IsLockedOut)
             {
                 _logger.LogWarning("User account locked out.");
-                // Uncomment and implement lockout page if required
+                
                 // return RedirectToPage("./Lockout");
 
-                ModelState.AddModelError(string.Empty, "This account has been locked out, please try again later.");
+                ModelState.AddModelError("message", "This account has been locked out, please try again later.");
                 return BadRequest(ModelState);
             }
         }
 
-        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        ModelState.AddModelError("message", "Invalid login attempt.");
         return BadRequest(ModelState);
     }
 
@@ -112,7 +166,7 @@ public class AuthController : ControllerBase
                     isAuthenticated = true,
                     id = user.Id,
                     email = user.Email,
-                    // Dodaj tutaj claimy i role, jeśli są wymagane
+                    
                     // claims = userClaims,
                     // roles = userRoles
                 });
@@ -158,5 +212,43 @@ public class AuthController : ControllerBase
         _logger.LogDebug($"Generated Token: {ret}");
 
         return ret;
+    }
+
+    [HttpGet("confirm-email")]
+    public async Task<IActionResult> ConfirmEmail(string userId, string code)
+    {
+        if (userId == null || code == null)
+        {
+            return BadRequest("User ID and code must be provided.");
+            //return RedirectToPage("/Index");
+        }
+
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound($"Unable to load user with ID '{userId}'.");
+        }
+
+        code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+        var result = await _userManager.ConfirmEmailAsync(user, code);
+
+        if (result.Succeeded)
+        {
+            return Ok("Thank you for confirming your email.");
+        }
+        else
+        {
+            return BadRequest("Error confirming your email.");
+        }
+    }
+
+
+    private IUserEmailStore<Account> GetEmailStore()
+    {
+        if (!_userManager.SupportsUserEmail)
+        {
+            throw new NotSupportedException("The default UI requires a user store with email support.");
+        }
+        return (IUserEmailStore<Account>) _userStore;
     }
 }

@@ -3,6 +3,9 @@ using TreeCraftingVoyager.Server.Configuration.Dependencies.DependencyLifecycleI
 using System.Reflection;
 using TreeCraftingVoyager.Server.Exceptions;
 using TreeCraftingVoyager.Server.Logging;
+using TreeCraftingVoyager.Server.Services.EmailSenderService;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace TreeCraftingVoyager.Server.Configuration.Dependencies;
 
@@ -22,7 +25,11 @@ public static class DependencyInjection
         Register(services, assembly, SingletonType);
 
         services.AddAutoMapper(typeof(MappingProfileConfiguration));
-        
+
+        // === mailing ===
+        builder.Services.AddTransient<IEmailSender, EmailSender>();
+        builder.Services.Configure<EmailSenderOptions>(builder.Configuration.GetSection("EmailSenderOpts"));
+
         LogRegisteredServicesByConvention(services);
 
         return builder;

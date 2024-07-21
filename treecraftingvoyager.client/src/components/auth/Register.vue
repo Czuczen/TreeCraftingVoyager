@@ -30,6 +30,9 @@
                     </div>
                     <button type="submit" class="btn btn-primary w-100">{{ $t('register') }}</button>
                 </Form>
+                <div v-if="backendErrors.general" class="text-danger text-center mt-3">
+                    {{ backendErrors.general }}
+                </div>
             </div>
         </div>
     </div>
@@ -54,14 +57,19 @@
             const register = handleSubmit(async () => {
                 backendErrors.value = {};
                 try {
-                    await store.dispatch('register', { email: email.value, password: password.value });
+                    await store.dispatch('register', {
+                        email: email.value,
+                        password: password.value,
+                        confirmPassword: confirmPassword.value
+                    });
                     router.push('/');
                 } catch (error) {
                     if (error.response && error.response.data) {
                         backendErrors.value = error.response.data.errors || {};
+                        backendErrors.value.general = error.response.data.message?.[0] || 'Register failed';
                     } else {
                         console.error(error);
-                        alert('Rejestracja nie powiodła się');
+                        backendErrors.value.general = 'Register failed';
                     }
                 }
             });

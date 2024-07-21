@@ -17,6 +17,15 @@ class AuthService {
         });
     }
 
+    confirmEmail(userId, code) {
+        return apiClient.get(`auth/confirm-email`, {
+            params: {
+                userId: userId,
+                code: code
+            }
+        }).then(response => response.data);
+    }
+
     checkAuth() {
         return apiClient.get('auth/check').then(response => response.data);
     }

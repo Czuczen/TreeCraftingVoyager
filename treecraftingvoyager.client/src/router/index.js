@@ -102,6 +102,13 @@ const routes = [
         name: 'Register',
         component: () => import('@/components/auth/Register.vue'),
     },
+
+    {
+        path: '/confirm-email',
+        name: 'ConfirmEmail',
+        component: () => import('@/components/auth/ConfirmEmail.vue')
+    },
+
     //{
     //    path: '/admin',
     //    name: 'admin',

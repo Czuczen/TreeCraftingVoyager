@@ -48,9 +48,13 @@ export default createStore({
         },
         async register({ dispatch }, userData) {
             const response = await AuthService.register(userData);
-            if (response.data.result === 'User created successfully') {
+            if (response.data.result.includes("User created")) {
                 await dispatch('login', { email: userData.email, password: userData.password });
             }
+        },
+        async confirmEmail({ commit }, { userId, code }) {
+            const response = await AuthService.confirmEmail(userId, code);
+            return response;
         },
         async checkAuth({ commit }) {
             try {

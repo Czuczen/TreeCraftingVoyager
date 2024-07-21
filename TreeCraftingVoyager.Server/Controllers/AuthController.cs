@@ -100,9 +100,26 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("check")]
-    public IActionResult Check()
+    public async Task<IActionResult> Check()
     {
-        return Ok(new { isAuthenticated = User.Identity.IsAuthenticated });
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                return Ok(new
+                {
+                    isAuthenticated = true,
+                    id = user.Id,
+                    email = user.Email,
+                    // Dodaj tutaj claimy i role, jeśli są wymagane
+                    // claims = userClaims,
+                    // roles = userRoles
+                });
+            }
+        }
+
+        return Ok(new { isAuthenticated = false });
     }
 
     private async Task<string> GenerateJwtToken(Account user, bool rememberMe)

@@ -43,48 +43,47 @@
 </template>
 
 <script>
-    import { ref } from 'vue';
-    import { useForm } from 'vee-validate';
-    import { useRouter, useRoute } from 'vue-router';
-    import { useStore } from 'vuex';
+import { ref } from 'vue';
+import { useForm } from 'vee-validate';
+import { useRouter, useRoute } from 'vue-router';
+import { useStore } from 'vuex';
 
-    export default {
-        setup() {
-            const store = useStore();
-            const router = useRouter();
-            const route = useRoute();
-            const { handleSubmit, errors } = useForm();
-            const email = ref('');
-            const password = ref('');
-            const rememberMe = ref(false);
-            const backendErrors = ref({});
+export default {
+    setup() {
+        const store = useStore();
+        const router = useRouter();
+        const route = useRoute();
+        const { handleSubmit, errors } = useForm();
+        const email = ref('');
+        const password = ref('');
+        const rememberMe = ref(false);
+        const backendErrors = ref({});
 
-            const login = handleSubmit(async () => {
-                backendErrors.value = {};
-                try {
-                    await store.dispatch('login', { email: email.value, password: password.value, rememberMe: rememberMe.value });
-                    const returnUrl = '/';
-                    router.push(returnUrl);
-                } catch (error) {
-                    if (error.response && error.response.data) {
-                        backendErrors.value = error.response.data.errors || {};
-                        backendErrors.value.general = error.response.data.message || 'Login failed';
-                    } else {
-                        console.error(error);
-                        backendErrors.value.general = 'Login failed';
-                    }
-                    password.value = '';
+        const login = handleSubmit(async () => {
+            backendErrors.value = {};
+            try {
+                await store.dispatch('login', { email: email.value, password: password.value, rememberMe: rememberMe.value });
+                const returnUrl = '/';
+                router.push(returnUrl);
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    backendErrors.value = error.response.data.errors || {};
+                    backendErrors.value.general = error.response.data.message || 'Login failed';
+                } else {
+                    console.error(error);
+                    backendErrors.value.general = 'Login failed';
                 }
-            });
+            }
+        });
 
-            return {
-                email,
-                password,
-                rememberMe,
-                errors,
-                backendErrors,
-                login
-            };
-        }
-    };
+        return {
+            email,
+            password,
+            rememberMe,
+            errors,
+            backendErrors,
+            login
+        };
+    }
+};
 </script>

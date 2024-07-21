@@ -1,6 +1,6 @@
 # Tree Crafting Voyager  
   
-Ten projekt to aplikacja typu "Sklep", która wykorzystuje zaawansowane zarządzanie strukturą drzewiastą do reprezentowania kategorii i produktów. Aplikacja składa się z dwóch głównych komponentów: backendu napisanego w ASP.NET Core (Web API) z wykorzystaniem .NET 8 oraz frontendu stworzonego przy użyciu Vue.js z bibliotekami Bootstrap.  
+Ten projekt to aplikacja typu "Sklep", która wykorzystuje zarządzanie strukturą drzewiastą do reprezentowania kategorii i produktów. Aplikacja składa się z dwóch głównych komponentów: backendu napisanego w ASP.NET Core (Web API) z wykorzystaniem .NET 8 oraz frontendu stworzonego przy użyciu Vue.js z bibliotekami Bootstrap.  
   
 W projekcie zastosowano wzorce projektowe takie jak: repository, strategy, singleton.
   
@@ -12,6 +12,7 @@ Dynamiczne Menu: Menu jest budowane rekurencyjnie i umożliwia łatwe nawigowani
 Ładowanie Produktów: Kliknięcie w kategorię spowoduje załadowanie produktów należących do tej kategorii oraz wszystkich jej podkategorii.  
 Walidacja Danych: Aplikacja zawiera zabezpieczenia uniemożliwiające wprowadzenie nieprawidłowych danych.  
 Dane Przykładowe: Aplikacja zawiera funkcjonalność do wypełnienia baze danych przykładowymi danymi, co ułatwia testowanie i demonstrację funkcjonalności.  
+Autentykacja i Autoryzacja: W projekcie zastosowano JWT tokeny oraz pakiet Entity Framework Identity do zarządzania użytkownikami i ich uprawnieniami.  
 
 
 ## Technologie  
@@ -37,7 +38,6 @@ Zaktualizuj Visual Studio do najnowszej wersji
 4. W konsoli menedżera pakietów dla pola "Projekt domyślny" z rozwijanej listy wybierz "TreeCraftingVoyager.Server".  
 5. W konsoli menedżera pakietów wpisz komende "Update-Database" i wciśnij Enter.  
 6. Uruchom aplikację (Ctrl+F5).  
-7. Frontend uruchomi się automatycznie, wystarczy po załadowaniu backendu uruchomić adres https://localhost:5173
 
 Jeśli projekty nadal się nie uruchamiają, skorzystaj z bardziej szczegółowych poradników poniżej.  
 

@@ -107,4 +107,12 @@ public static class GeneralConfiguration
 
         return builder;
     }
+
+    public static WebApplicationBuilder AddMemoryCache(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddMemoryCache();
+
+        return builder;
+    }
+    
 }

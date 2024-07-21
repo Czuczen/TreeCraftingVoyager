@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using TreeCraftingVoyager.Server.Attributes.Filter;
 using TreeCraftingVoyager.Server.Logging;
 using TreeCraftingVoyager.Server.Models.ViewModels;
 
 namespace TreeCraftingVoyager.Server.Controllers;
 
-//[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin")]
 [Route("api/[controller]")]
 [ApiController]
 public class AppManagementController : ControllerBase
@@ -21,6 +22,7 @@ public class AppManagementController : ControllerBase
 
 
     [HttpGet("GetLogs")]
+    [RateLimit(100, 60)]
     public IActionResult Logs()
     {
         var ret = new LogsViewModel();

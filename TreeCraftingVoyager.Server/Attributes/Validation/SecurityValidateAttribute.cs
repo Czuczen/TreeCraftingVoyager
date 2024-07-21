@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace TreeCraftingVoyager.Server.Attributes;
+namespace TreeCraftingVoyager.Server.Attributes.Validation;
 
 public class SecurityValidateAttribute : ValidationAttribute
 {
@@ -65,7 +65,7 @@ public class SecurityValidateAttribute : ValidationAttribute
 
         if (!Regex.IsMatch(valueAsString, @"^[a-zA-Z0-9\s\.,;:\-_\+!'" + "\"" + @"“?()\nąćęłńóśźżĄĆĘŁŃÓŚŹŻäöüÄÖÜß]+$"))
             return new ValidationResult("Wartość zawiera niedozwolone znaki.");
-        
+
         var valueAsStringLower = valueAsString.ToLowerInvariant();
         if (IllegalNames.Any(n => valueAsStringLower.Contains(n.ToLowerInvariant())))
             return new ValidationResult("Wartość zawiera nieakceptowane słowo.");

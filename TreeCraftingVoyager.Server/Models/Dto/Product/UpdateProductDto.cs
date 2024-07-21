@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TreeCraftingVoyager.Server.Attributes;
+using TreeCraftingVoyager.Server.Attributes.Validation;
 using TreeCraftingVoyager.Server.Models.Dto.Shared.EntityDto;
 
 namespace TreeCraftingVoyager.Server.Models.Dto.Product;

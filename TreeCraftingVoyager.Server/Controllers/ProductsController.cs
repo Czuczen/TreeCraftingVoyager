@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TreeCraftingVoyager.Server.Attributes.Filter;
 using TreeCraftingVoyager.Server.Data.Repositories.Crud;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
 using TreeCraftingVoyager.Server.Models.Entities;
@@ -28,6 +29,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("Get")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
     {
         var ret = await _crudRepository.GetAllAsync();
@@ -36,6 +38,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("Details/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<ProductDto>> GetProductDetails(long id)
     {
         var ret = await _productService.GetProductDetails(id);
@@ -46,6 +49,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("Get/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<ProductDto>> GetProduct(long id)
     {
         var ret = await _crudRepository.GetByIdAsync(id);
@@ -55,8 +59,9 @@ public class ProductsController : ControllerBase
         return Ok(ret);
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost("Create")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult> CreateProduct([FromBody] CreateProductDto createDto)
     {
         if (!ModelState.IsValid)
@@ -69,8 +74,9 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPut("Update")]
+    [RateLimit(100, 60)]
     public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductDto updateDto)
     {
         if (!ModelState.IsValid)
@@ -83,8 +89,9 @@ public class ProductsController : ControllerBase
         return NoContent();
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpDelete("Delete/{id}")]
+    [RateLimit(100, 60)]
     public async Task<IActionResult> DeleteProduct(long id)
     {
         var result = await _crudRepository.GetByIdAsync(id);

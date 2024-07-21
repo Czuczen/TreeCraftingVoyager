@@ -8,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
+using TreeCraftingVoyager.Server.Attributes.Filter;
 using TreeCraftingVoyager.Server.Models.Management;
 
 namespace TreeCraftingVoyager.Server.Controllers;
@@ -42,6 +43,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [RateLimit(5, 60)]
     public async Task<IActionResult> Register([FromBody] RegisterModel model)
     {
         if (model == null)
@@ -103,6 +105,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [RateLimit(10, 60)]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
         if (model == null)
@@ -154,6 +157,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("check")]
+    [RateLimit(100, 60)]
     public async Task<IActionResult> Check()
     {
         if (User.Identity.IsAuthenticated)
@@ -215,6 +219,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet("confirm-email")]
+    [RateLimit(5, 60)]
     public async Task<IActionResult> ConfirmEmail(string userId, string code)
     {
         if (userId == null || code == null)

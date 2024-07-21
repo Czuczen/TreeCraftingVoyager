@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TreeCraftingVoyager.Server.Attributes.Filter;
 using TreeCraftingVoyager.Server.Data.Repositories.Tree;
 using TreeCraftingVoyager.Server.Models.Dto.Category;
 using TreeCraftingVoyager.Server.Models.Dto.Product;
@@ -30,7 +31,9 @@ public class CategoriesController : ControllerBase
         _treeRepository = treeRepository;
     }
 
+
     [HttpGet("GetByCategory/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByCategory(long id)
     {
         var ret = await _treeRepository.GetCurrentNodeAndHisChildrensWithLeaves<Product>(id).Include(e => e.Category).ToListAsync();
@@ -39,6 +42,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("GetCategories")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetRootCategories()
     {
         var ret = await _treeRepository.GetRootObjects();
@@ -47,6 +51,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("GetChildrens/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoryChildrens(long id)
     {
         var ret = await _treeRepository.GetQuery(q => q.Where(e => e.Id == id).Include(e => e.Childrens)).SingleOrDefaultAsync();
@@ -57,6 +62,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("GetHierarchy")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategoriesHierarchy()
     {
         var ret = await _treeRepository.GetAllRecursively();
@@ -65,6 +71,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("Get")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
     {
         var ret = (await _treeRepository.GetAllAsync()).OrderBy(e => e.Name);
@@ -73,6 +80,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("Details/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<CategoryDto>> GetCategoryDetails(long id)
     {
         var ret = await _categoryService.GetCategoryDetails(id);
@@ -83,6 +91,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("Get/{id}")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult<ProductDto>> GetCategory(long id)
     {
         var ret = await _treeRepository.GetByIdAsync(id);
@@ -92,8 +101,9 @@ public class CategoriesController : ControllerBase
         return Ok(ret);
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost("Create")]
+    [RateLimit(100, 60)]
     public async Task<ActionResult> CreateCategory([FromBody] CreateCategoryDto createDto)
     {
         if (!ModelState.IsValid)
@@ -106,8 +116,9 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPut("Update")]
+    [RateLimit(100, 60)]
     public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto updateDto)
     {
         if (!ModelState.IsValid)
@@ -120,8 +131,9 @@ public class CategoriesController : ControllerBase
         return NoContent();
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpDelete("Delete/{id}")]
+    [RateLimit(100, 60)]
     public async Task<IActionResult> DeleteCategory(long id)
     {
         var result = await _treeRepository.GetByIdAsync(id);

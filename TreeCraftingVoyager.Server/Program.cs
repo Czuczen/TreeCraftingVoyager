@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddFileLogger()
         .AddLocalizationServices()
         .AddDatabase()
+        .AddMemoryCache()
         .AddIdentityServices()
         .AddDependenciesByConvention()
         .AddJwtAuthentication()

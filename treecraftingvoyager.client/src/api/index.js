@@ -24,11 +24,34 @@ apiClient.interceptors.response.use(response => {
     return response;
 }, error => {
 
-    //if (error.response) {
-    //    if (error.response.status === 400 && error.response.data && error.response.data.errors) {
-    //        return error.response; 
-    //    }
-    //}
+    // Requests limit exceeded
+    if (error.response) {
+        if (error.response.status === 429 && error.response.data) {
+            alert(error.response.data);
+        }
+    }
+
+    // Unauthorized
+    if (error.response) {
+        if (error.response.status === 401) {
+            if (error.response.data) {
+                alert(error.response.data);
+            } else {
+                alert("Lack of access");
+            }
+        }
+    }
+
+    // Forbidden
+    if (error.response) {
+        if (error.response.status === 403) {
+            if (error.response.data) {
+                alert(error.response.data);
+            } else {
+                alert("Lack of access");
+            }
+        }
+    }
 
     console.error(error);
     return Promise.reject(error);

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TreeCraftingVoyager.Server.Attributes;
+namespace TreeCraftingVoyager.Server.Attributes.Validation;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public class AgeRangeAttribute : ValidationAttribute

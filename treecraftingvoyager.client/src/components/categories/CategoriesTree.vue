@@ -98,24 +98,24 @@
         },
         methods: {
             fetchCategories() {
-                //this.isLoading = true;
-                //apiClient.get('Categories/GetHierarchy')
-                //    .then(response => {
-                //        return response.data;
-                //    })
-                //    .then(data => {
-                //        this.categories = data.map(category => ({
-                //            ...category,
-                //            open: false
-                //        }));
-                //    })
-                //    .catch(error => {
-                //        console.error('Fetching error:', error);
-                //        alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
-                //    })
-                //    .finally(() => {
-                //        this.isLoading = false;
-                //    });
+                this.isLoading = true;
+                apiClient.get('Categories/GetHierarchy')
+                    .then(response => {
+                        return response.data;
+                    })
+                    .then(data => {
+                        this.categories = data.map(category => ({
+                            ...category,
+                            open: false
+                        }));
+                    })
+                    .catch(error => {
+                        console.error('Fetching error:', error);
+                        alert("Coś poszło nie tak. Spróbuj ponownie. \n\r Lub poczekaj aż backend się załaduje");
+                    })
+                    .finally(() => {
+                        this.isLoading = false;
+                    });
             },
             toggleSubmenu(categoryId) {
                 if (categoryId === null) {

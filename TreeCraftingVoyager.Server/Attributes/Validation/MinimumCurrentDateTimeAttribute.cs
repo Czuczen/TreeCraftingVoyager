@@ -1,15 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TreeCraftingVoyager.Server.Attributes;
+namespace TreeCraftingVoyager.Server.Attributes.Validation;
 
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public class MinimumCurrentDateTimeAttribute : ValidationAttribute
 {
     public override bool IsValid(object? value)
     {
-            if (value is DateTime date)
-                return date >= DateTime.UtcNow;
+        if (value is DateTime date)
+            return date >= DateTime.UtcNow;
 
-            return false;
-        }
+        return false;
+    }
 }
